@@ -6,17 +6,8 @@ import vectorstore
 from vectorstore import VectorStore
 import retriever
 from retriever import RAGretriever
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 vectorstore = VectorStore() 
-def split_documents(documents, chunk_size = 1000, chunk_overlap = 200):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size = chunk_size,
-                                                   chunk_overlap = chunk_overlap,
-                                                   length_function = len,
-                                                   separators = ["\n\n", "\n", " ", ""])
-    split_docs = text_splitter.split_documents(documents)
-    print(f"split {len(documents)} documents into {len(split_docs)} chunks")
-    
-    return split_docs
+
 embedding_manager = EmbeddingManager()
 rag_retriever = RAGretriever(vector_store=vectorstore,
                                 embedding_manager=embedding_manager)

@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = "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"
 llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
+class PromptRequest(BaseModel):
+    prompt: str
 
 def rag_simple(query, retriever, llm, top_k = 3):
     results =retriever.retrieve(query, top_k = top_k)
@@ -22,7 +24,7 @@ def rag_simple(query, retriever, llm, top_k = 3):
     prompt = f""" Use the following context to answer the question concisely.
     Context: {context},
     question: {query}   
-    answer: """
+    answer: """ 
     response = llm.invoke([prompt.format(context = context, query = query)])
     return response.content
 
@@ -43,7 +45,9 @@ vectorstore.add_documents(split_documents, embeddings)
 app = FastAPI()
 origins = [
     "http://localhost",
-    "http://localhost:3000",
+    "http://localhost:3000", 
+    "http://localhost:8000",
+    "http://localhost:5174",
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -52,11 +56,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+ 
 
 @app.post("/prompts")
-def query_prompt(prompt: str):
-    
-    answer = rag_simple("What is the Namugongo Martyrs Shrine?", rag_retriever,llm)
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever, llm)
     return answer
 
 if __name__ == "__main__":

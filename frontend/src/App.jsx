@@ -21,22 +21,22 @@ function App() {
     }
 
   return (
-    <>
-      
+    <div className="App" style={{ padding: '20px' ,width: '100%' , height: '100%' }}>
+        
       
       
       <Map 
-  mapSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/960px-World_map_-_low_resolution.svg.png" 
-  originalWidth={640} 
-  originalHeight={418}
+  mapSrc="https://static.vecteezy.com/system/resources/thumbnails/017/745/284/small/doodle-freehand-drawing-of-uganda-map-free-png.png" 
+  originalWidth={1000} 
+  originalHeight={1000} 
   cities={[
-    { name: "New York", x: 150, y: 150, size: 50, pinColor: "#dc3545" },
-    { name: "London", x: 320, y: 120, size: 60, pinColor: "#0d6efd" },
-    { name: "Tokyo", x: 550, y: 160, size: 55, pinColor: "#198754" },
+    { name: "Kampala", x: 470, y: 850, size: 50, pinColor: "#dc3545" },
+    { name: "Entebbe", x: 300, y: 1000, size: 60, pinColor: "#0d6efd" },
+    { name: "Jinja", x: 550, y: 500, size: 55, pinColor: "#198754" },
   ]}
-/>
-      
-    </>
+      />
+
+    </div>
   )
 }
 

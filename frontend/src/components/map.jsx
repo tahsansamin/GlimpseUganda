@@ -19,11 +19,11 @@ export default function Map({
     const aspectRatio = originalHeight / originalWidth;
 
     return (
-        <div style={{ position: "relative", width: "100%", paddingBottom: `${aspectRatio * 100}%` }}>
+        <div style={{ position: "relative", width: "47vw", height: "67vh"}}>
             <img
                 src={mapSrc}
-                alt="Map"
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                class="rounded mx-auto d-block" alt="..."
+                style={{ width: "100%", height: "100%" }} 
             />
             {cities.map((city, index) => {
                 const leftPercent = (city.x / originalWidth) * 100;
@@ -39,6 +39,7 @@ export default function Map({
                         }}
                     >
                         <CityMarker size={city.size || 40} />
+                        <p>{city.name}</p>
                     </div>
                 );
             })}

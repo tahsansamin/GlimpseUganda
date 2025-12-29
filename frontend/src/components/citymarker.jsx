@@ -19,6 +19,13 @@ export default function CityMarker({ size = 40,
     const shadowStyle = {
         filter: "drop-shadow(0 2px 4px rgba(239, 215, 215, 0.25))",
     };
+    const buttonfunc = () => {
+        <div className="form-group">
+    
+     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+    
+  </div>
+    }
 
     return (
         <button
@@ -26,6 +33,7 @@ export default function CityMarker({ size = 40,
             className="btn p-0 border-0 bg-transparent"
             aria-label="map marker"
             style={{ width, height, padding: 0, cursor: "pointer", ...shadowStyle }}
+            onClick={buttonfunc}
         >
             <svg
                 width={width}

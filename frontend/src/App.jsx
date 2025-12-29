@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import apiClient from './api';
+import CityMarker from './components/citymarker';
+import Map from './components/map.jsx';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,26 +22,20 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={fetchData}> 
-          Fetch Data
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+      
+      
+      <Map 
+  mapSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/960px-World_map_-_low_resolution.svg.png" 
+  originalWidth={640} 
+  originalHeight={418}
+  cities={[
+    { name: "New York", x: 150, y: 150, size: 50, pinColor: "#dc3545" },
+    { name: "London", x: 320, y: 120, size: 60, pinColor: "#0d6efd" },
+    { name: "Tokyo", x: 550, y: 160, size: 55, pinColor: "#198754" },
+  ]}
+/>
+      
     </>
   )
 }

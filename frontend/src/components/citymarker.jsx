@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import InputBox from "./inputbox";
  
 // /Users/tahsansamin/Desktop/tourism trai/frontend/src/components/citymarker.js
 
@@ -12,29 +14,27 @@ import React from "react";
 
 export default function CityMarker({ size = 40,
     x = 0,
-    y = 0
+    y = 0,
+    onClick 
  }) {
     const width = size;
     const height = Math.round(size * 1.4); // pin is taller than wide
     const shadowStyle = {
         filter: "drop-shadow(0 2px 4px rgba(239, 215, 215, 0.25))",
     };
-    const buttonfunc = () => {
-        <div className="form-group">
-    
-     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-    
-  </div>
-    }
+     
 
     return (
+        <div>
+         
         <button
             type="button"
             className="btn p-0 border-0 bg-transparent"
             aria-label="map marker"
             style={{ width, height, padding: 0, cursor: "pointer", ...shadowStyle }}
-            onClick={buttonfunc}
+            onClick={onClick} 
         >
+            
             <svg
                 width={width}
                 height={height}
@@ -58,5 +58,6 @@ export default function CityMarker({ size = 40,
                 <circle cx="12" cy="9" r="3.2" fill="#fff" opacity="0.95" />
             </svg>
         </button>
+        </div>
     );
 }

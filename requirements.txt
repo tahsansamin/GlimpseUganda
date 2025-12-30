@@ -14,3 +14,4 @@ langgraph
 fastapi
 uvicorn
 pydantic
+doc2txt

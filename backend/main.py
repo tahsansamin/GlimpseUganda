@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from typing import List
 import dataloader, embedding, vectorstore, retriever
 from embedding import EmbeddingManager
-from dataloader import process_all_pdfs
+from dataloader import process_all_pdfs, process_all_word_docs
 from vectorstore import VectorStore
 from retriever import RAGretriever
 from langchain_groq import ChatGroq
@@ -28,19 +28,57 @@ def rag_simple(query, retriever, llm, top_k = 3):
     response = llm.invoke([prompt.format(context = context, query = query)])
     return response.content
 
-vectorstore = VectorStore()
+Kampala = VectorStore(persist_directory="kampala")
+Entebbe = VectorStore(persist_directory="entebbe")
+Jinja = VectorStore(persist_directory="jinja")
 embedding_manager = EmbeddingManager()
-rag_retriever = RAGretriever(vector_store=vectorstore,
+rag_retriever_kampala = RAGretriever(vector_store=Kampala,
+                                    embedding_manager=embedding_manager)
+rag_retriever_entebbe = RAGretriever(vector_store=Entebbe,
+                                    embedding_manager=embedding_manager)
+rag_retriever_jinja = RAGretriever(vector_store=Jinja,
                                     embedding_manager=embedding_manager)
 
 
-all_pdf_documents = process_all_pdfs(".")
-split_documents = embedding_manager.chunk_documents(all_pdf_documents)
-texts = [doc.page_content for doc in split_documents]
 
-embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in split_documents])
-vectorstore.add_documents(split_documents, embeddings)
+# all_pdf_documents = process_all_pdfs(".")
+# split_documents = embedding_manager.chunk_documents(all_pdf_documents)
+# texts = [doc.page_content for doc in split_documents]
 
+# embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in split_documents])
+# vectorstore.add_documents(split_documents, embeddings)
+
+# #adding pdf documents for each city
+# kampala_documents = process_all_pdfs("./pdfs/kampala_pdfs")
+# kampala_split_documents = embedding_manager.chunk_documents(kampala_documents)
+# kampala_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in kampala_split_documents])
+# Kampala.add_documents(kampala_split_documents, kampala_embeddings)
+
+# entebbe_documents = process_all_pdfs("./pdfs/entebbe_pdfs")
+# entebbe_split_documents = embedding_manager.chunk_documents(entebbe_documents)
+# entebbe_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in entebbe_split_documents])
+# Entebbe.add_documents(entebbe_split_documents, entebbe_embeddings)
+
+# jinja_documents = process_all_pdfs("./pdfs/jinja_pdfs")
+# jinja_split_documents = embedding_manager.chunk_documents(jinja_documents)
+# jinja_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in jinja_split_documents])
+# Jinja.add_documents(jinja_split_documents, jinja_embeddings)
+
+#adding word documents for each city
+kampala_word_documents = dataloader.process_all_word_docs("./pdfs/kampala_pdfs") 
+kampala_word_split_documents = embedding_manager.chunk_documents(kampala_word_documents)
+kampala_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in kampala_word_split_documents])
+Kampala.add_documents(kampala_word_split_documents, kampala_word_embeddings)
+
+entebbe_word_documents = dataloader.process_all_word_docs("./pdfs/entebbe_pdfs")
+entebbe_word_split_documents = embedding_manager.chunk_documents(entebbe_word_documents)
+entebbe_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in entebbe_word_split_documents])
+Entebbe.add_documents(entebbe_word_split_documents, entebbe_word_embeddings)
+
+jinja_word_documents = dataloader.process_all_word_docs("./pdfs/jinja_pdfs")
+jinja_word_split_documents = embedding_manager.chunk_documents(jinja_word_documents)
+jinja_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in jinja_word_split_documents])
+Jinja.add_documents(jinja_word_split_documents, jinja_word_embeddings) 
 
 app = FastAPI()
 origins = [
@@ -58,9 +96,19 @@ app.add_middleware(
 )
  
 
-@app.post("/prompts")
+@app.post("/Kampala_query")
 def query_prompt(request: PromptRequest):
-    answer = rag_simple(request.prompt, rag_retriever, llm)
+    answer = rag_simple(request.prompt, rag_retriever_kampala, llm)
+    return answer
+
+@app.post("/Entebbe_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_entebbe, llm)
+    return answer
+
+@app.post("/Jinja_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_jinja, llm)
     return answer
 
 if __name__ == "__main__":

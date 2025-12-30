@@ -16,14 +16,18 @@ class EmbeddingManager:
             print(f"Encountered error {e}")
             raise
     def chunk_documents(self,documents, chunk_size = 1000, chunk_overlap = 200):
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size = chunk_size,
-                                                   chunk_overlap = chunk_overlap,
-                                                   length_function = len,
-                                                   separators = ["\n\n", "\n", " ", ""])
-        split_docs = text_splitter.split_documents(documents)
-        print(f"split {len(documents)} documents into {len(split_docs)} chunks")
-    
-        return split_docs
+        try:
+            text_splitter = RecursiveCharacterTextSplitter(chunk_size = chunk_size,
+                                                    chunk_overlap = chunk_overlap,
+                                                    length_function = len,
+                                                    separators = ["\n\n", "\n", " ", ""])
+            split_docs = text_splitter.split_documents(documents)
+            print(f"split {len(documents)} documents into {len(split_docs)} chunks")
+        
+            return split_docs
+        except Exception as e:
+            print(f"error in chunking documents {e}")
+            raise   
 
     def generate_embeddings(self, texts: List[str]) -> np.ndarray:
         if not self.model:

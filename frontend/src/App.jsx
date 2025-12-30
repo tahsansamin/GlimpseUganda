@@ -5,6 +5,7 @@ import './App.css'
 import apiClient from './api';
 import CityMarker from './components/citymarker';
 import Map from './components/map.jsx';
+import InputBox from './components/inputbox.jsx';
 
 
 function App() {
@@ -35,8 +36,10 @@ function App() {
     { name: "Jinja", x: 550, y: 500, size: 55, pinColor: "#198754" },
   ]}
       />
+      
 
     </div>
+    
   )
 }
 

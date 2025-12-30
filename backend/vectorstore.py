@@ -4,11 +4,11 @@ import uuid
 import numpy as np
 import os
 class VectorStore:
-    def __init__(self, collection_name: str = "pdf_documents", presist_directory = "vector_store"):
+    def __init__(self, collection_name: str = "pdf_documents", persist_directory = "vector_store"):
         self.collection_name = collection_name
-        self.persist_directory = presist_directory
+        self.persist_directory = persist_directory
         self.client = None
-        self.collection = None
+        self.collection = None 
         self._initialize_store()
     def _initialize_store(self):
         try:

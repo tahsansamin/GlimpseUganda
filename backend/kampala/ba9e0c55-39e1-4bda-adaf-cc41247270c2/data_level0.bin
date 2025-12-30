@@ -1,0 +1,2628 @@
+DINOv3ConvNextModel"),
+        ("dinov3_vit", "DINOv3ViTModel"),
+        ("dpt", "DPTModel"),
+        ("efficientformer", "EfficientFormerModel"),
+        ("efficientnet", "EfficientNetModel"),
+        ("focalnet", "FocalNetModel"),
+        ("glpn", "GLPNModel"),
+        ("hiera", "HieraModel"),
+        ("ijepa", "IJepaModel"),
+        ("imagegpt", "ImageGPTModel"),
+        ("levit", "LevitModel"),
+        ("llama4", "Llama4VisionModel"),
+        ("mlcd", "MLCDVisionModel"),
+        ("mllama", "MllamaVisionModel"),
+        ("mobilenet_v1", "MobileNetV1Model"),
+        ("mobilenet_v2", "MobileNetV2Model"),
+        ("mobilevit", "MobileViTModel"),
+        ("mobilevitv2", "MobileViTV2Model"),
+        ("nat", "NatModel"),
+        ("poolformer", "PoolFormerModel"),
+        ("pvt", "PvtModel"),
+        ("regnet", "RegNetModel"),
+        ("resnet", "ResNetModel"),
+        ("segformer", "SegformerModel"),
+        ("siglip_vision_model", "SiglipVisionModel"),
+        ("swiftformer", "SwiftFormerModel"),
+        ("swin", "SwinModel"),
+        ("swin2sr", "Swin2SRModel"),
+        ("swinv2", "Swinv2Model"),
+        ("table-transformer", "TableTransformerModel"),
+        ("timesformer", "TimesformerModel"),
+        ("timm_backbone", "TimmBackbone"),
+        ("timm_wrapper", "TimmWrapperModel"),
+        ("van", "VanModel"),
+        ("videomae", "VideoMAEModel"),
+        ("vit", "ViTModel"),
+        ("vit_hybrid", "ViTHybridModel"),
+        ("vit_mae", "ViTMAEModel"),
+        ("vit_msn", "ViTMSNModel"),
+        ("vitdet", "VitDetModel"),
+        ("vivit", "VivitModel"),
+        ("yolos", "YolosModel"),
+    ]
+)
+
+MODEL_FOR_MASKED_IMAGE_MODELING_MAPPING_NAMES = OrderedDict(
+    [
+        ("deit", "DeiTForMaskedImageModeling"),
+        ("focalnet", "FocalNetForMaskedImageModeling"),
+        ("swin", "SwinForMaskedImageModeling"),
+        ("swinv2", "Swinv2ForMaskedImageModeling"),
+        ("vit", "ViTForMaskedImageModeling"),
+    ]
+)
+
+
+MODEL_FOR_CAUSAL_IMAGE_MODELING_MAPPING_NAMES = OrderedDict(
+    # Model for Causal Image Modeling mapping
+    [
+        ("imagegpt", "ImageGPTForCausalImageModeling"),
+    ]
+)
+
+MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Image Classification mapping
+        ("beit", "BeitForImageClassification"),
+        ("bit", "BitForImageClassification"),
+        ("clip", "CLIPForImageClassification"),
+        ("convnext", "ConvNextForImageClassification"),
+        ("convnextv2", "ConvNextV2ForImageClassification"),
+        ("cvt", "CvtForImageClassification"),
+        ("data2vec-vision", "Data2VecVisionForImageClassification"),
+        (
+            "deit",
+            ("DeiTForImageClassification", "DeiTForImageClassificationWithTeacher"),
+        ),
+        ("dinat", "DinatForImageClassification"),
+        ("dinov2", "Dinov2ForImageClassification"),
+        ("dinov2_with_registers", "Dinov2WithRegistersForImageClassification"),
+        ("donut-swin", "DonutSwinForImageClassification"),
+        (
+            "efficientformer",
+            (
+                "EfficientFormerForImageClassification",
+                "EfficientFormerForImageClassificationWithTeacher",
+            ),
+        ),
+        ("efficientnet", "EfficientNetForImageClassification"),
+        ("focalnet", "FocalNetForImageClassification"),
+        ("hgnet_v2", "HGNetV2ForImageClassification"),
+        ("hiera", "HieraForImageClassification"),
+        ("ijepa", "IJepaForImageClassification"),
+        ("imagegpt", "ImageGPTForImageClassification"),
+        (
+            "levit",
+            ("LevitForImageClassification", "LevitForImageClassificationWithTeacher"),
+        ),
+        ("metaclip_2", "MetaClip2ForImageClassification"),
+        ("mobilenet_v1", "MobileNetV1ForImageClassification"),
+        ("mobilenet_v2", "MobileNetV2ForImageClassification"),
+        ("mobilevit", "MobileViTForImageClassification"),
+        ("mobilevitv2", "MobileViTV2ForImageClassification"),
+        ("nat", "NatForImageClassification"),
+        (
+            "perceiver",
+            (
+                "PerceiverForImageClassificationLearned",
+                "PerceiverForImageClassificationFourier",
+                "PerceiverForImageClassificationConvProcessing",
+            ),
+        ),
+        ("poolformer", "PoolFormerForImageClassification"),
+        ("pvt", "PvtForImageClassification"),
+        ("pvt_v2", "PvtV2ForImageClassification"),
+        ("regnet", "RegNetForImageClassification"),
+        ("resnet", "ResNetForImageClassification"),
+        ("segformer", "SegformerForImageClassification"),
+        ("shieldgemma2", "ShieldGemma2ForImageClassification"),
+        ("siglip", "SiglipForImageClassification"),
+        ("siglip2", "Siglip2ForImageClassification"),
+        ("swiftformer", "SwiftFormerForImageClassification"),
+        ("swin", "SwinForImageClassification"),
+        ("swinv2", "Swinv2ForImageClassification"),
+        ("textnet", "TextNetForImageClassification"),
+        ("timm_wrapper", "TimmWrapperForImageClassification"),
+        ("van", "VanForImageClassification"),
+        ("vit", "ViTForImageClassification"),
+        ("vit_hybrid", "ViTHybridForImageClassification"),
+        ("vit_msn", "ViTMSNForImageClassification"),
+    ]
+)
+
+MODEL_FOR_IMAGE_SEGMENTATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Do not add new models here, this class will be deprecated in the future.
+        # Model for Image Segmentation mapping
+        ("detr", "DetrForSegmentation"),
+    ]
+)
+
+MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Semantic Segmentation mapping
+        ("beit", "BeitForSemanticSegmentation"),
+        ("data2vec-vision", "Data2VecVisionForSemanticSegmentation"),
+        ("dpt", "DPTForSemanticSegmentation"),
+        ("mobilenet_v2", "MobileNetV2ForSemanticSegmentation"),
+        ("mobilevit", "MobileViTForSemanticSegmentation"),
+        ("mobilevitv2", "MobileViTV2ForSemanticSegmentation"),
+        ("segformer", "SegformerForSemanticSegmentation"),
+        ("upernet", "UperNetForSemanticSegmentation"),
+    ]
+)
+
+MODEL_FOR_INSTANCE_SEGMENTATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Instance Segmentation mapping
+        # MaskFormerForInstanceSegmentation can be removed from this mapping in v5
+        ("maskformer", "MaskFormerForInstanceSegmentation"),
+    ]
+)
+
+MODEL_FOR_UNIVERSAL_SEGMENTATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Universal Segmentation mapping
+        ("detr", "DetrForSegmentation"),
+        ("eomt", "EomtForUniversalSegmentation"),
+        ("mask2former", "Mask2FormerForUniversalSegmentation"),
+        ("maskformer", "MaskFormerForInstanceSegmentation"),
+        ("oneformer", "OneFormerForUniversalSegmentation"),
+    ]
+)
+
+MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        ("timesformer", "TimesformerForVideoClassification"),
+        ("videomae", "VideoMAEForVideoClassification"),
+        ("vivit", "VivitForVideoClassification"),
+        ("vjepa2", "VJEPA2ForVideoClassification"),
+    ]
+)
+
+MODEL_FOR_VISION_2_SEQ_MAPPING_NAMES = OrderedDict(
+    [
+        ("blip", "BlipForConditionalGeneration"),
+        ("blip-2", "Blip2ForConditionalGeneration"),
+        ("chameleon", "ChameleonForConditionalGeneration"),
+        ("git", "GitForCausalLM"),
+        ("idefics2", "Idefics2ForConditionalGeneration"),
+        ("idefics3", "Idefics3ForConditionalGeneration"),
+        ("instructblip", "InstructBlipForConditionalGeneration"),
+        ("instructblipvideo", "InstructBlipVideoForConditionalGeneration"),
+        ("kosmos-2", "Kosmos2ForConditionalGeneration"),
+        ("kosmos-2.5", "Kosmos2_5ForConditionalGeneration"),
+        ("llava", "LlavaForConditionalGeneration"),
+        ("llava_next", "LlavaNextForConditionalGeneration"),
+        ("llava_next_video", "LlavaNextVideoForConditionalGeneration"),
+        ("llava_onevision", "LlavaOnevisionForConditionalGeneration"),
+        ("mistral3", "Mistral3ForConditionalGeneration"),
+        ("mllama", "MllamaForConditionalGeneration"),
+        ("ovis2", "Ovis2ForConditionalGeneration"),
+        ("paligemma", "PaliGemmaForConditionalGeneration"),
+        ("pix2struct", "Pix2StructForConditionalGeneration"),
+        ("qwen2_5_vl", "Qwen2_5_VLForConditionalGeneration"),
+        ("qwen2_vl", "Qwen2VLForConditionalGeneration"),
+        ("qwen3_vl", "Qwen3VLForConditionalGeneration"),
+        ("qwen3_vl_moe", "Qwen3VLMoeForConditionalGeneration"),
+        ("video_llava", "VideoLlavaForConditionalGeneration"),
+        ("vipllava", "VipLlavaForConditionalGeneration"),
+        ("vision-encoder-decoder", "VisionEncoderDecoderModel"),
+    ]
+)
+
+MODEL_FOR_RETRIEVAL_MAPPING_NAMES = OrderedDict(
+    [
+        ("colpali", "ColPaliForRetrieval"),
+    ]
+)
+
+MODEL_FOR_IMAGE_TEXT_TO_TEXT_MAPPING_NAMES = OrderedDict(
+    [
+        ("aria", "AriaForConditionalGeneration"),
+        ("aya_vision", "AyaVisionForConditionalGeneration"),
+        ("blip", "BlipForConditionalGeneration"),
+        ("blip-2", "Blip2ForConditionalGeneration"),
+        ("chameleon", "ChameleonForConditionalGeneration"),
+        ("cohere2_vision", "Cohere2VisionForConditionalGeneration"),
+        ("deepseek_vl", "DeepseekVLForConditionalGeneration"),
+        ("deepseek_vl_hybrid", "DeepseekVLHybridForConditionalGeneration"),
+        ("emu3", "Emu3ForConditionalGeneration"),
+        ("evolla", "EvollaForProteinText2Text"),
+        ("florence2", "Florence2ForConditionalGeneration"),
+        ("fuyu", "FuyuForCausalLM"),
+        ("gemma3", "Gemma3ForConditionalGeneration"),
+        ("gemma3n", "Gemma3nForConditionalGeneration"),
+        ("git", "GitForCausalLM"),
+        ("glm4v", "Glm4vForConditionalGeneration"),
+        ("glm4v_moe", "Glm4vMoeForConditionalGeneration"),
+        ("got_ocr2", "GotOcr2ForConditionalGeneration"),
+        ("idefics", "IdeficsForVisionText2Text"),
+        ("idefics2", "Idefics2ForConditionalGeneration"),
+        ("idefics3", "Idefics3ForConditionalGeneration"),
+        ("instructblip", "InstructBlipForConditionalGeneration"),
+        ("internvl", "InternVLForConditionalGeneration"),
+        ("janus", "JanusForConditionalGeneration"),
+        ("kosmos-2", "Kosmos2ForConditionalGeneration"),
+        ("kosmos-2.5", "Kosmos2_5ForConditionalGeneration"),
+        ("lfm2_vl", "Lfm2VlForConditionalGeneration"),
+        ("llama4", "Llama4ForConditionalGeneration"),
+        ("llava", "LlavaForConditionalGeneration"),
+        ("llava_next", "LlavaNextForConditionalGeneration"),
+        ("llava_next_video", "LlavaNextVideoForConditionalGeneration"),
+        ("llava_onevision", "LlavaOnevisionForConditionalGeneration"),
+        ("mistral3", "Mistral3ForConditionalGeneration"),
+        ("mllama", "MllamaForConditionalGeneration"),
+        ("ovis2", "Ovis2ForConditionalGeneration"),
+        ("paligemma", "PaliGemmaForConditionalGeneration"),
+        ("perception_lm", "PerceptionLMForConditionalGeneration"),
+        ("pix2struct", "Pix2StructForConditionalGeneration"),
+        ("pixtral", "LlavaForConditionalGeneration"),
+        ("qwen2_5_vl", "Qwen2_5_VLForConditionalGeneration"),
+        ("qwen2_vl", "Qwen2VLForConditionalGeneration"),
+        ("qwen3_vl", "Qwen3VLForConditionalGeneration"),
+        ("qwen3_vl_moe", "Qwen3VLMoeForConditionalGeneration"),
+        ("shieldgemma2", "Gemma3ForConditionalGeneration"),
+        ("smolvlm", "SmolVLMForConditionalGeneration"),
+        ("udop", "UdopForConditionalGeneration"),
+        ("vipllava", "VipLlavaForConditionalGeneration"),
+        ("vision-encoder-decoder", "VisionEncoderDecoderModel"),
+    ]
+)
+
+MODEL_FOR_MASKED_LM_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Masked LM mapping
+        ("albert", "AlbertForMaskedLM"),
+        ("bart", "BartForConditionalGeneration"),
+        ("bert", "BertForMaskedLM"),
+        ("big_bird", "BigBirdForMaskedLM"),
+        ("camembert", "CamembertForMaskedLM"),
+        ("convbert", "ConvBertForMaskedLM"),
+        ("data2vec-text", "Data2VecTextForMaskedLM"),
+        ("deberta", "DebertaForMaskedLM"),
+        ("deberta-v2", "DebertaV2ForMaskedLM"),
+        ("distilbert", "DistilBertForMaskedLM"),
+        ("electra", "ElectraForMaskedLM"),
+        ("ernie", "ErnieForMaskedLM"),
+        ("esm", "EsmForMaskedLM"),
+        ("flaubert", "FlaubertWithLMHeadModel"),
+        ("fnet", "FNetForMaskedLM"),
+        ("funnel", "FunnelForMaskedLM"),
+        ("ibert", "IBertForMaskedLM"),
+        ("layoutlm", "LayoutLMForMaskedLM"),
+        ("longformer", "LongformerForMaskedLM"),
+        ("luke", "LukeForMaskedLM"),
+        ("mbart", "MBartForConditionalGeneration"),
+        ("mega", "MegaForMaskedLM"),
+        ("megatron-bert", "MegatronBertForMaskedLM"),
+        ("mobilebert", "MobileBertForMaskedLM"),
+        ("modernbert", "ModernBertForMaskedLM"),
+        ("mpnet", "MPNetForMaskedLM"),
+        ("mra", "MraForMaskedLM"),
+        ("mvp", "MvpForConditionalGeneration"),
+        ("nezha", "NezhaForMaskedLM"),
+        ("nystromformer", "NystromformerForMaskedLM"),
+        ("perceiver", "PerceiverForMaskedLM"),
+        ("qdqbert", "QDQBertForMaskedLM"),
+        ("reformer", "ReformerForMaskedLM"),
+        ("rembert", "RemBertForMaskedLM"),
+        ("roberta", "RobertaForMaskedLM"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormForMaskedLM"),
+        ("roc_bert", "RoCBertForMaskedLM"),
+        ("roformer", "RoFormerForMaskedLM"),
+        ("squeezebert", "SqueezeBertForMaskedLM"),
+        ("tapas", "TapasForMaskedLM"),
+        ("wav2vec2", "Wav2Vec2ForMaskedLM"),
+        ("xlm", "XLMWithLMHeadModel"),
+        ("xlm-roberta", "XLMRobertaForMaskedLM"),
+        ("xlm-roberta-xl", "XLMRobertaXLForMaskedLM"),
+        ("xmod", "XmodForMaskedLM"),
+        ("yoso", "YosoForMaskedLM"),
+    ]
+)
+
+MODEL_FOR_OBJECT_DETECTION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Object Detection mapping
+        ("conditional_detr", "ConditionalDetrForObjectDetection"),
+        ("d_fine", "DFineForObjectDetection"),
+        ("dab-detr", "DabDetrForObjectDetection"),
+        ("deformable_detr", "DeformableDetrForObjectDetection"),
+        ("deta", "DetaForObjectDetection"),
+        ("detr", "DetrForObjectDetection"),
+        ("rt_detr", "RTDetrForObjectDetection"),
+        ("rt_detr_v2", "RTDetrV2ForObjectDetection"),
+        ("table-transformer", "TableTransformerForObjectDetection"),
+        ("yolos", "YolosForObjectDetection"),
+    ]
+)
+
+MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Zero Shot Object Detection mapping
+        ("grounding-dino", "GroundingDinoForObjectDetection"),
+        ("mm-grounding-dino", "MMGroundingDinoForObjectDetection"),
+        ("omdet-turbo", "OmDetTurboForObjectDetection"),
+        ("owlv2", "Owlv2ForObjectDetection"),
+        ("owlvit", "OwlViTForObjectDetection"),
+    ]
+)
+
+MODEL_FOR_DEPTH_ESTIMATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for depth estimation mapping
+        ("depth_anything", "DepthAnythingForDepthEstimation"),
+        ("depth_pro", "DepthProForDepthEstimation"),
+        ("dpt", "DPTForDepthEstimation"),
+        ("glpn", "GLPNForDepthEstimation"),
+        ("prompt_depth_anything", "PromptDepthAnythingForDepthEstimation"),
+        ("zoedepth", "ZoeDepthForDepthEstimation"),
+    ]
+)
+MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Seq2Seq Causal LM mapping
+        ("bart", "BartForConditionalGeneration"),
+        ("bigbird_pegasus", "BigBirdPegasusForConditionalGeneration"),
+        ("blenderbot", "BlenderbotForConditionalGeneration"),
+        ("blenderbot-small", "BlenderbotSmallForConditionalGeneration"),
+        ("encoder-decoder", "EncoderDecoderModel"),
+        ("fsmt", "FSMTForConditionalGeneration"),
+        ("gptsan-japanese", "GPTSanJapaneseForConditionalGeneration"),
+        ("granite_speech", "GraniteSpeechForConditionalGeneration"),
+        ("led", "LEDForConditionalGeneration"),
+        ("longt5", "LongT5ForConditionalGeneration"),
+        ("m2m_100", "M2M100ForConditionalGeneration"),
+        ("marian", "MarianMTModel"),
+        ("mbart", "MBartForConditionalGeneration"),
+        ("mt5", "MT5ForConditionalGeneration"),
+        ("mvp", "MvpForConditionalGeneration"),
+        ("nllb-moe", "NllbMoeForConditionalGeneration"),
+        ("pegasus", "PegasusForConditionalGeneration"),
+        ("pegasus_x", "PegasusXForConditionalGeneration"),
+        ("plbart", "PLBartForConditionalGeneration"),
+        ("prophetnet", "ProphetNetForConditionalGeneration"),
+        ("qwen2_audio", "Qwen2AudioForConditionalGeneration"),
+        ("seamless_m4t", "SeamlessM4TForTextToText"),
+        ("seamless_m4t_v2", "SeamlessM4Tv2ForTextToText"),
+        ("switch_transformers", "SwitchTransformersForConditionalGeneration"),
+        ("t5", "T5ForConditionalGeneration"),
+        ("t5gemma", "T5GemmaForConditionalGeneration"),
+        ("umt5", "UMT5ForConditionalGeneration"),
+        ("voxtral", "VoxtralForConditionalGeneration"),
+        ("xlm-prophetnet", "XLMProphetNetForConditionalGeneration"),
+    ]
+)
+
+MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING_NAMES = OrderedDict(
+    [
+        ("dia", "DiaForConditionalGeneration"),
+        ("granite_speech", "GraniteSpeechForConditionalGeneration"),
+        ("kyutai_speech_to_text", "KyutaiSpeechToTextForConditionalGeneration"),
+        ("moonshine", "MoonshineForConditionalGeneration"),
+        ("pop2piano", "Pop2PianoForConditionalGeneration"),
+        ("seamless_m4t", "SeamlessM4TForSpeechToText"),
+        ("seamless_m4t_v2", "SeamlessM4Tv2ForSpeechToText"),
+        ("speech-encoder-decoder", "SpeechEncoderDecoderModel"),
+        ("speech_to_text", "Speech2TextForConditionalGeneration"),
+        ("speecht5", "SpeechT5ForSpeechToText"),
+        ("whisper", "WhisperForConditionalGeneration"),
+    ]
+)
+
+MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Sequence Classification mapping
+        ("albert", "AlbertForSequenceClassification"),
+        ("arcee", "ArceeForSequenceClassification"),
+        ("bart", "BartForSequenceClassification"),
+        ("bert", "BertForSequenceClassification"),
+        ("big_bird", "BigBirdForSequenceClassification"),
+        ("bigbird_pegasus", "BigBirdPegasusForSequenceClassification"),
+        ("biogpt", "BioGptForSequenceClassification"),
+        ("bloom", "BloomForSequenceClassification"),
+        ("camembert", "CamembertForSequenceClassification"),
+        ("canine", "CanineForSequenceClassification"),
+        ("code_llama", "LlamaForSequenceClassification"),
+        ("convbert", "ConvBertForSequenceClassification"),
+        ("ctrl", "CTRLForSequenceClassification"),
+        ("data2vec-text", "Data2VecTextForSequenceClassification"),
+        ("deberta", "DebertaForSequenceClassification"),
+        ("deberta-v2", "DebertaV2ForSequenceClassification"),
+        ("deepseek_v2", "DeepseekV2ForSequenceClassification"),
+        ("deepseek_v3", "DeepseekV3ForSequenceClassification"),
+        ("diffllama", "DiffLlamaForSequenceClassification"),
+        ("distilbert", "DistilBertForSequenceClassification"),
+        ("doge", "DogeForSequenceClassification"),
+        ("electra", "ElectraForSequenceClassification"),
+        ("ernie", "ErnieForSequenceClassification"),
+        ("ernie_m", "ErnieMForSequenceClassification"),
+        ("esm", "EsmForSequenceClassification"),
+        ("exaone4", "Exaone4ForSequenceClassification"),
+        ("falcon", "FalconForSequenceClassification"),
+        ("flaubert", "FlaubertForSequenceClassification"),
+        ("fnet", "FNetForSequenceClassification"),
+        ("funnel", "FunnelForSequenceClassification"),
+        ("gemma", "GemmaForSequenceClassification"),
+        ("gemma2", "Gemma2ForSequenceClassification"),
+        ("gemma3", "Gemma3ForSequenceClassification"),
+        ("gemma3_text", "Gemma3TextForSequenceClassification"),
+        ("glm", "GlmForSequenceClassification"),
+        ("glm4", "Glm4ForSequenceClassification"),
+        ("gpt-sw3", "GPT2ForSequenceClassification"),
+        ("gpt2", "GPT2ForSequenceClassification"),
+        ("gpt_bigcode", "GPTBigCodeForSequenceClassification"),
+        ("gpt_neo", "GPTNeoForSequenceClassification"),
+        ("gpt_neox", "GPTNeoXForSequenceClassification"),
+        ("gpt_oss", "GptOssForSequenceClassification"),
+        ("gptj", "GPTJForSequenceClassification"),
+        ("helium", "HeliumForSequenceClassification"),
+        ("hunyuan_v1_dense", "HunYuanDenseV1ForSequenceClassification"),
+        ("hunyuan_v1_moe", "HunYuanMoEV1ForSequenceClassification"),
+        ("ibert", "IBertForSequenceClassification"),
+        ("jamba", "JambaForSequenceClassification"),
+        ("jetmoe", "JetMoeForSequenceClassification"),
+        ("layoutlm", "LayoutLMForSequenceClassification"),
+        ("layoutlmv2", "LayoutLMv2ForSequenceClassification"),
+        ("layoutlmv3", "LayoutLMv3ForSequenceClassification"),
+        ("led", "LEDForSequenceClassification"),
+        ("lilt", "LiltForSequenceClassification"),
+        ("llama", "LlamaForSequenceClassification"),
+        ("longformer", "LongformerForSequenceClassification"),
+        ("luke", "LukeForSequenceClassification"),
+        ("markuplm", "MarkupLMForSequenceClassification"),
+        ("mbart", "MBartForSequenceClassification"),
+        ("mega", "MegaForSequenceClassification"),
+        ("megatron-bert", "MegatronBertForSequenceClassification"),
+        ("minimax", "MiniMaxForSequenceClassification"),
+        ("ministral", "MinistralForSequenceClassification"),
+        ("mistral", "MistralForSequenceClassification"),
+        ("mixtral", "MixtralForSequenceClassification"),
+        ("mobilebert", "MobileBertForSequenceClassification"),
+        ("modernbert", "ModernBertForSequenceClassification"),
+        ("modernbert-decoder", "ModernBertDecoderForSequenceClassification"),
+        ("mpnet", "MPNetForSequenceClassification"),
+        ("mpt", "MptForSequenceClassification"),
+        ("mra", "MraForSequenceClassification"),
+        ("mt5", "MT5ForSequenceClassification"),
+        ("mvp", "MvpForSequenceClassification"),
+        ("nemotron", "NemotronForSequenceClassification"),
+        ("nezha", "NezhaForSequenceClassification"),
+        ("nystromformer", "NystromformerForSequenceClassification"),
+        ("open-llama", "OpenLlamaForSequenceClassification"),
+        ("openai-gpt", "OpenAIGPTForSequenceClassification"),
+        ("opt", "OPTForSequenceClassification"),
+        ("perceiver", "PerceiverForSequenceClassification"),
+        ("persimmon", "PersimmonForSequenceClassification"),
+        ("phi", "PhiForSequenceClassification"),
+        ("phi3", "Phi3ForSequenceClassification"),
+        ("phimoe", "PhimoeForSequenceClassification"),
+        ("plbart", "PLBartForSequenceClassification"),
+        ("qdqbert", "QDQBertForSequenceClassification"),
+        ("qwen2", "Qwen2ForSequenceClassification"),
+        ("qwen2_moe", "Qwen2MoeForSequenceClassification"),
+        ("qwen3", "Qwen3ForSequenceClassification"),
+        ("qwen3_moe", "Qwen3MoeForSequenceClassification"),
+        ("qwen3_next", "Qwen3NextForSequenceClassification"),
+        ("reformer", "ReformerForSequenceClassification"),
+        ("rembert", "RemBertForSequenceClassification"),
+        ("roberta", "RobertaForSequenceClassification"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormForSequenceClassification"),
+        ("roc_bert", "RoCBertForSequenceClassification"),
+        ("roformer", "RoFormerForSequenceClassification"),
+        ("seed_oss", "SeedOssForSequenceClassification"),
+        ("smollm3", "SmolLM3ForSequenceClassification"),
+        ("squeezebert", "SqueezeBertForSequenceClassification"),
+        ("stablelm", "StableLmForSequenceClassification"),
+        ("starcoder2", "Starcoder2ForSequenceClassification"),
+        ("t5", "T5ForSequenceClassification"),
+        ("t5gemma", "T5GemmaForSequenceClassification"),
+        ("tapas", "TapasForSequenceClassification"),
+        ("transfo-xl", "TransfoXLForSequenceClassification"),
+        ("umt5", "UMT5ForSequenceClassification"),
+        ("xlm", "XLMForSequenceClassification"),
+        ("xlm-roberta", "XLMRobertaForSequenceClassification"),
+        ("xlm-roberta-xl", "XLMRobertaXLForSequenceClassification"),
+        ("xlnet", "XLNetForSequenceClassification"),
+        ("xmod", "XmodForSequenceClassification"),
+        ("yoso", "YosoForSequenceClassification"),
+        ("zamba", "ZambaForSequenceClassification"),
+        ("zamba2", "Zamba2ForSequenceClassification"),
+    ]
+)
+
+MODEL_FOR_QUESTION_ANSWERING_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Question Answering mapping
+        ("albert", "AlbertForQuestionAnswering"),
+        ("arcee", "ArceeForQuestionAnswering"),
+        ("bart", "BartForQuestionAnswering"),
+        ("bert", "BertForQuestionAnswering"),
+        ("big_bird", "BigBirdForQuestionAnswering"),
+        ("bigbird_pegasus", "BigBirdPegasusForQuestionAnswering"),
+        ("bloom", "BloomForQuestionAnswering"),
+        ("camembert", "CamembertForQuestionAnswering"),
+        ("canine", "CanineForQuestionAnswering"),
+        ("convbert", "ConvBertForQuestionAnswering"),
+        ("data2vec-text", "Data2VecTextForQuestionAnswering"),
+        ("deberta", "DebertaForQuestionAnswering"),
+        ("deberta-v2", "DebertaV2ForQuestionAnswering"),
+        ("diffllama", "DiffLlamaForQuestionAnswering"),
+        ("distilbert", "DistilBertForQuestionAnswering"),
+        ("electra", "ElectraForQuestionAnswering"),
+        ("ernie", "ErnieForQuestionAnswering"),
+        ("ernie_m", "ErnieMForQuestionAnswering"),
+        ("exaone4", "Exaone4ForQuestionAnswering"),
+        ("falcon", "FalconForQuestionAnswering"),
+        ("flaubert", "FlaubertForQuestionAnsweringSimple"),
+        ("fnet", "FNetForQuestionAnswering"),
+        ("funnel", "FunnelForQuestionAnswering"),
+        ("gpt2", "GPT2ForQuestionAnswering"),
+        ("gpt_neo", "GPTNeoForQuestionAnswering"),
+        ("gpt_neox", "GPTNeoXForQuestionAnswering"),
+        ("gptj", "GPTJForQuestionAnswering"),
+        ("ibert", "IBertForQuestionAnswering"),
+        ("layoutlmv2", "LayoutLMv2ForQuestionAnswering"),
+        ("layoutlmv3", "LayoutLMv3ForQuestionAnswering"),
+        ("led", "LEDForQuestionAnswering"),
+        ("lilt", "LiltForQuestionAnswering"),
+        ("llama", "LlamaForQuestionAnswering"),
+        ("longformer", "LongformerForQuestionAnswering"),
+        ("luke", "LukeForQuestionAnswering"),
+        ("lxmert", "LxmertForQuestionAnswering"),
+        ("markuplm", "MarkupLMForQuestionAnswering"),
+        ("mbart", "MBartForQuestionAnswering"),
+        ("mega", "MegaForQuestionAnswering"),
+        ("megatron-bert", "MegatronBertForQuestionAnswering"),
+        ("minimax", "MiniMaxForQuestionAnswering"),
+        ("ministral", "MinistralForQuestionAnswering"),
+        ("mistral", "MistralForQuestionAnswering"),
+        ("mixtral", "MixtralForQuestionAnswering"),
+        ("mobilebert", "MobileBertForQuestionAnswering"),
+        ("modernbert", "ModernBertForQuestionAnswering"),
+        ("mpnet", "MPNetForQuestionAnswering"),
+        ("mpt", "MptForQuestionAnswering"),
+        ("mra", "MraForQuestionAnswering"),
+        ("mt5", "MT5ForQuestionAnswering"),
+        ("mvp", "MvpForQuestionAnswering"),
+        ("nemotron", "NemotronForQuestionAnswering"),
+        ("nezha", "NezhaForQuestionAnswering"),
+        ("nystromformer", "NystromformerForQuestionAnswering"),
+        ("opt", "OPTForQuestionAnswering"),
+        ("qdqbert", "QDQBertForQuestionAnswering"),
+        ("qwen2", "Qwen2ForQuestionAnswering"),
+        ("qwen2_moe", "Qwen2MoeForQuestionAnswering"),
+        ("qwen3", "Qwen3ForQuestionAnswering"),
+        ("qwen3_moe", "Qwen3MoeForQuestionAnswering"),
+        ("qwen3_next", "Qwen3NextForQuestionAnswering"),
+        ("reformer", "ReformerForQuestionAnswering"),
+        ("rembert", "RemBertForQuestionAnswering"),
+        ("roberta", "RobertaForQuestionAnswering"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormForQuestionAnswering"),
+        ("roc_bert", "RoCBertForQuestionAnswering"),
+        ("roformer", "RoFormerForQuestionAnswering"),
+        ("seed_oss", "SeedOssForQuestionAnswering"),
+        ("smollm3", "SmolLM3ForQuestionAnswering"),
+        ("splinter", "SplinterForQuestionAnswering"),
+        ("squeezebert", "SqueezeBertForQuestionAnswering"),
+        ("t5", "T5ForQuestionAnswering"),
+        ("umt5", "UMT5ForQuestionAnswering"),
+        ("xlm", "XLMForQuestionAnsweringSimple"),
+        ("xlm-roberta", "XLMRobertaForQuestionAnswering"),
+        ("xlm-roberta-xl", "XLMRobertaXLForQuestionAnswering"),
+        ("xlnet", "XLNetForQuestionAnsweringSimple"),
+        ("xmod", "XmodForQuestionAnswering"),
+        ("yoso", "YosoForQuestionAnswering"),
+    ]
+)
+
+MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Table Question Answering mapping
+        ("tapas", "TapasForQuestionAnswering"),
+    ]
+)
+
+MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING_NAMES = OrderedDict(
+    [
+        ("blip", "BlipForQuestionAnswering"),
+        ("blip-2", "Blip2ForConditionalGeneration"),
+        ("vilt", "ViltForQuestionAnswering"),
+    ]
+)
+
+MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING_NAMES = OrderedDict(
+    [
+        ("layoutlm", "LayoutLMForQuestionAnswering"),
+        ("layoutlmv2", "LayoutLMv2ForQuestionAnswering"),
+        ("layoutlmv3", "LayoutLMv3ForQuestionAnswering"),
+    ]
+)
+
+MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Token Classification mapping
+        ("albert", "AlbertForTokenClassification"),
+        ("apertus", "ApertusForTokenClassification"),
+        ("arcee", "ArceeForTokenClassification"),
+        ("bert", "BertForTokenClassification"),
+        ("big_bird", "BigBirdForTokenClassification"),
+        ("biogpt", "BioGptForTokenClassification"),
+        ("bloom", "BloomForTokenClassification"),
+        ("bros", "BrosForTokenClassification"),
+        ("camembert", "CamembertForTokenClassification"),
+        ("canine", "CanineForTokenClassification"),
+        ("convbert", "ConvBertForTokenClassification"),
+        ("data2vec-text", "Data2VecTextForTokenClassification"),
+        ("deberta", "DebertaForTokenClassification"),
+        ("deberta-v2", "DebertaV2ForTokenClassification"),
+        ("deepseek_v3", "DeepseekV3ForTokenClassification"),
+        ("diffllama", "DiffLlamaForTokenClassification"),
+        ("distilbert", "DistilBertForTokenClassification"),
+        ("electra", "ElectraForTokenClassification"),
+        ("ernie", "ErnieForTokenClassification"),
+        ("ernie_m", "ErnieMForTokenClassification"),
+        ("esm", "EsmForTokenClassification"),
+        ("exaone4", "Exaone4ForTokenClassification"),
+        ("falcon", "FalconForTokenClassification"),
+        ("flaubert", "FlaubertForTokenClassification"),
+        ("fnet", "FNetForTokenClassification"),
+        ("funnel", "FunnelForTokenClassification"),
+        ("gemma", "GemmaForTokenClassification"),
+        ("gemma2", "Gemma2ForTokenClassification"),
+        ("glm", "GlmForTokenClassification"),
+        ("glm4", "Glm4ForTokenClassification"),
+        ("gpt-sw3", "GPT2ForTokenClassification"),
+        ("gpt2", "GPT2ForTokenClassification"),
+        ("gpt_bigcode", "GPTBigCodeForTokenClassification"),
+        ("gpt_neo", "GPTNeoForTokenClassification"),
+        ("gpt_neox", "GPTNeoXForTokenClassification"),
+        ("gpt_oss", "GptOssForTokenClassification"),
+        ("helium", "HeliumForTokenClassification"),
+        ("ibert", "IBertForTokenClassification"),
+        ("layoutlm", "LayoutLMForTokenClassification"),
+        ("layoutlmv2", "LayoutLMv2ForTokenClassification"),
+        ("layoutlmv3", "LayoutLMv3ForTokenClassification"),
+        ("lilt", "LiltForTokenClassification"),
+        ("llama", "LlamaForTokenClassification"),
+        ("longformer", "LongformerForTokenClassification"),
+        ("luke", "LukeForTokenClassification"),
+        ("markuplm", "MarkupLMForTokenClassification"),
+        ("mega", "MegaForTokenClassification"),
+        ("megatron-bert", "MegatronBertForTokenClassification"),
+        ("minimax", "MiniMaxForTokenClassification"),
+        ("ministral", "MinistralForTokenClassification"),
+        ("mistral", "MistralForTokenClassification"),
+        ("mixtral", "MixtralForTokenClassification"),
+        ("mobilebert", "MobileBertForTokenClassification"),
+        ("modernbert", "ModernBertForTokenClassification"),
+        ("mpnet", "MPNetForTokenClassification"),
+        ("mpt", "MptForTokenClassification"),
+        ("mra", "MraForTokenClassification"),
+        ("mt5", "MT5ForTokenClassification"),
+        ("nemotron", "NemotronForTokenClassification"),
+        ("nezha", "NezhaForTokenClassification"),
+        ("nystromformer", "NystromformerForTokenClassification"),
+        ("persimmon", "PersimmonForTokenClassification"),
+        ("phi", "PhiForTokenClassification"),
+        ("phi3", "Phi3ForTokenClassification"),
+        ("qdqbert", "QDQBertForTokenClassification"),
+        ("qwen2", "Qwen2ForTokenClassification"),
+        ("qwen2_moe", "Qwen2MoeForTokenClassification"),
+        ("qwen3", "Qwen3ForTokenClassification"),
+        ("qwen3_moe", "Qwen3MoeForTokenClassification"),
+        ("qwen3_next", "Qwen3NextForTokenClassification"),
+        ("rembert", "RemBertForTokenClassification"),
+        ("roberta", "RobertaForTokenClassification"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormForTokenClassification"),
+        ("roc_bert", "RoCBertForTokenClassification"),
+        ("roformer", "RoFormerForTokenClassification"),
+        ("seed_oss", "SeedOssForTokenClassification"),
+        ("smollm3", "SmolLM3ForTokenClassification"),
+        ("squeezebert", "SqueezeBertForTokenClassification"),
+        ("stablelm", "StableLmForTokenClassification"),
+        ("starcoder2", "Starcoder2ForTokenClassification"),
+        ("t5", "T5ForTokenClassification"),
+        ("t5gemma", "T5GemmaForTokenClassification"),
+        ("umt5", "UMT5ForTokenClassification"),
+        ("xlm", "XLMForTokenClassification"),
+        ("xlm-roberta", "XLMRobertaForTokenClassification"),
+        ("xlm-roberta-xl", "XLMRobertaXLForTokenClassification"),
+        ("xlnet", "XLNetForTokenClassification"),
+        ("xmod", "XmodForTokenClassification"),
+        ("yoso", "YosoForTokenClassification"),
+    ]
+)
+
+MODEL_FOR_MULTIPLE_CHOICE_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Multiple Choice mapping
+        ("albert", "AlbertForMultipleChoice"),
+        ("bert", "BertForMultipleChoice"),
+        ("big_bird", "BigBirdForMultipleChoice"),
+        ("camembert", "CamembertForMultipleChoice"),
+        ("canine", "CanineForMultipleChoice"),
+        ("convbert", "ConvBertForMultipleChoice"),
+        ("data2vec-text", "Data2VecTextForMultipleChoice"),
+        ("deberta-v2", "DebertaV2ForMultipleChoice"),
+        ("distilbert", "DistilBertForMultipleChoice"),
+        ("electra", "ElectraForMultipleChoice"),
+        ("ernie", "ErnieForMultipleChoice"),
+        ("ernie_m", "ErnieMForMultipleChoice"),
+        ("flaubert", "FlaubertForMultipleChoice"),
+        ("fnet", "FNetForMultipleChoice"),
+        ("funnel", "FunnelForMultipleChoice"),
+        ("ibert", "IBertForMultipleChoice"),
+        ("longformer", "LongformerForMultipleChoice"),
+        ("luke", "LukeForMultipleChoice"),
+        ("mega", "MegaForMultipleChoice"),
+        ("megatron-bert", "MegatronBertForMultipleChoice"),
+        ("mobilebert", "MobileBertForMultipleChoice"),
+        ("modernbert", "ModernBertForMultipleChoice"),
+        ("mpnet", "MPNetForMultipleChoice"),
+        ("mra", "MraForMultipleChoice"),
+        ("nezha", "NezhaForMultipleChoice"),
+        ("nystromformer", "NystromformerForMultipleChoice"),
+        ("qdqbert", "QDQBertForMultipleChoice"),
+        ("rembert", "RemBertForMultipleChoice"),
+        ("roberta", "RobertaForMultipleChoice"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormForMultipleChoice"),
+        ("roc_bert", "RoCBertForMultipleChoice"),
+        ("roformer", "RoFormerForMultipleChoice"),
+        ("squeezebert", "SqueezeBertForMultipleChoice"),
+        ("xlm", "XLMForMultipleChoice"),
+        ("xlm-roberta", "XLMRobertaForMultipleChoice"),
+        ("xlm-roberta-xl", "XLMRobertaXLForMultipleChoice"),
+        ("xlnet", "XLNetForMultipleChoice"),
+        ("xmod", "XmodForMultipleChoice"),
+        ("yoso", "YosoForMultipleChoice"),
+    ]
+)
+
+MODEL_FOR_NEXT_SENTENCE_PREDICTION_MAPPING_NAMES = OrderedDict(
+    [
+        ("bert", "BertForNextSentencePrediction"),
+        ("ernie", "ErnieForNextSentencePrediction"),
+        ("fnet", "FNetForNextSentencePrediction"),
+        ("megatron-bert", "MegatronBertForNextSentencePrediction"),
+        ("mobilebert", "MobileBertForNextSentencePrediction"),
+        ("nezha", "NezhaForNextSentencePrediction"),
+        ("qdqbert", "QDQBertForNextSentencePrediction"),
+    ]
+)
+
+MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Audio Classification mapping
+        ("audio-spectrogram-transformer", "ASTForAudioClassification"),
+        ("data2vec-audio", "Data2VecAudioForSequenceClassification"),
+        ("hubert", "HubertForSequenceClassification"),
+        ("sew", "SEWForSequenceClassification"),
+        ("sew-d", "SEWDForSequenceClassification"),
+        ("unispeech", "UniSpeechForSequenceClassification"),
+        ("unispeech-sat", "UniSpeechSatForSequenceClassification"),
+        ("wav2vec2", "Wav2Vec2ForSequenceClassification"),
+        ("wav2vec2-bert", "Wav2Vec2BertForSequenceClassification"),
+        ("wav2vec2-conformer", "Wav2Vec2ConformerForSequenceClassification"),
+        ("wavlm", "WavLMForSequenceClassification"),
+        ("whisper", "WhisperForAudioClassification"),
+    ]
+)
+
+MODEL_FOR_CTC_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Connectionist temporal classification (CTC) mapping
+        ("data2vec-audio", "Data2VecAudioForCTC"),
+        ("hubert", "HubertForCTC"),
+        ("mctct", "MCTCTForCTC"),
+        ("parakeet_ctc", "ParakeetForCTC"),
+        ("sew", "SEWForCTC"),
+        ("sew-d", "SEWDForCTC"),
+        ("unispeech", "UniSpeechForCTC"),
+        ("unispeech-sat", "UniSpeechSatForCTC"),
+        ("wav2vec2", "Wav2Vec2ForCTC"),
+        ("wav2vec2-bert", "Wav2Vec2BertForCTC"),
+        ("wav2vec2-conformer", "Wav2Vec2ConformerForCTC"),
+        ("wavlm", "WavLMForCTC"),
+    ]
+)
+
+MODEL_FOR_AUDIO_FRAME_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Audio Classification mapping
+        ("data2vec-audio", "Data2VecAudioForAudioFrameClassification"),
+        ("unispeech-sat", "UniSpeechSatForAudioFrameClassification"),
+        ("wav2vec2", "Wav2Vec2ForAudioFrameClassification"),
+        ("wav2vec2-bert", "Wav2Vec2BertForAudioFrameClassification"),
+        ("wav2vec2-conformer", "Wav2Vec2ConformerForAudioFrameClassification"),
+        ("wavlm", "WavLMForAudioFrameClassification"),
+    ]
+)
+
+MODEL_FOR_AUDIO_XVECTOR_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Audio Classification mapping
+        ("data2vec-audio", "Data2VecAudioForXVector"),
+        ("unispeech-sat", "UniSpeechSatForXVector"),
+        ("wav2vec2", "Wav2Vec2ForXVector"),
+        ("wav2vec2-bert", "Wav2Vec2BertForXVector"),
+        ("wav2vec2-conformer", "Wav2Vec2ConformerForXVector"),
+        ("wavlm", "WavLMForXVector"),
+    ]
+)
+
+MODEL_FOR_TEXT_TO_SPECTROGRAM_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Text-To-Spectrogram mapping
+        ("fastspeech2_conformer", "FastSpeech2ConformerModel"),
+        ("speecht5", "SpeechT5ForTextToSpeech"),
+    ]
+)
+
+MODEL_FOR_TEXT_TO_WAVEFORM_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Text-To-Waveform mapping
+        ("bark", "BarkModel"),
+        ("csm", "CsmForConditionalGeneration"),
+        ("fastspeech2_conformer", "FastSpeech2ConformerWithHifiGan"),
+        ("fastspeech2_conformer_with_hifigan", "FastSpeech2ConformerWithHifiGan"),
+        ("musicgen", "MusicgenForConditionalGeneration"),
+        ("musicgen_melody", "MusicgenMelodyForConditionalGeneration"),
+        ("qwen2_5_omni", "Qwen2_5OmniForConditionalGeneration"),
+        ("qwen3_omni_moe", "Qwen3OmniMoeForConditionalGeneration"),
+        ("seamless_m4t", "SeamlessM4TForTextToSpeech"),
+        ("seamless_m4t_v2", "SeamlessM4Tv2ForTextToSpeech"),
+        ("vits", "VitsModel"),
+    ]
+)
+
+MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        # Model for Zero Shot Image Classification mapping
+        ("align", "AlignModel"),
+        ("altclip", "AltCLIPModel"),
+        ("blip", "BlipModel"),
+        ("blip-2", "Blip2ForImageTextRetrieval"),
+        ("chinese_clip", "ChineseCLIPModel"),
+        ("clip", "CLIPModel"),
+        ("clipseg", "CLIPSegModel"),
+        ("metaclip_2", "MetaClip2Model"),
+        ("siglip", "SiglipModel"),
+        ("siglip2", "Siglip2Model"),
+    ]
+)
+
+MODEL_FOR_BACKBONE_MAPPING_NAMES = OrderedDict(
+    [
+        # Backbone mapping
+        ("beit", "BeitBackbone"),
+        ("bit", "BitBackbone"),
+        ("convnext", "ConvNextBackbone"),
+        ("convnextv2", "ConvNextV2Backbone"),
+        ("dinat", "DinatBackbone"),
+        ("dinov2", "Dinov2Backbone"),
+        ("dinov2_with_registers", "Dinov2WithRegistersBackbone"),
+        ("focalnet", "FocalNetBackbone"),
+        ("hgnet_v2", "HGNetV2Backbone"),
+        ("hiera", "HieraBackbone"),
+        ("maskformer-swin", "MaskFormerSwinBackbone"),
+        ("nat", "NatBackbone"),
+        ("pvt_v2", "PvtV2Backbone"),
+        ("resnet", "ResNetBackbone"),
+        ("rt_detr_resnet", "RTDetrResNetBackbone"),
+        ("swin", "SwinBackbone"),
+        ("swinv2", "Swinv2Backbone"),
+        ("textnet", "TextNetBackbone"),
+        ("timm_backbone", "TimmBackbone"),
+        ("vitdet", "VitDetBackbone"),
+        ("vitpose_backbone", "VitPoseBackbone"),
+    ]
+)
+
+MODEL_FOR_MASK_GENERATION_MAPPING_NAMES = OrderedDict(
+    [
+        ("edgetam", "EdgeTamModel"),
+        ("edgetam_video", "EdgeTamModel"),
+        ("sam", "SamModel"),
+        ("sam2", "Sam2Model"),
+        ("sam2_video", "Sam2Model"),
+        ("sam_hq", "SamHQModel"),
+    ]
+)
+
+
+MODEL_FOR_KEYPOINT_DETECTION_MAPPING_NAMES = OrderedDict(
+    [
+        ("superpoint", "SuperPointForKeypointDetection"),
+    ]
+)
+
+MODEL_FOR_KEYPOINT_MATCHING_MAPPING_NAMES = OrderedDict(
+    [
+        ("efficientloftr", "EfficientLoFTRForKeypointMatching"),
+        ("lightglue", "LightGlueForKeypointMatching"),
+        ("superglue", "SuperGlueForKeypointMatching"),
+    ]
+)
+
+MODEL_FOR_TEXT_ENCODING_MAPPING_NAMES = OrderedDict(
+    [
+        ("albert", "AlbertModel"),
+        ("bert", "BertModel"),
+        ("big_bird", "BigBirdModel"),
+        ("clip_text_model", "CLIPTextModel"),
+        ("data2vec-text", "Data2VecTextModel"),
+        ("deberta", "DebertaModel"),
+        ("deberta-v2", "DebertaV2Model"),
+        ("distilbert", "DistilBertModel"),
+        ("electra", "ElectraModel"),
+        ("emu3", "Emu3TextModel"),
+        ("flaubert", "FlaubertModel"),
+        ("ibert", "IBertModel"),
+        ("llama4", "Llama4TextModel"),
+        ("longformer", "LongformerModel"),
+        ("mllama", "MllamaTextModel"),
+        ("mobilebert", "MobileBertModel"),
+        ("mt5", "MT5EncoderModel"),
+        ("nystromformer", "NystromformerModel"),
+        ("reformer", "ReformerModel"),
+        ("rembert", "RemBertModel"),
+        ("roberta", "RobertaModel"),
+        ("roberta-prelayernorm", "RobertaPreLayerNormModel"),
+        ("roc_bert", "RoCBertModel"),
+        ("roformer", "RoFormerModel"),
+        ("squeezebert", "SqueezeBertModel"),
+        ("t5", "T5EncoderModel"),
+        ("t5gemma", "T5GemmaEncoderModel"),
+        ("umt5", "UMT5EncoderModel"),
+        ("xlm", "XLMModel"),
+        ("xlm-roberta", "XLMRobertaModel"),
+        ("xlm-roberta-xl", "XLMRobertaXLModel"),
+    ]
+)
+
+MODEL_FOR_TIME_SERIES_CLASSIFICATION_MAPPING_NAMES = OrderedDict(
+    [
+        ("patchtsmixer", "PatchTSMixerForTimeSeriesClassification"),
+        ("patchtst", "PatchTSTForClassification"),
+    ]
+)
+
+MODEL_FOR_TIME_SERIES_REGRESSION_MAPPING_NAMES = OrderedDict(
+    [
+        ("patchtsmixer", "PatchTSMixerForRegression"),
+        ("patchtst", "PatchTSTForRegression"),
+    ]
+)
+
+MODEL_FOR_TIME_SERIES_PREDICTION_MAPPING_NAMES = OrderedDict(
+    [
+        ("timesfm", "TimesFmModelForPrediction"),
+    ]
+)
+
+MODEL_FOR_IMAGE_TO_IMAGE_MAPPING_NAMES = OrderedDict(
+    [
+        ("swin2sr", "Swin2SRForImageSuperResolution"),
+    ]
+)
+
+MODEL_FOR_AUDIO_TOKENIZATION_NAMES = OrderedDict(
+    [
+        ("dac", "DacModel"),
+    ]
+)
+
+MODEL_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_MAPPING_NAMES)
+MODEL_FOR_PRETRAINING_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_PRETRAINING_MAPPING_NAMES)
+MODEL_WITH_LM_HEAD_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_WITH_LM_HEAD_MAPPING_NAMES)
+MODEL_FOR_CAUSAL_LM_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_CAUSAL_LM_MAPPING_NAMES)
+MODEL_FOR_CAUSAL_IMAGE_MODELING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_CAUSAL_IMAGE_MODELING_MAPPING_NAMES
+)
+MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_IMAGE_SEGMENTATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_IMAGE_SEGMENTATION_MAPPING_NAMES
+)
+MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING_NAMES
+)
+MODEL_FOR_INSTANCE_SEGMENTATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_INSTANCE_SEGMENTATION_MAPPING_NAMES
+)
+MODEL_FOR_UNIVERSAL_SEGMENTATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_UNIVERSAL_SEGMENTATION_MAPPING_NAMES
+)
+MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_VISION_2_SEQ_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_VISION_2_SEQ_MAPPING_NAMES)
+MODEL_FOR_IMAGE_TEXT_TO_TEXT_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_IMAGE_TEXT_TO_TEXT_MAPPING_NAMES
+)
+MODEL_FOR_RETRIEVAL_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_RETRIEVAL_MAPPING_NAMES)
+MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING_NAMES
+)
+MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING_NAMES
+)
+MODEL_FOR_MASKED_LM_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_MASKED_LM_MAPPING_NAMES)
+MODEL_FOR_IMAGE_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_IMAGE_MAPPING_NAMES)
+MODEL_FOR_MASKED_IMAGE_MODELING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_MASKED_IMAGE_MODELING_MAPPING_NAMES
+)
+MODEL_FOR_OBJECT_DETECTION_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_OBJECT_DETECTION_MAPPING_NAMES)
+MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING_NAMES
+)
+MODEL_FOR_DEPTH_ESTIMATION_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_DEPTH_ESTIMATION_MAPPING_NAMES)
+MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES
+)
+MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_QUESTION_ANSWERING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_QUESTION_ANSWERING_MAPPING_NAMES
+)
+MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING_NAMES
+)
+MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_MULTIPLE_CHOICE_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_MULTIPLE_CHOICE_MAPPING_NAMES)
+MODEL_FOR_NEXT_SENTENCE_PREDICTION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_NEXT_SENTENCE_PREDICTION_MAPPING_NAMES
+)
+MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_CTC_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_CTC_MAPPING_NAMES)
+MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING_NAMES)
+MODEL_FOR_AUDIO_FRAME_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_AUDIO_FRAME_CLASSIFICATION_MAPPING_NAMES
+)
+MODEL_FOR_AUDIO_XVECTOR_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_AUDIO_XVECTOR_MAPPING_NAMES)
+
+MODEL_FOR_TEXT_TO_SPECTROGRAM_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TEXT_TO_SPECTROGRAM_MAPPING_NAMES
+)
+
+MODEL_FOR_TEXT_TO_WAVEFORM_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_TEXT_TO_WAVEFORM_MAPPING_NAMES)
+
+MODEL_FOR_BACKBONE_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_BACKBONE_MAPPING_NAMES)
+
+MODEL_FOR_MASK_GENERATION_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_MASK_GENERATION_MAPPING_NAMES)
+
+MODEL_FOR_KEYPOINT_DETECTION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_KEYPOINT_DETECTION_MAPPING_NAMES
+)
+
+MODEL_FOR_KEYPOINT_MATCHING_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_KEYPOINT_MATCHING_MAPPING_NAMES)
+
+MODEL_FOR_TEXT_ENCODING_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_TEXT_ENCODING_MAPPING_NAMES)
+
+MODEL_FOR_TIME_SERIES_CLASSIFICATION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TIME_SERIES_CLASSIFICATION_MAPPING_NAMES
+)
+
+MODEL_FOR_TIME_SERIES_REGRESSION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TIME_SERIES_REGRESSION_MAPPING_NAMES
+)
+
+MODEL_FOR_TIME_SERIES_PREDICTION_MAPPING = _LazyAutoMapping(
+    CONFIG_MAPPING_NAMES, MODEL_FOR_TIME_SERIES_PREDICTION_MAPPING_NAMES
+)
+
+MODEL_FOR_IMAGE_TO_IMAGE_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_IMAGE_TO_IMAGE_MAPPING_NAMES)
+
+MODEL_FOR_AUDIO_TOKENIZATION_MAPPING = _LazyAutoMapping(CONFIG_MAPPING_NAMES, MODEL_FOR_AUDIO_TOKENIZATION_NAMES)
+
+
+class AutoModelForMaskGeneration(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_MASK_GENERATION_MAPPING
+
+
+class AutoModelForKeypointDetection(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_KEYPOINT_DETECTION_MAPPING
+
+
+class AutoModelForKeypointMatching(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_KEYPOINT_MATCHING_MAPPING
+
+
+class AutoModelForTextEncoding(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TEXT_ENCODING_MAPPING
+
+
+class AutoModelForImageToImage(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_IMAGE_TO_IMAGE_MAPPING
+
+
+class AutoModel(_BaseAutoModelClass):
+    _model_mapping = MODEL_MAPPING
+
+
+AutoModel = auto_class_update(AutoModel)
+
+
+class AutoModelForPreTraining(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_PRETRAINING_MAPPING
+
+
+AutoModelForPreTraining = auto_class_update(AutoModelForPreTraining, head_doc="pretraining")
+
+
+# Private on purpose, the public class will add the deprecation warnings.
+class _AutoModelWithLMHead(_BaseAutoModelClass):
+    _model_mapping = MODEL_WITH_LM_HEAD_MAPPING
+
+
+_AutoModelWithLMHead = auto_class_update(_AutoModelWithLMHead, head_doc="language modeling")
+
+
+class AutoModelForCausalLM(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_CAUSAL_LM_MAPPING
+
+    # override to give better return typehint
+    @classmethod
+    def from_pretrained(
+        cls: type["AutoModelForCausalLM"],
+        pretrained_model_name_or_path: Union[str, os.PathLike[str]],
+        *model_args,
+        **kwargs,
+    ) -> "_BaseModelWithGenerate":
+        return super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
+
+
+AutoModelForCausalLM = auto_class_update(AutoModelForCausalLM, head_doc="causal language modeling")
+
+
+class AutoModelForMaskedLM(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_MASKED_LM_MAPPING
+
+
+AutoModelForMaskedLM = auto_class_update(AutoModelForMaskedLM, head_doc="masked language modeling")
+
+
+class AutoModelForSeq2SeqLM(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING
+
+
+AutoModelForSeq2SeqLM = auto_class_update(
+    AutoModelForSeq2SeqLM,
+    head_doc="sequence-to-sequence language modeling",
+    checkpoint_for_example="google-t5/t5-base",
+)
+
+
+class AutoModelForSequenceClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
+
+
+AutoModelForSequenceClassification = auto_class_update(
+    AutoModelForSequenceClassification, head_doc="sequence classification"
+)
+
+
+class AutoModelForQuestionAnswering(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_QUESTION_ANSWERING_MAPPING
+
+
+AutoModelForQuestionAnswering = auto_class_update(AutoModelForQuestionAnswering, head_doc="question answering")
+
+
+class AutoModelForTableQuestionAnswering(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING
+
+
+AutoModelForTableQuestionAnswering = auto_class_update(
+    AutoModelForTableQuestionAnswering,
+    head_doc="table question answering",
+    checkpoint_for_example="google/tapas-base-finetuned-wtq",
+)
+
+
+class AutoModelForVisualQuestionAnswering(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING
+
+
+AutoModelForVisualQuestionAnswering = auto_class_update(
+    AutoModelForVisualQuestionAnswering,
+    head_doc="visual question answering",
+    checkpoint_for_example="dandelin/vilt-b32-finetuned-vqa",
+)
+
+
+class AutoModelForDocumentQuestionAnswering(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING
+
+
+AutoModelForDocumentQuestionAnswering = auto_class_update(
+    AutoModelForDocumentQuestionAnswering,
+    head_doc="document question answering",
+    checkpoint_for_example='impira/layoutlm-document-qa", revision="52e01b3',
+)
+
+
+class AutoModelForTokenClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING
+
+
+AutoModelForTokenClassification = auto_class_update(AutoModelForTokenClassification, head_doc="token classification")
+
+
+class AutoModelForMultipleChoice(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_MULTIPLE_CHOICE_MAPPING
+
+
+AutoModelForMultipleChoice = auto_class_update(AutoModelForMultipleChoice, head_doc="multiple choice")
+
+
+class AutoModelForNextSentencePrediction(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_NEXT_SENTENCE_PREDICTION_MAPPING
+
+
+AutoModelForNextSentencePrediction = auto_class_update(
+    AutoModelForNextSentencePrediction, head_doc="next sentence prediction"
+)
+
+
+class AutoModelForImageClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
+
+
+AutoModelForImageClassification = auto_class_update(AutoModelForImageClassification, head_doc="image classification")
+
+
+class AutoModelForZeroShotImageClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING
+
+
+AutoModelForZeroShotImageClassification = auto_class_update(
+    AutoModelForZeroShotImageClassification, head_doc="zero-shot image classification"
+)
+
+
+class AutoModelForImageSegmentation(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_IMAGE_SEGMENTATION_MAPPING
+
+
+AutoModelForImageSegmentation = auto_class_update(AutoModelForImageSegmentation, head_doc="image segmentation")
+
+
+class AutoModelForSemanticSegmentation(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING
+
+
+AutoModelForSemanticSegmentation = auto_class_update(
+    AutoModelForSemanticSegmentation, head_doc="semantic segmentation"
+)
+
+
+class AutoModelForTimeSeriesPrediction(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TIME_SERIES_PREDICTION_MAPPING
+
+
+AutoModelForTimeSeriesPrediction = auto_class_update(
+    AutoModelForTimeSeriesPrediction, head_doc="time-series prediction"
+)
+
+
+class AutoModelForUniversalSegmentation(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_UNIVERSAL_SEGMENTATION_MAPPING
+
+
+AutoModelForUniversalSegmentation = auto_class_update(
+    AutoModelForUniversalSegmentation, head_doc="universal image segmentation"
+)
+
+
+class AutoModelForInstanceSegmentation(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_INSTANCE_SEGMENTATION_MAPPING
+
+
+AutoModelForInstanceSegmentation = auto_class_update(
+    AutoModelForInstanceSegmentation, head_doc="instance segmentation"
+)
+
+
+class AutoModelForObjectDetection(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_OBJECT_DETECTION_MAPPING
+
+
+AutoModelForObjectDetection = auto_class_update(AutoModelForObjectDetection, head_doc="object detection")
+
+
+class AutoModelForZeroShotObjectDetection(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING
+
+
+AutoModelForZeroShotObjectDetection = auto_class_update(
+    AutoModelForZeroShotObjectDetection, head_doc="zero-shot object detection"
+)
+
+
+class AutoModelForDepthEstimation(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_DEPTH_ESTIMATION_MAPPING
+
+
+AutoModelForDepthEstimation = auto_class_update(AutoModelForDepthEstimation, head_doc="depth estimation")
+
+
+class AutoModelForVideoClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING
+
+
+AutoModelForVideoClassification = auto_class_update(AutoModelForVideoClassification, head_doc="video classification")
+
+
+# Private on purpose, the public class will add the deprecation warnings.
+class _AutoModelForVision2Seq(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_VISION_2_SEQ_MAPPING
+
+
+_AutoModelForVision2Seq = auto_class_update(_AutoModelForVision2Seq, head_doc="vision-to-text modeling")
+
+
+class AutoModelForImageTextToText(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_IMAGE_TEXT_TO_TEXT_MAPPING
+
+    # override to give better return typehint
+    @classmethod
+    def from_pretrained(
+        cls: type["AutoModelForImageTextToText"],
+        pretrained_model_name_or_path: Union[str, os.PathLike[str]],
+        *model_args,
+        **kwargs,
+    ) -> "_BaseModelWithGenerate":
+        return super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
+
+
+AutoModelForImageTextToText = auto_class_update(AutoModelForImageTextToText, head_doc="image-text-to-text modeling")
+
+
+class AutoModelForAudioClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING
+
+
+AutoModelForAudioClassification = auto_class_update(AutoModelForAudioClassification, head_doc="audio classification")
+
+
+class AutoModelForCTC(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_CTC_MAPPING
+
+
+AutoModelForCTC = auto_class_update(AutoModelForCTC, head_doc="connectionist temporal classification")
+
+
+class AutoModelForSpeechSeq2Seq(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING
+
+
+AutoModelForSpeechSeq2Seq = auto_class_update(
+    AutoModelForSpeechSeq2Seq, head_doc="sequence-to-sequence speech-to-text modeling"
+)
+
+
+class AutoModelForAudioFrameClassification(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_AUDIO_FRAME_CLASSIFICATION_MAPPING
+
+
+AutoModelForAudioFrameClassification = auto_class_update(
+    AutoModelForAudioFrameClassification, head_doc="audio frame (token) classification"
+)
+
+
+class AutoModelForAudioXVector(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_AUDIO_XVECTOR_MAPPING
+
+
+class AutoModelForTextToSpectrogram(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TEXT_TO_SPECTROGRAM_MAPPING
+
+
+class AutoModelForTextToWaveform(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_TEXT_TO_WAVEFORM_MAPPING
+
+
+class AutoBackbone(_BaseAutoBackboneClass):
+    _model_mapping = MODEL_FOR_BACKBONE_MAPPING
+
+
+AutoModelForAudioXVector = auto_class_update(AutoModelForAudioXVector, head_doc="audio retrieval via x-vector")
+
+
+class AutoModelForMaskedImageModeling(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_MASKED_IMAGE_MODELING_MAPPING
+
+
+AutoModelForMaskedImageModeling = auto_class_update(AutoModelForMaskedImageModeling, head_doc="masked image modeling")
+
+
+class AutoModelForAudioTokenization(_BaseAutoModelClass):
+    _model_mapping = MODEL_FOR_AUDIO_TOKENIZATION_MAPPING
+
+
+AutoModelForAudioTokenization = auto_class_update(
+    AutoModelForAudioTokenization, head_doc="audio tokenization through codebooks"
+)
+
+
+class AutoModelWithLMHead(_AutoModelWithLMHead):
+    @classmethod
+    def from_config(cls, config, **kwargs):
+        warnings.warn(
+            "The class `AutoModelWithLMHead` is deprecated and will be removed in a future version. Please use "
+            "`AutoModelForCausalLM` for causal language models, `AutoModelForMaskedLM` for masked language models and "
+            "`AutoModelForSeq2SeqLM` for encoder-decoder models.",
+            FutureWarning,
+        )
+        return super().from_config(config, **kwargs)
+
+    @classmethod
+    def from_pretrained(cls, pretrained_model_name_or_path, *model_args, **kwargs):
+        warnings.warn(
+            "The class `AutoModelWithLMHead` is deprecated and will be removed in a future version. Please use "
+            "`AutoModelForCausalLM` for causal language models, `AutoModelForMaskedLM` for masked language models and "
+            "`AutoModelForSeq2SeqLM` for encoder-decoder models.",
+            FutureWarning,
+        )
+        return super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
+
+
+class AutoModelForVision2Seq(_AutoModelForVision2Seq):
+    @classmethod
+    def from_config(cls, config, **kwargs):
+        warnings.warn(
+            "The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use "
+            "`AutoModelForImageTextToText` instead.",
+            FutureWarning,
+        )
+        return super().from_config(config, **kwargs)
+
+    @classmethod
+    def from_pretrained(cls, pretrained_model_name_or_path, *model_args, **kwargs):
+        warnings.warn(
+            "The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use "
+            "`AutoModelForImageTextToText` instead.",
+            FutureWarning,
+        )
+        return super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
+
+
+__all__ = [
+    "MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_AUDIO_FRAME_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_AUDIO_TOKENIZATION_MAPPING",
+    "MODEL_FOR_AUDIO_XVECTOR_MAPPING",
+    "MODEL_FOR_BACKBONE_MAPPING",
+    "MODEL_FOR_CAUSAL_IMAGE_MODELING_MAPPING",
+    "MODEL_FOR_CAUSAL_LM_MAPPING",
+    "MODEL_FOR_CTC_MAPPING",
+    "MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING",
+    "MODEL_FOR_DEPTH_ESTIMATION_MAPPING",
+    "MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_IMAGE_MAPPING",
+    "MODEL_FOR_IMAGE_SEGMENTATION_MAPPING",
+    "MODEL_FOR_IMAGE_TO_IMAGE_MAPPING",
+    "MODEL_FOR_KEYPOINT_DETECTION_MAPPING",
+    "MODEL_FOR_KEYPOINT_MATCHING_MAPPING",
+    "MODEL_FOR_INSTANCE_SEGMENTATION_MAPPING",
+    "MODEL_FOR_MASKED_IMAGE_MODELING_MAPPING",
+    "MODEL_FOR_MASKED_LM_MAPPING",
+    "MODEL_FOR_MASK_GENERATION_MAPPING",
+    "MODEL_FOR_MULTIPLE_CHOICE_MAPPING",
+    "MODEL_FOR_NEXT_SENTENCE_PREDICTION_MAPPING",
+    "MODEL_FOR_OBJECT_DETECTION_MAPPING",
+    "MODEL_FOR_PRETRAINING_MAPPING",
+    "MODEL_FOR_QUESTION_ANSWERING_MAPPING",
+    "MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING",
+    "MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING",
+    "MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING",
+    "MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING",
+    "MODEL_FOR_TEXT_ENCODING_MAPPING",
+    "MODEL_FOR_TEXT_TO_WAVEFORM_MAPPING",
+    "MODEL_FOR_TEXT_TO_SPECTROGRAM_MAPPING",
+    "MODEL_FOR_TIME_SERIES_PREDICTION_MAPPING",
+    "MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_UNIVERSAL_SEGMENTATION_MAPPING",
+    "MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_VISION_2_SEQ_MAPPING",
+    "MODEL_FOR_RETRIEVAL_MAPPING",
+    "MODEL_FOR_IMAGE_TEXT_TO_TEXT_MAPPING",
+    "MODEL_FOR_VISUAL_QUESTION_ANSWERING_MAPPING",
+    "MODEL_MAPPING",
+    "MODEL_WITH_LM_HEAD_MAPPING",
+    "MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_ZERO_SHOT_OBJECT_DETECTION_MAPPING",
+    "MODEL_FOR_TIME_SERIES_CLASSIFICATION_MAPPING",
+    "MODEL_FOR_TIME_SERIES_REGRESSION_MAPPING",
+    "AutoModel",
+    "AutoBackbone",
+    "AutoModelForAudioClassification",
+    "AutoModelForAudioFrameClassification",
+    "AutoModelForAudioTokenization",
+    "AutoModelForAudioXVector",
+    "AutoModelForCausalLM",
+    "AutoModelForCTC",
+    "AutoModelForDepthEstimation",
+    "AutoModelForImageClassification",
+    "AutoModelForImageSegmentation",
+    "AutoModelForImageToImage",
+    "AutoModelForInstanceSegmentation",
+    "AutoModelForKeypointDetection",
+    "AutoModelForKeypointMatching",
+    "AutoModelForMaskGeneration",
+    "AutoModelForTextEncoding",
+    "AutoModelForMaskedImageModeling",
+    "AutoModelForMaskedLM",
+    "AutoModelForMultipleChoice",
+    "AutoModelForNextSentencePrediction",
+    "AutoModelForObjectDetection",
+    "AutoModelForPreTraining",
+    "AutoModelForQuestionAnswering",
+    "AutoModelForSemanticSegmentation",
+    "AutoModelForSeq2SeqLM",
+    "AutoModelForSequenceClassification",
+    "AutoModelForSpeechSeq2Seq",
+    "AutoModelForTableQuestionAnswering",
+    "AutoModelForTextToSpectrogram",
+    "AutoModelForTextToWaveform",
+    "AutoModelForTimeSeriesPrediction",
+    "AutoModelForTokenClassification",
+    "AutoModelForUniversalSegmentation",
+    "AutoModelForVideoClassification",
+    "AutoModelForVision2Seq",
+    "AutoModelForVisualQuestionAnswering",
+    "AutoModelForDocumentQuestionAnswering",
+    "AutoModelWithLMHead",
+    "AutoModelForZeroShotImageClassification",
+    "AutoModelForZeroShotObjectDetection",
+    "AutoModelForImageTextToText",
+]
+  i o n . g e t _ d e c o d e r 
+         d e f   g e t _ d e c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . m o d e l . d e c o d e r 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T T e x t T o U n i t F o r C o n d i t i o n a l G e n e r a t i o n . g e t _ i n p u t _ e m b e d d i n g s 
+         d e f   g e t _ i n p u t _ e m b e d d i n g s ( s e l f ) : 
+                 r e t u r n   s e l f . m o d e l . d e c o d e r . e m b e d _ t o k e n s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T T e x t T o U n i t F o r C o n d i t i o n a l G e n e r a t i o n . s e t _ i n p u t _ e m b e d d i n g s 
+         d e f   s e t _ i n p u t _ e m b e d d i n g s ( s e l f ,   v a l u e ) : 
+                 s e l f . m o d e l . d e c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+ 
+         @ a u t o _ d o c s t r i n g 
+         d e f   f o r w a r d ( 
+                 s e l f , 
+                 i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 c h a r _ i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 c h a r _ c o u n t _ p e r _ i d :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . T e n s o r ]   =   N o n e , 
+                 e n c o d e r _ o u t p u t s :   O p t i o n a l [ t u p l e [ t u p l e [ t o r c h . F l o a t T e n s o r ] ] ]   =   N o n e , 
+                 i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 l a b e l s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 o u t p u t _ a t t e n t i o n s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 o u t p u t _ h i d d e n _ s t a t e s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 r e t u r n _ d i c t :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 * * k w a r g s , 
+         )   - >   U n i o n [ S e q 2 S e q L M O u t p u t ,   t u p l e [ t o r c h . F l o a t T e n s o r ] ] : 
+                 r " " " 
+                 c h a r _ i n p u t _ i d s   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   c h a r _ s e q u e n c e _ l e n g t h ) ` ) : 
+                         C h a r a c t e r   i n d i c e s .   T h e   c o r r e s p o n d e n c e   b e t w e e n   c h a r a c t e r s   a n d   i n d i c e s   c a n   b e   f o u n d   i n   ` c h a r _ t o _ i d ` ,   a 
+                         d i c t i o n a r y   i n   t h e   g e n e r a t i o n   c o n f i g u r a t i o n . 
+                 c h a r _ c o u n t _ p e r _ i d   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ) ` ) : 
+                         N u m b e r   o f   c h a r a c t e r s   p e r   i n p u t   i d . 
+                 i n p u t s _ e m b e d s   ( ` t o r c h . F l o a t T e n s o r `   o f   s h a p e ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ,   h i d d e n _ s i z e ) ` ,   * o p t i o n a l * ) : 
+                         O p t i o n a l l y ,   i n s t e a d   o f   p a s s i n g   ` i n p u t _ i d s `   y o u   c a n   c h o o s e   t o   d i r e c t l y   p a s s   a n   e m b e d d e d   r e p r e s e n t a t i o n .   T h i s 
+                         i s   u s e f u l   i f   y o u   w a n t   m o r e   c o n t r o l   o v e r   h o w   t o   c o n v e r t   ` i n p u t _ i d s `   i n d i c e s   i n t o   a s s o c i a t e d   v e c t o r s   t h a n   t h e 
+                         m o d e l ' s   i n t e r n a l   e m b e d d i n g   l o o k u p   m a t r i x . 
+                 l a b e l s   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ) ` ,   * o p t i o n a l * ) : 
+                         L a b e l s   f o r   c o m p u t i n g   t h e   m a s k e d   l a n g u a g e   m o d e l i n g   l o s s .   I n d i c e s   s h o u l d   b e   i n   ` [ - 1 0 0 ,   0 ,   . . . , 
+                         c o n f i g . v o c a b _ s i z e ] `   ( s e e   ` i n p u t _ i d s `   d o c s t r i n g )   T o k e n s   w i t h   i n d i c e s   s e t   t o   ` - 1 0 0 `   a r e   i g n o r e d   ( m a s k e d ) ,   t h e 
+                         l o s s   i s   o n l y   c o m p u t e d   f o r   t h e   t o k e n s   w i t h   l a b e l s   i n   ` [ 0 ,   . . . ,   c o n f i g . v o c a b _ s i z e ] ` 
+                 " " " 
+                 r e t u r n _ d i c t   =   r e t u r n _ d i c t   i f   r e t u r n _ d i c t   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . u s e _ r e t u r n _ d i c t 
+ 
+                 o u t p u t s   =   s e l f . m o d e l ( 
+                         i n p u t _ i d s , 
+                         c h a r _ i n p u t _ i d s = c h a r _ i n p u t _ i d s , 
+                         c h a r _ c o u n t _ p e r _ i d = c h a r _ c o u n t _ p e r _ i d , 
+                         a t t e n t i o n _ m a s k = a t t e n t i o n _ m a s k , 
+                         e n c o d e r _ o u t p u t s = e n c o d e r _ o u t p u t s , 
+                         i n p u t s _ e m b e d s = i n p u t s _ e m b e d s , 
+                         o u t p u t _ a t t e n t i o n s = o u t p u t _ a t t e n t i o n s , 
+                         o u t p u t _ h i d d e n _ s t a t e s = o u t p u t _ h i d d e n _ s t a t e s , 
+                         r e t u r n _ d i c t = r e t u r n _ d i c t , 
+                 ) 
+                 l m _ l o g i t s   =   s e l f . l m _ h e a d ( o u t p u t s [ 0 ] ) 
+ 
+                 m a s k e d _ l m _ l o s s   =   N o n e 
+                 i f   l a b e l s   i s   n o t   N o n e : 
+                         l o s s _ f c t   =   C r o s s E n t r o p y L o s s ( ) 
+                         l a b e l s   =   l a b e l s . t o ( l m _ l o g i t s . d e v i c e ) 
+                         m a s k e d _ l m _ l o s s   =   l o s s _ f c t ( l m _ l o g i t s . v i e w ( - 1 ,   s e l f . c o n f i g . v o c a b _ s i z e ) ,   l a b e l s . v i e w ( - 1 ) ) 
+ 
+                 i f   n o t   r e t u r n _ d i c t : 
+                         o u t p u t   =   ( l m _ l o g i t s , )   +   o u t p u t s [ 1 : ] 
+                         r e t u r n   ( ( m a s k e d _ l m _ l o s s , )   +   o u t p u t )   i f   m a s k e d _ l m _ l o s s   i s   n o t   N o n e   e l s e   o u t p u t 
+ 
+                 r e t u r n   S e a m l e s s M 4 T v 2 T e x t T o U n i t O u t p u t ( 
+                         l a s t _ h i d d e n _ s t a t e = l m _ l o g i t s , 
+                         p a d d i n g _ m a s k = o u t p u t s . p a d d i n g _ m a s k , 
+                         d e c o d e r _ h i d d e n _ s t a t e s = o u t p u t s . d e c o d e r _ h i d d e n _ s t a t e s , 
+                         d e c o d e r _ a t t e n t i o n s = o u t p u t s . d e c o d e r _ a t t e n t i o n s , 
+                         e n c o d e r _ l a s t _ h i d d e n _ s t a t e = o u t p u t s . e n c o d e r _ l a s t _ h i d d e n _ s t a t e , 
+                         e n c o d e r _ h i d d e n _ s t a t e s = o u t p u t s . e n c o d e r _ h i d d e n _ s t a t e s , 
+                         e n c o d e r _ a t t e n t i o n s = o u t p u t s . e n c o d e r _ a t t e n t i o n s , 
+                         l o s s = m a s k e d _ l m _ l o s s , 
+                 ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T T e x t T o U n i t F o r C o n d i t i o n a l G e n e r a t i o n . _ t i e _ w e i g h t s 
+         d e f   _ t i e _ w e i g h t s ( s e l f )   - >   N o n e : 
+                 i f   g e t a t t r ( s e l f . c o n f i g ,   " t i e _ w o r d _ e m b e d d i n g s " ,   T r u e ) : 
+                         o u t p u t _ e m b e d d i n g s   =   s e l f . g e t _ o u t p u t _ e m b e d d i n g s ( ) 
+                         i f   o u t p u t _ e m b e d d i n g s   i s   n o t   N o n e : 
+                                 s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( o u t p u t _ e m b e d d i n g s ,   s e l f . g e t _ i n p u t _ e m b e d d i n g s ( ) ) 
+ 
+ 
+ # # # # # # # # # # # #   V O C O D E R   r e l a t e d   c o d e   # # # # # # # # # # # # # # # # 
+ 
+ 
+ #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s p e e c h t 5 . m o d e l i n g _ s p e e c h t 5 . H i f i G a n R e s i d u a l B l o c k 
+ c l a s s   H i f i G a n R e s i d u a l B l o c k ( n n . M o d u l e ) : 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c h a n n e l s ,   k e r n e l _ s i z e = 3 ,   d i l a t i o n = ( 1 ,   3 ,   5 ) ,   l e a k y _ r e l u _ s l o p e = 0 . 1 ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( ) 
+                 s e l f . l e a k y _ r e l u _ s l o p e   =   l e a k y _ r e l u _ s l o p e 
+ 
+                 s e l f . c o n v s 1   =   n n . M o d u l e L i s t ( 
+                         [ 
+                                 n n . C o n v 1 d ( 
+                                         c h a n n e l s , 
+                                         c h a n n e l s , 
+                                         k e r n e l _ s i z e , 
+                                         s t r i d e = 1 , 
+                                         d i l a t i o n = d i l a t i o n [ i ] , 
+                                         p a d d i n g = s e l f . g e t _ p a d d i n g ( k e r n e l _ s i z e ,   d i l a t i o n [ i ] ) , 
+                                 ) 
+                                 f o r   i   i n   r a n g e ( l e n ( d i l a t i o n ) ) 
+                         ] 
+                 ) 
+                 s e l f . c o n v s 2   =   n n . M o d u l e L i s t ( 
+                         [ 
+                                 n n . C o n v 1 d ( 
+                                         c h a n n e l s , 
+                                         c h a n n e l s , 
+                                         k e r n e l _ s i z e , 
+                                         s t r i d e = 1 , 
+                                         d i l a t i o n = 1 , 
+                                         p a d d i n g = s e l f . g e t _ p a d d i n g ( k e r n e l _ s i z e ,   1 ) , 
+                                 ) 
+                                 f o r   _   i n   r a n g e ( l e n ( d i l a t i o n ) ) 
+                         ] 
+                 ) 
+ 
+         d e f   g e t _ p a d d i n g ( s e l f ,   k e r n e l _ s i z e ,   d i l a t i o n = 1 ) : 
+                 r e t u r n   ( k e r n e l _ s i z e   *   d i l a t i o n   -   d i l a t i o n )   / /   2 
+ 
+         d e f   a p p l y _ w e i g h t _ n o r m ( s e l f ) : 
+                 w e i g h t _ n o r m   =   n n . u t i l s . w e i g h t _ n o r m 
+                 i f   h a s a t t r ( n n . u t i l s . p a r a m e t r i z a t i o n s ,   " w e i g h t _ n o r m " ) : 
+                         w e i g h t _ n o r m   =   n n . u t i l s . p a r a m e t r i z a t i o n s . w e i g h t _ n o r m 
+ 
+                 f o r   l a y e r   i n   s e l f . c o n v s 1 : 
+                         w e i g h t _ n o r m ( l a y e r ) 
+                 f o r   l a y e r   i n   s e l f . c o n v s 2 : 
+                         w e i g h t _ n o r m ( l a y e r ) 
+ 
+         d e f   r e m o v e _ w e i g h t _ n o r m ( s e l f ) : 
+                 f o r   l a y e r   i n   s e l f . c o n v s 1 : 
+                         n n . u t i l s . r e m o v e _ w e i g h t _ n o r m ( l a y e r ) 
+                 f o r   l a y e r   i n   s e l f . c o n v s 2 : 
+                         n n . u t i l s . r e m o v e _ w e i g h t _ n o r m ( l a y e r ) 
+ 
+         d e f   f o r w a r d ( s e l f ,   h i d d e n _ s t a t e s ) : 
+                 f o r   c o n v 1 ,   c o n v 2   i n   z i p ( s e l f . c o n v s 1 ,   s e l f . c o n v s 2 ) : 
+                         r e s i d u a l   =   h i d d e n _ s t a t e s 
+                         h i d d e n _ s t a t e s   =   n n . f u n c t i o n a l . l e a k y _ r e l u ( h i d d e n _ s t a t e s ,   s e l f . l e a k y _ r e l u _ s l o p e ) 
+                         h i d d e n _ s t a t e s   =   c o n v 1 ( h i d d e n _ s t a t e s ) 
+                         h i d d e n _ s t a t e s   =   n n . f u n c t i o n a l . l e a k y _ r e l u ( h i d d e n _ s t a t e s ,   s e l f . l e a k y _ r e l u _ s l o p e ) 
+                         h i d d e n _ s t a t e s   =   c o n v 2 ( h i d d e n _ s t a t e s ) 
+                         h i d d e n _ s t a t e s   =   h i d d e n _ s t a t e s   +   r e s i d u a l 
+                 r e t u r n   h i d d e n _ s t a t e s 
+ 
+ 
+ c l a s s   S e a m l e s s M 4 T v 2 V a r i a n c e P r e d i c t o r ( n n . M o d u l e ) : 
+         d e f   _ _ i n i t _ _ ( s e l f ,   e m b e d _ d i m ,   h i d d e n _ d i m ,   k e r n e l _ s i z e ,   v a r _ p r e d _ d r o p o u t ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( ) 
+ 
+                 s e l f . c o n v 1   =   n n . C o n v 1 d ( 
+                         e m b e d _ d i m , 
+                         h i d d e n _ d i m , 
+                         k e r n e l _ s i z e = k e r n e l _ s i z e , 
+                         p a d d i n g = " s a m e " , 
+                 ) 
+                 s e l f . a c t i v a t i o n _ f u n c t i o n   =   n n . R e L U ( ) 
+                 s e l f . l n 1   =   n n . L a y e r N o r m ( h i d d e n _ d i m ) 
+                 s e l f . d r o p o u t _ m o d u l e   =   n n . D r o p o u t ( p = v a r _ p r e d _ d r o p o u t ) 
+                 s e l f . c o n v 2   =   n n . C o n v 1 d ( 
+                         h i d d e n _ d i m , 
+                         h i d d e n _ d i m , 
+                         k e r n e l _ s i z e = k e r n e l _ s i z e , 
+                         p a d d i n g = " s a m e " , 
+                 ) 
+                 s e l f . l n 2   =   n n . L a y e r N o r m ( h i d d e n _ d i m ) 
+                 s e l f . p r o j   =   n n . L i n e a r ( h i d d e n _ d i m ,   1 ) 
+ 
+         d e f   f o r w a r d ( s e l f ,   h i d d e n _ s t a t e s :   T e n s o r ,   p a d d i n g _ m a s k :   O p t i o n a l [ T e n s o r ]   =   N o n e )   - >   T e n s o r : 
+                 #   I n p u t :   B   x   T   x   C ;   O u t p u t :   B   x   T 
+                 i f   p a d d i n g _ m a s k   i s   n o t   N o n e : 
+                         h i d d e n _ s t a t e s   =   h i d d e n _ s t a t e s . m a s k e d _ f i l l ( ~ p a d d i n g _ m a s k . b o o l ( ) . u n s q u e e z e ( - 1 ) ,   0 . 0 ) 
+                 h i d d e n _ s t a t e s   =   s e l f . c o n v 1 ( h i d d e n _ s t a t e s . t r a n s p o s e ( 1 ,   2 ) ) 
+                 h i d d e n _ s t a t e s   =   s e l f . a c t i v a t i o n _ f u n c t i o n ( h i d d e n _ s t a t e s ) . t r a n s p o s e ( 1 ,   2 ) 
+                 h i d d e n _ s t a t e s   =   s e l f . d r o p o u t _ m o d u l e ( s e l f . l n 1 ( h i d d e n _ s t a t e s ) ) 
+                 i f   p a d d i n g _ m a s k   i s   n o t   N o n e : 
+                         h i d d e n _ s t a t e s   =   h i d d e n _ s t a t e s . m a s k e d _ f i l l ( ~ p a d d i n g _ m a s k . b o o l ( ) . u n s q u e e z e ( - 1 ) ,   0 . 0 ) 
+                 h i d d e n _ s t a t e s   =   s e l f . c o n v 2 ( h i d d e n _ s t a t e s . t r a n s p o s e ( 1 ,   2 ) ) 
+                 h i d d e n _ s t a t e s   =   s e l f . a c t i v a t i o n _ f u n c t i o n ( h i d d e n _ s t a t e s ) . t r a n s p o s e ( 1 ,   2 ) 
+                 h i d d e n _ s t a t e s   =   s e l f . d r o p o u t _ m o d u l e ( s e l f . l n 2 ( h i d d e n _ s t a t e s ) ) 
+                 r e t u r n   s e l f . p r o j ( h i d d e n _ s t a t e s ) . s q u e e z e ( d i m = 2 ) 
+ 
+ 
+ #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T H i f i G a n   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 
+ c l a s s   S e a m l e s s M 4 T v 2 H i f i G a n ( n n . M o d u l e ) : 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c o n f i g :   S e a m l e s s M 4 T v 2 C o n f i g ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( ) 
+                 m o d e l _ i n _ d i m   =   c o n f i g . u n i t _ e m b e d _ d i m   +   c o n f i g . l a n g _ e m b e d _ d i m   +   c o n f i g . s p k r _ e m b e d _ d i m 
+                 s e l f . l e a k y _ r e l u _ s l o p e   =   c o n f i g . l e a k y _ r e l u _ s l o p e 
+                 s e l f . n u m _ k e r n e l s   =   l e n ( c o n f i g . r e s b l o c k _ k e r n e l _ s i z e s ) 
+                 s e l f . n u m _ u p s a m p l e s   =   l e n ( c o n f i g . u p s a m p l e _ r a t e s ) 
+                 s e l f . c o n v _ p r e   =   n n . C o n v 1 d ( 
+                         m o d e l _ i n _ d i m , 
+                         c o n f i g . u p s a m p l e _ i n i t i a l _ c h a n n e l , 
+                         k e r n e l _ s i z e = 7 , 
+                         s t r i d e = 1 , 
+                         p a d d i n g = 3 , 
+                 ) 
+ 
+                 s e l f . u p s a m p l e r   =   n n . M o d u l e L i s t ( ) 
+                 f o r   i ,   ( u p s a m p l e _ r a t e ,   k e r n e l _ s i z e )   i n   e n u m e r a t e ( z i p ( c o n f i g . u p s a m p l e _ r a t e s ,   c o n f i g . u p s a m p l e _ k e r n e l _ s i z e s ) ) : 
+                         s e l f . u p s a m p l e r . a p p e n d ( 
+                                 n n . C o n v T r a n s p o s e 1 d ( 
+                                         c o n f i g . u p s a m p l e _ i n i t i a l _ c h a n n e l   / /   ( 2 * * i ) , 
+                                         c o n f i g . u p s a m p l e _ i n i t i a l _ c h a n n e l   / /   ( 2   * *   ( i   +   1 ) ) , 
+                                         k e r n e l _ s i z e = k e r n e l _ s i z e , 
+                                         s t r i d e = u p s a m p l e _ r a t e , 
+                                         p a d d i n g = ( k e r n e l _ s i z e   -   u p s a m p l e _ r a t e )   / /   2 , 
+                                 ) 
+                         ) 
+ 
+                 s e l f . r e s b l o c k s   =   n n . M o d u l e L i s t ( ) 
+                 f o r   i   i n   r a n g e ( l e n ( s e l f . u p s a m p l e r ) ) : 
+                         c h a n n e l s   =   c o n f i g . u p s a m p l e _ i n i t i a l _ c h a n n e l   / /   ( 2   * *   ( i   +   1 ) ) 
+                         f o r   k e r n e l _ s i z e ,   d i l a t i o n   i n   z i p ( c o n f i g . r e s b l o c k _ k e r n e l _ s i z e s ,   c o n f i g . r e s b l o c k _ d i l a t i o n _ s i z e s ) : 
+                                 s e l f . r e s b l o c k s . a p p e n d ( H i f i G a n R e s i d u a l B l o c k ( c h a n n e l s ,   k e r n e l _ s i z e ,   d i l a t i o n ,   c o n f i g . l e a k y _ r e l u _ s l o p e ) ) 
+ 
+                 s e l f . c o n v _ p o s t   =   n n . C o n v 1 d ( c h a n n e l s ,   1 ,   k e r n e l _ s i z e = 7 ,   s t r i d e = 1 ,   p a d d i n g = 3 ) 
+ 
+         d e f   f o r w a r d ( s e l f ,   i n p u t _ e m b e d s :   t o r c h . F l o a t T e n s o r )   - >   t o r c h . F l o a t T e n s o r : 
+                 r " " " 
+                 C o n v e r t s   a   l o g - m e l   s p e c t r o g r a m   i n t o   a   s p e e c h   w a v e f o r m .   P a s s i n g   a   b a t c h   o f   l o g - m e l   s p e c t r o g r a m s   r e t u r n s   a   b a t c h 
+                 o f   s p e e c h   w a v e f o r m s .   P a s s i n g   a   s i n g l e ,   u n - b a t c h e d   l o g - m e l   s p e c t r o g r a m   r e t u r n s   a   s i n g l e ,   u n - b a t c h e d   s p e e c h 
+                 w a v e f o r m . 
+ 
+                 A r g s : 
+                         s p e c t r o g r a m   ( ` t o r c h . F l o a t T e n s o r ` ) : 
+                                 T e n s o r   c o n t a i n i n g   t h e   l o g - m e l   s p e c t r o g r a m s .   C a n   b e   b a t c h e d   a n d   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h , 
+                                 m o d e l _ i n _ d i m ) ` ,   o r   u n - b a t c h e d   a n d   o f   s h a p e   ` ( s e q u e n c e _ l e n g t h ,   m o d e l _ i n _ d i m ) ` .   N o t e   t h a t   ` m o d e l _ i n _ d i m ` 
+                                 i s   t h e   s u m   o f   ` c o n f i g . u n i t _ e m b e d _ d i m ` ,   ` c o n f i g . l a n g _ e m b e d _ d i m `   a n d   ` c o n f i g . s p k r _ e m b e d _ d i m ` . 
+ 
+                 R e t u r n s : 
+                         ` t o r c h . F l o a t T e n s o r ` :   T e n s o r   c o n t a i n i n g   t h e   s p e e c h   w a v e f o r m .   I f   t h e   i n p u t   s p e c t r o g r a m   i s   b a t c h e d ,   w i l l   b e   o f 
+                         s h a p e   ` ( b a t c h _ s i z e ,   n u m _ f r a m e s , ) ` .   I f   u n - b a t c h e d ,   w i l l   b e   o f   s h a p e   ` ( n u m _ f r a m e s , ) ` . 
+                 " " " 
+ 
+                 h i d d e n _ s t a t e s   =   s e l f . c o n v _ p r e ( i n p u t _ e m b e d s ) 
+                 f o r   i   i n   r a n g e ( s e l f . n u m _ u p s a m p l e s ) : 
+                         h i d d e n _ s t a t e s   =   n n . f u n c t i o n a l . l e a k y _ r e l u ( h i d d e n _ s t a t e s ,   s e l f . l e a k y _ r e l u _ s l o p e ) 
+                         h i d d e n _ s t a t e s   =   s e l f . u p s a m p l e r [ i ] ( h i d d e n _ s t a t e s ) 
+ 
+                         r e s _ s t a t e   =   s e l f . r e s b l o c k s [ i   *   s e l f . n u m _ k e r n e l s ] ( h i d d e n _ s t a t e s ) 
+                         f o r   j   i n   r a n g e ( 1 ,   s e l f . n u m _ k e r n e l s ) : 
+                                 r e s _ s t a t e   + =   s e l f . r e s b l o c k s [ i   *   s e l f . n u m _ k e r n e l s   +   j ] ( h i d d e n _ s t a t e s ) 
+                         h i d d e n _ s t a t e s   =   r e s _ s t a t e   /   s e l f . n u m _ k e r n e l s 
+ 
+                 h i d d e n _ s t a t e s   =   n n . f u n c t i o n a l . l e a k y _ r e l u ( h i d d e n _ s t a t e s ) 
+                 h i d d e n _ s t a t e s   =   s e l f . c o n v _ p o s t ( h i d d e n _ s t a t e s ) 
+                 h i d d e n _ s t a t e s   =   t o r c h . t a n h ( h i d d e n _ s t a t e s ) 
+ 
+                 #   r e m o v e   s e q - l e n   d i m   s i n c e   t h i s   c o l l a p s e s   t o   1 
+                 w a v e f o r m   =   h i d d e n _ s t a t e s . s q u e e z e ( 1 ) 
+ 
+                 r e t u r n   w a v e f o r m 
+ 
+ 
+ @ a u t o _ d o c s t r i n g ( 
+         c u s t o m _ i n t r o = " " " 
+         C o d e   H i F i - G A N   v o c o d e r   a s   d e s c r i b e d   i n   t h i s   [ r e p o s i t o r y ] ( h t t p s : / / g i t h u b . c o m / f a c e b o o k r e s e a r c h / s p e e c h - r e s y n t h e s i s ) . 
+         " " " 
+ ) 
+ c l a s s   S e a m l e s s M 4 T v 2 C o d e H i f i G a n ( P r e T r a i n e d M o d e l ) : 
+         c o n f i g :   S e a m l e s s M 4 T v 2 C o n f i g 
+         m a i n _ i n p u t _ n a m e   =   " i n p u t _ e m b e d s " 
+         _ n o _ s p l i t _ m o d u l e s   =   [ ] 
+ 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c o n f i g ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( c o n f i g ) 
+ 
+                 s e l f . p a d _ t o k e n _ i d   =   c o n f i g . t 2 u _ p a d _ t o k e n _ i d 
+                 e m b e d _ d i m   =   c o n f i g . u n i t _ e m b e d _ d i m 
+                 k e r n e l _ s i z e   =   c o n f i g . v a r i a n c e _ p r e d i c t o r _ k e r n e l _ s i z e 
+                 v a r _ p r e d _ d r o p o u t   =   c o n f i g . v a r _ p r e d _ d r o p o u t 
+                 s e l f . d u r _ p r e d i c t o r   =   S e a m l e s s M 4 T v 2 V a r i a n c e P r e d i c t o r ( e m b e d _ d i m ,   e m b e d _ d i m ,   k e r n e l _ s i z e ,   v a r _ p r e d _ d r o p o u t ) 
+ 
+                 s e l f . u n i t _ e m b e d d i n g   =   n n . E m b e d d i n g ( c o n f i g . u n i t _ h i f i _ g a n _ v o c a b _ s i z e ,   c o n f i g . u n i t _ e m b e d _ d i m ) 
+                 s e l f . s p e a k e r _ e m b e d d i n g   =   n n . E m b e d d i n g ( c o n f i g . v o c o d e r _ n u m _ s p k r s ,   c o n f i g . s p k r _ e m b e d _ d i m ) 
+                 s e l f . l a n g u a g e _ e m b e d d i n g   =   n n . E m b e d d i n g ( c o n f i g . v o c o d e r _ n u m _ l a n g s ,   c o n f i g . l a n g _ e m b e d _ d i m ) 
+ 
+                 s e l f . h i f i _ g a n   =   S e a m l e s s M 4 T v 2 H i f i G a n ( c o n f i g ) 
+ 
+                 #   I n i t i a l i z e   w e i g h t s   a n d   a p p l y   f i n a l   p r o c e s s i n g 
+                 s e l f . p o s t _ i n i t ( ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . _ g e t _ d u r _ o u t p u t _ l e n g t h s 
+         d e f   _ g e t _ d u r _ o u t p u t _ l e n g t h s ( s e l f ,   i n p u t _ i d s ,   d u r _ o u t ) : 
+                 " " " 
+                 C o m p u t e s   t h e   o u t p u t   l e n g t h   a f t e r   t h e   d u r a t i o n   l a y e r . 
+                 " " " 
+                 u n i t _ l e n g t h s   =   ( i n p u t _ i d s   ! =   s e l f . p a d _ t o k e n _ i d ) . s u m ( 1 ) 
+ 
+                 #   t a k e   c a r e   o f   e d g e   c a s e s   w h e r e   n o   p a d d i n g   o r   t o o   m a n y   p a d d i n g 
+                 u n i t _ l e n g t h s   =   t o r c h . c l a m p ( u n i t _ l e n g t h s ,   0 ,   d u r _ o u t . s h a p e [ 1 ]   -   1 ) 
+ 
+                 c u m u l a t i v e _ d u r _ o u t   =   t o r c h . c u m s u m ( d u r _ o u t ,   d i m = 1 ) 
+                 u n i t _ l e n g t h s   =   c u m u l a t i v e _ d u r _ o u t . g a t h e r ( d i m = 1 ,   i n d e x = u n i t _ l e n g t h s . u n s q u e e z e ( 1 ) ) . s q u e e z e ( ) 
+ 
+                 r e t u r n   u n i t _ l e n g t h s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . _ g e t _ o u t p u t _ h i f i g a n _ l e n g t h s 
+         d e f   _ g e t _ o u t p u t _ h i f i g a n _ l e n g t h s ( s e l f ,   i n p u t _ l e n g t h s :   U n i o n [ t o r c h . L o n g T e n s o r ,   i n t ] ) : 
+                 " " " 
+                 C o m p u t e s   t h e   o u t p u t   l e n g t h   o f   t h e   h i f i g a n   c o n v o l u t i o n a l   l a y e r s 
+                 " " " 
+ 
+                 d e f   _ c o n v _ o u t _ l e n g t h ( i n p u t _ l e n g t h ,   k e r n e l _ s i z e ,   s t r i d e ,   p a d ,   d i l a t i o n = 1 ) : 
+                         #   1 D   c o n v o l u t i o n a l   l a y e r   o u t p u t   l e n g t h   f o r m u l a   t a k e n 
+                         #   f r o m   h t t p s : / / p y t o r c h . o r g / d o c s / s t a b l e / g e n e r a t e d / t o r c h . n n . C o n v 1 d . h t m l 
+                         r e t u r n   ( 
+                                 t o r c h . d i v ( i n p u t _ l e n g t h   +   2   *   p a d   -   d i l a t i o n   *   ( k e r n e l _ s i z e   -   1 )   -   1 ,   s t r i d e ,   r o u n d i n g _ m o d e = " f l o o r " )   +   1 
+                         ) 
+ 
+                 d e f   _ t r a n s p o s e _ c o n v _ o u t _ l e n g t h ( i n p u t _ l e n g t h ,   k e r n e l _ s i z e ,   s t r i d e ,   p a d ,   d i l a t i o n = 1 ) : 
+                         r e t u r n   ( i n p u t _ l e n g t h   -   1 )   *   s t r i d e   -   2   *   p a d   +   d i l a t i o n   *   ( k e r n e l _ s i z e   -   1 )   +   1 
+ 
+                 #   c o n v _ p r e 
+                 i n p u t _ l e n g t h s   =   _ c o n v _ o u t _ l e n g t h ( i n p u t _ l e n g t h s ,   7 ,   1 ,   3 ) 
+ 
+                 #   u p s a m p l e r 
+                 f o r   i ,   ( u p s a m p l e _ r a t e ,   k e r n e l _ s i z e )   i n   e n u m e r a t e ( 
+                         z i p ( s e l f . c o n f i g . u p s a m p l e _ r a t e s ,   s e l f . c o n f i g . u p s a m p l e _ k e r n e l _ s i z e s ) 
+                 ) : 
+                         i n p u t _ l e n g t h s   =   _ t r a n s p o s e _ c o n v _ o u t _ l e n g t h ( 
+                                 i n p u t _ l e n g t h s ,   k e r n e l _ s i z e ,   u p s a m p l e _ r a t e ,   ( k e r n e l _ s i z e   -   u p s a m p l e _ r a t e )   / /   2 
+                         ) 
+ 
+                 #   r e s b l o c k 
+                 f o r   i   i n   r a n g e ( l e n ( s e l f . c o n f i g . u p s a m p l e _ r a t e s ) ) : 
+                         f o r   k e r n e l _ s i z e ,   d i l a t i o n   i n   z i p ( s e l f . c o n f i g . r e s b l o c k _ k e r n e l _ s i z e s ,   s e l f . c o n f i g . r e s b l o c k _ d i l a t i o n _ s i z e s ) : 
+                                 f o r   d i l   i n   d i l a t i o n : 
+                                         i n p u t _ l e n g t h s   =   _ c o n v _ o u t _ l e n g t h ( 
+                                                 i n p u t _ l e n g t h s ,   k e r n e l _ s i z e ,   1 ,   ( k e r n e l _ s i z e   -   1 )   *   d i l   / /   2 ,   d i l a t i o n = d i l 
+                                         ) 
+ 
+                                 f o r   d i l   i n   d i l a t i o n : 
+                                         i n p u t _ l e n g t h s   =   _ c o n v _ o u t _ l e n g t h ( i n p u t _ l e n g t h s ,   k e r n e l _ s i z e ,   1 ,   ( k e r n e l _ s i z e   -   1 )   / /   2 ,   d i l a t i o n = 1 ) 
+ 
+                 #   c o n v _ p o s t 
+                 i n p u t _ l e n g t h s   =   _ c o n v _ o u t _ l e n g t h ( i n p u t _ l e n g t h s ,   7 ,   1 ,   3 ) 
+ 
+                 r e t u r n   i n p u t _ l e n g t h s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . f o r w a r d   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 ,   s p k r _ i d - > s p e a k e r _ i d 
+         d e f   f o r w a r d ( 
+                 s e l f ,   i n p u t _ i d s :   t o r c h . L o n g T e n s o r ,   s p e a k e r _ i d :   t o r c h . T e n s o r ,   l a n g _ i d :   t o r c h . T e n s o r 
+         )   - >   t u p l e [ t o r c h . T e n s o r ] : 
+                 " " " 
+                 A r g s : 
+                         i n p u t _ i d s   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ) ` ) : 
+                                 I n d i c e s   o f   i n p u t   s e q u e n c e   t o k e n s   i n   t h e   v o c a b u l a r y . 
+ 
+                                 I n d i c e s   c a n   b e   o b t a i n e d   u s i n g   [ ` S e a m l e s s M 4 T v 2 T e x t T o U n i t F o r C o n d i t i o n a l G e n e r a t i o n ` ] .   [ W h a t   a r e   i n p u t 
+                                 I D s ? ] ( . . / g l o s s a r y # i n p u t - i d s ) 
+                         s p e a k e r _ i d   ( ` i n t ` ,   * o p t i o n a l * ) : 
+                                 T h e   i d   o f   t h e   s p e a k e r   u s e d   f o r   s p e e c h   s y n t h e s i s .   M u s t   b e   l o w e r   t h a n   ` c o n f i g . v o c o d e r _ n u m _ s p k r s ` . 
+                         t g t _ l a n g   ( ` s t r ` ,   * o p t i o n a l * ) : 
+                                 T h e   l a n g u a g e   i d   t o   u s e   a s   t a r g e t   l a n g u a g e   f o r   t r a n s l a t i o n . 
+                 " " " 
+                 h i d d e n _ s t a t e s   =   s e l f . u n i t _ e m b e d d i n g ( i n p u t _ i d s ) . t r a n s p o s e ( 1 ,   2 ) 
+                 s p k r   =   s e l f . s p e a k e r _ e m b e d d i n g ( s p e a k e r _ i d ) . t r a n s p o s e ( 1 ,   2 ) 
+                 l a n g   =   s e l f . l a n g u a g e _ e m b e d d i n g ( l a n g _ i d ) . t r a n s p o s e ( 1 ,   2 ) 
+ 
+                 l o g _ d u r _ p r e d   =   s e l f . d u r _ p r e d i c t o r ( h i d d e n _ s t a t e s . t r a n s p o s e ( 1 ,   2 ) ) 
+                 d u r _ o u t   =   t o r c h . c l a m p ( t o r c h . r o u n d ( t o r c h . e x p m 1 ( l o g _ d u r _ p r e d ) ) . l o n g ( ) ,   m i n = 1 ) 
+                 #   B   x   C   x   T 
+                 i f   h i d d e n _ s t a t e s . s i z e ( 0 )   = =   1 : 
+                         h i d d e n _ s t a t e s   =   t o r c h . r e p e a t _ i n t e r l e a v e ( h i d d e n _ s t a t e s ,   d u r _ o u t . v i e w ( - 1 ) ,   d i m = 2 ) 
+                 e l s e : 
+                         #   i f   b a t c h e d   s a m p l e ,   n e e d   t o   i n t e r l e a v e   p e r   s a m p l e ,   a n d   p a d   - >   l o s s   o f   p a r a l l e l i s m 
+                         i f   h i d d e n _ s t a t e s . s h a p e [ 0 ]   >   1   a n d   s e l f . t r a i n i n g : 
+                                 l o g g e r . w a r n i n g ( 
+                                         " " " ` s e l f . t r a i n i n g = T r u e `   a n d   y o u   u s e   b a t c h i n g .   Y o u   l o s e   p a r a l l e l i s m   d u r i n g   t h e   h i f i g a n 
+                                                               f o r w a r d   p a s s   b e c a u s e   t h e   s a m p l e s   a r e   i n t e r l e a v e d . " " " 
+                                 ) 
+                         h i d d e n _ s t a t e s   =   [ 
+                                 t o r c h . r e p e a t _ i n t e r l e a v e ( h i d d e n _ s t a t e ,   d u r a t i o n ,   d i m = - 1 ) . t r a n s p o s e ( 0 ,   1 ) 
+                                 f o r   ( h i d d e n _ s t a t e ,   d u r a t i o n )   i n   z i p ( h i d d e n _ s t a t e s ,   d u r _ o u t ) 
+                         ] 
+ 
+                         h i d d e n _ s t a t e s   =   n n . u t i l s . r n n . p a d _ s e q u e n c e ( h i d d e n _ s t a t e s ,   b a t c h _ f i r s t = T r u e ) . t r a n s p o s e ( 1 ,   2 ) 
+ 
+                 s p k r   =   s p k r . r e p e a t ( 1 ,   1 ,   h i d d e n _ s t a t e s . s h a p e [ - 1 ] ) 
+                 l a n g   =   l a n g . r e p e a t ( 1 ,   1 ,   h i d d e n _ s t a t e s . s h a p e [ - 1 ] ) 
+                 h i d d e n _ s t a t e s   =   t o r c h . c a t ( [ l a n g ,   h i d d e n _ s t a t e s ,   s p k r ] ,   d i m = 1 ) 
+ 
+                 h i d d e n _ s t a t e s   =   s e l f . h i f i _ g a n ( h i d d e n _ s t a t e s ) 
+ 
+                 u n i t _ l e n g t h s   =   s e l f . _ g e t _ d u r _ o u t p u t _ l e n g t h s ( i n p u t _ i d s ,   d u r _ o u t ) 
+                 l e n g t h s   =   s e l f . _ g e t _ o u t p u t _ h i f i g a n _ l e n g t h s ( u n i t _ l e n g t h s ) 
+ 
+                 r e t u r n   h i d d e n _ s t a t e s ,   l e n g t h s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . _ i n i t _ w e i g h t s 
+         d e f   _ i n i t _ w e i g h t s ( s e l f ,   m o d u l e :   n n . M o d u l e ) : 
+                 " " " I n i t i a l i z e   t h e   w e i g h t s . " " " 
+                 s t d   =   s e l f . c o n f i g . i n i t i a l i z e r _ r a n g e 
+                 i f   i s i n s t a n c e ( m o d u l e ,   ( n n . L i n e a r ,   n n . C o n v 1 d ,   n n . C o n v T r a n s p o s e 1 d ) ) : 
+                         m o d u l e . w e i g h t . d a t a . n o r m a l _ ( m e a n = 0 . 0 ,   s t d = s t d ) 
+                         i f   m o d u l e . b i a s   i s   n o t   N o n e : 
+                                 m o d u l e . b i a s . d a t a . z e r o _ ( ) 
+                 e l i f   i s i n s t a n c e ( m o d u l e ,   n n . E m b e d d i n g ) : 
+                         m o d u l e . w e i g h t . d a t a . n o r m a l _ ( m e a n = 0 . 0 ,   s t d = s t d ) 
+                         i f   m o d u l e . p a d d i n g _ i d x   i s   n o t   N o n e : 
+                                 m o d u l e . w e i g h t . d a t a [ m o d u l e . p a d d i n g _ i d x ] . z e r o _ ( ) 
+                 e l i f   i s i n s t a n c e ( m o d u l e ,   n n . L a y e r N o r m ) : 
+                         m o d u l e . w e i g h t . d a t a . f i l l _ ( 1 . 0 ) 
+                         m o d u l e . b i a s . d a t a . z e r o _ ( ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . a p p l y _ w e i g h t _ n o r m 
+         d e f   a p p l y _ w e i g h t _ n o r m ( s e l f ) : 
+                 w e i g h t _ n o r m   =   n n . u t i l s . w e i g h t _ n o r m 
+                 i f   h a s a t t r ( n n . u t i l s . p a r a m e t r i z a t i o n s ,   " w e i g h t _ n o r m " ) : 
+                         w e i g h t _ n o r m   =   n n . u t i l s . p a r a m e t r i z a t i o n s . w e i g h t _ n o r m 
+ 
+                 w e i g h t _ n o r m ( s e l f . h i f i _ g a n . c o n v _ p r e ) 
+                 f o r   l a y e r   i n   s e l f . h i f i _ g a n . u p s a m p l e r : 
+                         w e i g h t _ n o r m ( l a y e r ) 
+                 f o r   l a y e r   i n   s e l f . h i f i _ g a n . r e s b l o c k s : 
+                         l a y e r . a p p l y _ w e i g h t _ n o r m ( ) 
+                 w e i g h t _ n o r m ( s e l f . h i f i _ g a n . c o n v _ p o s t ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T C o d e H i f i G a n . r e m o v e _ w e i g h t _ n o r m 
+         d e f   r e m o v e _ w e i g h t _ n o r m ( s e l f ) : 
+                 n n . u t i l s . r e m o v e _ w e i g h t _ n o r m ( s e l f . h i f i _ g a n . c o n v _ p r e ) 
+                 f o r   l a y e r   i n   s e l f . h i f i _ g a n . u p s a m p l e r : 
+                         n n . u t i l s . r e m o v e _ w e i g h t _ n o r m ( l a y e r ) 
+                 f o r   l a y e r   i n   s e l f . h i f i _ g a n . r e s b l o c k s : 
+                         l a y e r . r e m o v e _ w e i g h t _ n o r m ( ) 
+                 n n . u t i l s . r e m o v e _ w e i g h t _ n o r m ( s e l f . h i f i _ g a n . c o n v _ p o s t ) 
+ 
+ 
+ # # # # # # # # # # # #   W H O L E   M O D E L   r e l a t e d   c o d e   # # # # # # # # # # # # # # # # 
+ 
+ 
+ @ a u t o _ d o c s t r i n g ( 
+         c u s t o m _ i n t r o = " " " 
+         T h e   t e x t - t o - t e x t   S e a m l e s s M 4 T v 2   M o d e l   t r a n s f o r m e r   w h i c h   c a n   b e   u s e d   f o r   T 2 T T . 
+         " " " 
+ ) 
+ #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o T e x t   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 , S e a m l e s s M 4 T v 2 T o k e n i z e r - > S e a m l e s s M 4 T T o k e n i z e r ,   S e a m l e s s M 4 T v 2 P r o c e s s o r - > S e a m l e s s M 4 T P r o c e s s o r ,   S E A M L E S S _ M 4 T - > S E A M L E S S _ M 4 T _ V 2 
+ c l a s s   S e a m l e s s M 4 T v 2 F o r T e x t T o T e x t ( S e a m l e s s M 4 T v 2 P r e T r a i n e d M o d e l ,   G e n e r a t i o n M i x i n ) : 
+         _ k e y s _ t o _ i g n o r e _ o n _ l o a d _ m i s s i n g   =   [ " s p e e c h _ e n c o d e r " ,   " t 2 u _ m o d e l " ,   " v o c o d e r " ] 
+         m a i n _ i n p u t _ n a m e   =   " i n p u t _ i d s " 
+ 
+         _ t i e d _ w e i g h t s _ k e y s   =   [ 
+                 " l m _ h e a d . w e i g h t " , 
+                 " t e x t _ e n c o d e r . e m b e d _ t o k e n s . w e i g h t " , 
+                 " t e x t _ d e c o d e r . e m b e d _ t o k e n s . w e i g h t " , 
+         ] 
+ 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c o n f i g :   S e a m l e s s M 4 T v 2 C o n f i g ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( c o n f i g ) 
+ 
+                 s e l f . s h a r e d   =   n n . E m b e d d i n g ( c o n f i g . v o c a b _ s i z e ,   c o n f i g . h i d d e n _ s i z e ,   c o n f i g . p a d _ t o k e n _ i d ) 
+ 
+                 s e l f . t e x t _ e n c o d e r   =   S e a m l e s s M 4 T v 2 E n c o d e r ( c o n f i g ,   s e l f . s h a r e d ) 
+                 s e l f . t e x t _ d e c o d e r   =   S e a m l e s s M 4 T v 2 D e c o d e r ( c o n f i g ,   s e l f . s h a r e d ) 
+                 s e l f . l m _ h e a d   =   n n . L i n e a r ( c o n f i g . h i d d e n _ s i z e ,   c o n f i g . v o c a b _ s i z e ,   b i a s = F a l s e ) 
+ 
+                 #   I n i t i a l i z e   w e i g h t s   a n d   a p p l y   f i n a l   p r o c e s s i n g 
+                 s e l f . p o s t _ i n i t ( ) 
+ 
+         d e f   g e t _ e n c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ e n c o d e r 
+ 
+         d e f   g e t _ d e c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r 
+ 
+         d e f   g e t _ i n p u t _ e m b e d d i n g s ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s 
+ 
+         d e f   s e t _ i n p u t _ e m b e d d i n g s ( s e l f ,   v a l u e ) : 
+                 s e l f . t e x t _ e n c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+                 s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+                 s e l f . s h a r e d   =   v a l u e 
+ 
+         d e f   _ t i e _ w e i g h t s ( s e l f ) : 
+                 i f   s e l f . c o n f i g . t i e _ w o r d _ e m b e d d i n g s : 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . t e x t _ e n c o d e r . e m b e d _ t o k e n s ,   s e l f . s h a r e d ) 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s ,   s e l f . s h a r e d ) 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . l m _ h e a d ,   s e l f . s h a r e d ) 
+ 
+         @ a u t o _ d o c s t r i n g ( c u s t o m _ a r g s = S E A M L E S S _ M 4 T _ V 2 _ C O M M O N _ C U S T O M _ A R G S ) 
+         d e f   f o r w a r d ( 
+                 s e l f , 
+                 i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 e n c o d e r _ o u t p u t s :   O p t i o n a l [ t u p l e [ t u p l e [ t o r c h . F l o a t T e n s o r ] ] ]   =   N o n e , 
+                 p a s t _ k e y _ v a l u e s :   O p t i o n a l [ C a c h e ]   =   N o n e , 
+                 i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 l a b e l s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 u s e _ c a c h e :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 o u t p u t _ a t t e n t i o n s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 o u t p u t _ h i d d e n _ s t a t e s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 r e t u r n _ d i c t :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 * * k w a r g s , 
+         )   - >   U n i o n [ S e q 2 S e q L M O u t p u t ,   t u p l e [ t o r c h . F l o a t T e n s o r ] ] : 
+                 r " " " 
+                 l a b e l s   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ) ` ,   * o p t i o n a l * ) : 
+                         L a b e l s   f o r   c o m p u t i n g   t h e   m a s k e d   l a n g u a g e   m o d e l i n g   l o s s .   I n d i c e s   s h o u l d   b e   i n   ` [ - 1 0 0 ,   0 ,   . . . , 
+                         c o n f i g . v o c a b _ s i z e ] `   ( s e e   ` i n p u t _ i d s `   d o c s t r i n g )   T o k e n s   w i t h   i n d i c e s   s e t   t o   ` - 1 0 0 `   a r e   i g n o r e d   ( m a s k e d ) ,   t h e 
+                         l o s s   i s   o n l y   c o m p u t e d   f o r   t h e   t o k e n s   w i t h   l a b e l s   i n   ` [ 0 ,   . . . ,   c o n f i g . v o c a b _ s i z e ] ` 
+                 " " " 
+                 i f   l a b e l s   i s   n o t   N o n e : 
+                         i f   u s e _ c a c h e : 
+                                 l o g g e r . w a r n i n g ( " T h e   ` u s e _ c a c h e `   a r g u m e n t   i s   c h a n g e d   t o   ` F a l s e `   s i n c e   ` l a b e l s `   i s   p r o v i d e d . " ) 
+                         u s e _ c a c h e   =   F a l s e 
+                         i f   d e c o d e r _ i n p u t _ i d s   i s   N o n e   a n d   d e c o d e r _ i n p u t s _ e m b e d s   i s   N o n e : 
+                                 d e c o d e r _ i n p u t _ i d s   =   s h i f t _ t o k e n s _ r i g h t ( 
+                                         l a b e l s ,   s e l f . c o n f i g . p a d _ t o k e n _ i d ,   s e l f . c o n f i g . d e c o d e r _ s t a r t _ t o k e n _ i d 
+                                 ) 
+ 
+                 o u t p u t _ a t t e n t i o n s   =   o u t p u t _ a t t e n t i o n s   i f   o u t p u t _ a t t e n t i o n s   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . o u t p u t _ a t t e n t i o n s 
+                 o u t p u t _ h i d d e n _ s t a t e s   =   ( 
+                         o u t p u t _ h i d d e n _ s t a t e s   i f   o u t p u t _ h i d d e n _ s t a t e s   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . o u t p u t _ h i d d e n _ s t a t e s 
+                 ) 
+                 u s e _ c a c h e   =   u s e _ c a c h e   i f   u s e _ c a c h e   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . u s e _ c a c h e 
+                 r e t u r n _ d i c t   =   r e t u r n _ d i c t   i f   r e t u r n _ d i c t   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . u s e _ r e t u r n _ d i c t 
+ 
+                 i f   e n c o d e r _ o u t p u t s   i s   N o n e : 
+                         e n c o d e r _ o u t p u t s   =   s e l f . t e x t _ e n c o d e r ( 
+                                 i n p u t _ i d s = i n p u t _ i d s , 
+                                 a t t e n t i o n _ m a s k = a t t e n t i o n _ m a s k , 
+                                 i n p u t s _ e m b e d s = i n p u t s _ e m b e d s , 
+                                 o u t p u t _ a t t e n t i o n s = o u t p u t _ a t t e n t i o n s , 
+                                 o u t p u t _ h i d d e n _ s t a t e s = o u t p u t _ h i d d e n _ s t a t e s , 
+                                 r e t u r n _ d i c t = r e t u r n _ d i c t , 
+                         ) 
+                 #   I f   t h e   u s e r   p a s s e d   a   t u p l e   f o r   e n c o d e r _ o u t p u t s ,   w e   w r a p   i t   i n   a   B a s e M o d e l O u t p u t   w h e n   r e t u r n _ d i c t = T r u e 
+                 e l i f   r e t u r n _ d i c t   a n d   n o t   i s i n s t a n c e ( e n c o d e r _ o u t p u t s ,   B a s e M o d e l O u t p u t ) : 
+                         e n c o d e r _ o u t p u t s   =   B a s e M o d e l O u t p u t ( 
+                                 l a s t _ h i d d e n _ s t a t e = e n c o d e r _ o u t p u t s [ 0 ] , 
+                                 h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s [ 1 ]   i f   l e n ( e n c o d e r _ o u t p u t s )   >   1   e l s e   N o n e , 
+                                 a t t e n t i o n s = e n c o d e r _ o u t p u t s [ 2 ]   i f   l e n ( e n c o d e r _ o u t p u t s )   >   2   e l s e   N o n e , 
+                         ) 
+ 
+                 e n c o d e r _ a t t e n t i o n _ m a s k   =   a t t e n t i o n _ m a s k 
+ 
+                 #   d e c o d e r   o u t p u t s   c o n s i s t s   o f   ( d e c _ f e a t u r e s ,   p a s t _ k e y _ v a l u e s ,   d e c _ h i d d e n ,   d e c _ a t t n ) 
+                 d e c o d e r _ o u t p u t s   =   s e l f . t e x t _ d e c o d e r ( 
+                         i n p u t _ i d s = d e c o d e r _ i n p u t _ i d s , 
+                         a t t e n t i o n _ m a s k = d e c o d e r _ a t t e n t i o n _ m a s k , 
+                         e n c o d e r _ h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s [ 0 ] , 
+                         e n c o d e r _ a t t e n t i o n _ m a s k = e n c o d e r _ a t t e n t i o n _ m a s k , 
+                         p a s t _ k e y _ v a l u e s = p a s t _ k e y _ v a l u e s , 
+                         i n p u t s _ e m b e d s = d e c o d e r _ i n p u t s _ e m b e d s , 
+                         u s e _ c a c h e = u s e _ c a c h e , 
+                         o u t p u t _ a t t e n t i o n s = o u t p u t _ a t t e n t i o n s , 
+                         o u t p u t _ h i d d e n _ s t a t e s = o u t p u t _ h i d d e n _ s t a t e s , 
+                         r e t u r n _ d i c t = r e t u r n _ d i c t , 
+                 ) 
+ 
+                 l m _ l o g i t s   =   s e l f . l m _ h e a d ( d e c o d e r _ o u t p u t s [ 0 ] ) 
+ 
+                 m a s k e d _ l m _ l o s s   =   N o n e 
+                 i f   l a b e l s   i s   n o t   N o n e : 
+                         l o s s _ f c t   =   C r o s s E n t r o p y L o s s ( ) 
+                         l a b e l s   =   l a b e l s . t o ( l m _ l o g i t s . d e v i c e ) 
+                         m a s k e d _ l m _ l o s s   =   l o s s _ f c t ( l m _ l o g i t s . v i e w ( - 1 ,   s e l f . c o n f i g . v o c a b _ s i z e ) ,   l a b e l s . v i e w ( - 1 ) ) 
+ 
+                 i f   n o t   r e t u r n _ d i c t : 
+                         o u t p u t s   =   d e c o d e r _ o u t p u t s   +   e n c o d e r _ o u t p u t s 
+                         o u t p u t   =   ( l m _ l o g i t s , )   +   o u t p u t s [ 1 : ] 
+                         r e t u r n   ( ( m a s k e d _ l m _ l o s s , )   +   o u t p u t )   i f   m a s k e d _ l m _ l o s s   i s   n o t   N o n e   e l s e   o u t p u t 
+ 
+                 r e t u r n   S e q 2 S e q L M O u t p u t ( 
+                         l o s s = m a s k e d _ l m _ l o s s , 
+                         l o g i t s = l m _ l o g i t s , 
+                         p a s t _ k e y _ v a l u e s = d e c o d e r _ o u t p u t s . p a s t _ k e y _ v a l u e s , 
+                         d e c o d e r _ h i d d e n _ s t a t e s = d e c o d e r _ o u t p u t s . h i d d e n _ s t a t e s , 
+                         d e c o d e r _ a t t e n t i o n s = d e c o d e r _ o u t p u t s . a t t e n t i o n s , 
+                         c r o s s _ a t t e n t i o n s = d e c o d e r _ o u t p u t s . c r o s s _ a t t e n t i o n s , 
+                         e n c o d e r _ l a s t _ h i d d e n _ s t a t e = e n c o d e r _ o u t p u t s . l a s t _ h i d d e n _ s t a t e , 
+                         e n c o d e r _ h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s . h i d d e n _ s t a t e s , 
+                         e n c o d e r _ a t t e n t i o n s = e n c o d e r _ o u t p u t s . a t t e n t i o n s , 
+                 ) 
+ 
+         d e f   g e n e r a t e ( 
+                 s e l f , 
+                 i n p u t _ i d s = N o n e , 
+                 t g t _ l a n g = N o n e , 
+                 g e n e r a t i o n _ c o n f i g = N o n e , 
+                 l o g i t s _ p r o c e s s o r = N o n e , 
+                 s t o p p i n g _ c r i t e r i a = N o n e , 
+                 p r e f i x _ a l l o w e d _ t o k e n s _ f n = N o n e , 
+                 s y n c e d _ g p u s = F a l s e , 
+                 * * k w a r g s , 
+         ) : 
+                 " " " 
+                 G e n e r a t e s   s e q u e n c e s   o f   t o k e n   i d s . 
+ 
+                 < T i p   w a r n i n g = { t r u e } > 
+ 
+                 M o s t   g e n e r a t i o n - c o n t r o l l i n g   p a r a m e t e r s   a r e   s e t   i n   ` g e n e r a t i o n _ c o n f i g `   w h i c h ,   i f   n o t   p a s s e d ,   w i l l   b e   s e t   t o   t h e 
+                 m o d e l ' s   d e f a u l t   g e n e r a t i o n   c o n f i g u r a t i o n .   Y o u   c a n   o v e r r i d e   a n y   ` g e n e r a t i o n _ c o n f i g `   b y   p a s s i n g   t h e   c o r r e s p o n d i n g 
+                 p a r a m e t e r s   t o   g e n e r a t e ( ) ,   e . g .   ` . g e n e r a t e ( i n p u t s ,   n u m _ b e a m s = 4 ,   d o _ s a m p l e = T r u e ) ` . 
+ 
+                 F o r   a n   o v e r v i e w   o f   g e n e r a t i o n   s t r a t e g i e s   a n d   c o d e   e x a m p l e s ,   c h e c k   o u t   t h e   [ f o l l o w i n g 
+                 g u i d e ] ( . / g e n e r a t i o n _ s t r a t e g i e s ) . 
+ 
+                 < / T i p > 
+ 
+                 P a r a m e t e r s : 
+                         i n p u t _ i d s   ( ` t o r c h . T e n s o r `   o f   v a r y i n g   s h a p e   d e p e n d i n g   o n   t h e   m o d a l i t y ,   * o p t i o n a l * ) : 
+                                 I n d i c e s   o f   i n p u t   s e q u e n c e   t o k e n s   i n   t h e   v o c a b u l a r y . 
+ 
+                                 I n d i c e s   c a n   b e   o b t a i n e d   u s i n g   [ ` S e a m l e s s M 4 T T o k e n i z e r ` ]   o r   [ ` S e a m l e s s M 4 T P r o c e s s o r ` ] .   S e e 
+                                 [ ` P r e T r a i n e d T o k e n i z e r . e n c o d e ` ]   a n d   [ ` P r e T r a i n e d T o k e n i z e r . _ _ c a l l _ _ ` ]   f o r   d e t a i l s . 
+ 
+                                 [ W h a t   a r e   i n p u t   I D s ? ] ( . . / g l o s s a r y # i n p u t - i d s ) 
+                         t g t _ l a n g   ( ` s t r ` ,   * o p t i o n a l * ) : 
+                                 T h e   l a n g u a g e   t o   u s e   a s   t a r g e t   l a n g u a g e   f o r   t r a n s l a t i o n . 
+                         g e n e r a t i o n _ c o n f i g   ( ` ~ g e n e r a t i o n . G e n e r a t i o n C o n f i g ` ,   * o p t i o n a l * ) : 
+                                 T h e   g e n e r a t i o n   c o n f i g u r a t i o n   t o   b e   u s e d   a s   b a s e   p a r a m e t r i z a t i o n   f o r   t h e   g e n e r a t i o n   c a l l .   ` * * k w a r g s ` 
+                                 p a s s e d   t o   g e n e r a t e   m a t c h i n g   t h e   a t t r i b u t e s   o f   ` g e n e r a t i o n _ c o n f i g `   w i l l   o v e r r i d e   t h e m .   I f 
+                                 ` g e n e r a t i o n _ c o n f i g `   i s   n o t   p r o v i d e d ,   t h e   d e f a u l t   w i l l   b e   u s e d ,   w h i c h   h a d   t h e   f o l l o w i n g   l o a d i n g 
+                                 p r i o r i t y :   1 )   f r o m   t h e   ` g e n e r a t i o n _ c o n f i g . j s o n `   m o d e l   f i l e ,   i f   i t   e x i s t s ;   2 )   f r o m   t h e   m o d e l 
+                                 c o n f i g u r a t i o n .   P l e a s e   n o t e   t h a t   u n s p e c i f i e d   p a r a m e t e r s   w i l l   i n h e r i t   [ ` ~ g e n e r a t i o n . G e n e r a t i o n C o n f i g ` ] ' s 
+                                 d e f a u l t   v a l u e s ,   w h o s e   d o c u m e n t a t i o n   s h o u l d   b e   c h e c k e d   t o   p a r a m e t e r i z e   g e n e r a t i o n . 
+                         l o g i t s _ p r o c e s s o r   ( ` L o g i t s P r o c e s s o r L i s t ` ,   * o p t i o n a l * ) : 
+                                 C u s t o m   l o g i t s   p r o c e s s o r s   t h a t   c o m p l e m e n t   t h e   d e f a u l t   l o g i t s   p r o c e s s o r s   b u i l t   f r o m   a r g u m e n t s   a n d 
+                                 g e n e r a t i o n   c o n f i g .   I f   a   l o g i t   p r o c e s s o r   i s   p a s s e d   t h a t   i s   a l r e a d y   c r e a t e d   w i t h   t h e   a r g u m e n t s   o r   a 
+                                 g e n e r a t i o n   c o n f i g   a n   e r r o r   i s   t h r o w n .   T h i s   f e a t u r e   i s   i n t e n d e d   f o r   a d v a n c e d   u s e r s . 
+                         s t o p p i n g _ c r i t e r i a   ( ` S t o p p i n g C r i t e r i a L i s t ` ,   * o p t i o n a l * ) : 
+                                 C u s t o m   s t o p p i n g   c r i t e r i a   t h a t   c o m p l e m e n t   t h e   d e f a u l t   s t o p p i n g   c r i t e r i a   b u i l t   f r o m   a r g u m e n t s   a n d   a 
+                                 g e n e r a t i o n   c o n f i g .   I f   a   s t o p p i n g   c r i t e r i a   i s   p a s s e d   t h a t   i s   a l r e a d y   c r e a t e d   w i t h   t h e   a r g u m e n t s   o r   a 
+                                 g e n e r a t i o n   c o n f i g   a n   e r r o r   i s   t h r o w n .   T h i s   f e a t u r e   i s   i n t e n d e d   f o r   a d v a n c e d   u s e r s . 
+                         p r e f i x _ a l l o w e d _ t o k e n s _ f n   ( ` C a l l a b l e [ [ i n t ,   t o r c h . T e n s o r ] ,   l i s t [ i n t ] ] ` ,   * o p t i o n a l * ) : 
+                                 I f   p r o v i d e d ,   t h i s   f u n c t i o n   c o n s t r a i n t s   t h e   b e a m   s e a r c h   t o   a l l o w e d   t o k e n s   o n l y   a t   e a c h   s t e p .   I f   n o t 
+                                 p r o v i d e d   n o   c o n s t r a i n t   i s   a p p l i e d .   T h i s   f u n c t i o n   t a k e s   2   a r g u m e n t s :   t h e   b a t c h   I D   ` b a t c h _ i d `   a n d 
+                                 ` i n p u t _ i d s ` .   I t   h a s   t o   r e t u r n   a   l i s t   w i t h   t h e   a l l o w e d   t o k e n s   f o r   t h e   n e x t   g e n e r a t i o n   s t e p   c o n d i t i o n e d 
+                                 o n   t h e   b a t c h   I D   ` b a t c h _ i d `   a n d   t h e   p r e v i o u s l y   g e n e r a t e d   t o k e n s   ` i n p u t s _ i d s ` .   T h i s   a r g u m e n t   i s   u s e f u l 
+                                 f o r   c o n s t r a i n e d   g e n e r a t i o n   c o n d i t i o n e d   o n   t h e   p r e f i x ,   a s   d e s c r i b e d   i n   [ A u t o r e g r e s s i v e   E n t i t y 
+                                 R e t r i e v a l ] ( h t t p s : / / h u g g i n g f a c e . c o / p a p e r s / 2 0 1 0 . 0 0 9 0 4 ) . 
+                         s y n c e d _ g p u s   ( ` b o o l ` ,   * o p t i o n a l * ,   d e f a u l t s   t o   ` F a l s e ` ) : 
+                                 W h e t h e r   t o   c o n t i n u e   r u n n i n g   t h e   w h i l e   l o o p   u n t i l   m a x _ l e n g t h   ( n e e d e d   t o   a v o i d   d e a d l o c k i n g   w i t h 
+                                 ` F u l l y S h a r d e d D a t a P a r a l l e l `   a n d   D e e p S p e e d   Z e R O   S t a g e   3 ) . 
+                         k w a r g s   ( ` d i c t [ s t r ,   A n y ] ` ,   * o p t i o n a l * ) : 
+                                 A d   h o c   p a r a m e t r i z a t i o n   o f   ` g e n e r a t e _ c o n f i g `   a n d / o r   a d d i t i o n a l   m o d e l - s p e c i f i c   k w a r g s   t h a t   w i l l   b e 
+                                 f o r w a r d e d   t o   t h e   ` f o r w a r d `   f u n c t i o n   o f   t h e   m o d e l . 
+ 
+                 R e t u r n : 
+                         [ ` ~ u t i l s . M o d e l O u t p u t ` ]   o r   ` t o r c h . L o n g T e n s o r ` :   A   [ ` ~ u t i l s . M o d e l O u t p u t ` ]   ( i f   ` r e t u r n _ d i c t _ i n _ g e n e r a t e = T r u e ` 
+                         o r   w h e n   ` c o n f i g . r e t u r n _ d i c t _ i n _ g e n e r a t e = T r u e ` )   o r   a   ` t o r c h . F l o a t T e n s o r ` .   T h e   p o s s i b l e 
+                         [ ` ~ u t i l s . M o d e l O u t p u t ` ]   t y p e s   a r e : 
+                                 -   [ ` ~ g e n e r a t i o n . G e n e r a t e E n c o d e r D e c o d e r O u t p u t ` ] , 
+                                 -   [ ` ~ g e n e r a t i o n . G e n e r a t e B e a m E n c o d e r D e c o d e r O u t p u t ` ] 
+                 " " " 
+                 #   p r e p a r e   t e x t _ d e c o d e r _ i n p u t _ i d s 
+                 t e x t _ d e c o d e r _ i n p u t _ i d s   =   k w a r g s . p o p ( " d e c o d e r _ i n p u t _ i d s " ,   N o n e ) 
+                 #   o v e r w r i t e   t e x t _ d e c o d e r _ i n p u t _ i d s   i f   t g t _ l a n g   i s   p a s s e d .   T h e   l a t t e r   g e t s   p r i o r i t y   o v e r   d e c o d e r _ i n p u t _ i d s . 
+                 i f   t g t _ l a n g   i s   n o t   N o n e : 
+                         b a t c h _ s i z e   =   l e n ( i n p u t _ i d s )   i f   i n p u t _ i d s   i s   n o t   N o n e   e l s e   l e n ( k w a r g s . g e t ( " i n p u t s _ e m b e d s " ) ) 
+ 
+                         i f   h a s a t t r ( s e l f . g e n e r a t i o n _ c o n f i g ,   " t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d " ) : 
+                                 #   a l s o   a c c e p t   _ _ x x x _ _ 
+                                 t g t _ l a n g   =   t g t _ l a n g . r e p l a c e ( " _ _ " ,   " " ) 
+                                 i f   t g t _ l a n g   n o t   i n   s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d : 
+                                         r a i s e   V a l u e E r r o r ( 
+                                                 f " " " ` t g t _ l a n g = { t g t _ l a n g } `   i s   n o t   s u p p o r t e d   b y   t h i s   m o d e l .   P l e a s e   s p e c i f y   a   ` t g t _ l a n g `   i n 
+                                                 { " ,   " . j o i n ( s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d . k e y s ( ) ) } " " " 
+                                         ) 
+                                 #   t g t _ l a n g   g e t s   p r i o r i t y   o v e r   d e c o d e r   i n p u t   i d s 
+                                 t e x t _ t g t _ l a n g _ i d   =   s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d . g e t ( t g t _ l a n g ) 
+                                 t e x t _ d e c o d e r _ i n p u t _ i d s   =   t o r c h . t e n s o r ( [ [ t e x t _ t g t _ l a n g _ i d ] ]   *   b a t c h _ s i z e ,   d e v i c e = s e l f . d e v i c e ) 
+                         e l s e : 
+                                 r a i s e   V a l u e E r r o r ( 
+                                         " " " T h i s   m o d e l   g e n e r a t i o n   c o n f i g   d o e s n ' t   h a v e   a   ` t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d `   k e y   w h i c h   m a p s 
+                                         t h e   t a r g e t   l a n g u a g e   t o   t h e   r i g h t   t o k e n   i d .   M a k e   s u r e   t o   l o a d   t h e   r i g h t   g e n e r a t i o n   c o n f i g . " " " 
+                                 ) 
+                 e l s e : 
+                         #   o n l y   a   w a r n i n g ,   o t h e r w i s e   e r r o r s   a p p e a r   i n   t h e   t e s t s 
+                         l o g g e r . w a r n i n g ( 
+                                 " " " Y o u   m u s t   e i t h e r   s p e c i f y   a   ` t g t _ l a n g `   o r   p a s s   a   c o r r e c t   ` t e x t _ d e c o d e r _ i n p u t _ i d s `   t o   g e t 
+                                 a   c o r r e c t   g e n e r a t i o n ,   o t h e r w i s e   t h e   g e n e r a t i o n   w i l l   p r o b a b l y   m a k e   n o   s e n s e . " " " 
+                         ) 
+ 
+                 r e t u r n   s u p e r ( ) . g e n e r a t e ( 
+                         i n p u t _ i d s , 
+                         g e n e r a t i o n _ c o n f i g , 
+                         l o g i t s _ p r o c e s s o r , 
+                         s t o p p i n g _ c r i t e r i a , 
+                         p r e f i x _ a l l o w e d _ t o k e n s _ f n , 
+                         s y n c e d _ g p u s , 
+                         d e c o d e r _ i n p u t _ i d s = t e x t _ d e c o d e r _ i n p u t _ i d s , 
+                         * * k w a r g s , 
+                 ) 
+ 
+ 
+ @ a u t o _ d o c s t r i n g ( 
+         c u s t o m _ i n t r o = " " " 
+         T h e   s p e e c h - t o - t e x t   S e a m l e s s M 4 T v 2   M o d e l   t r a n s f o r m e r   w h i c h   c a n   b e   u s e d   f o r   S 2 T T . 
+         " " " 
+ ) 
+ c l a s s   S e a m l e s s M 4 T v 2 F o r S p e e c h T o T e x t ( S e a m l e s s M 4 T v 2 P r e T r a i n e d M o d e l ,   G e n e r a t i o n M i x i n ) : 
+         _ k e y s _ t o _ i g n o r e _ o n _ l o a d _ m i s s i n g   =   [ " t e x t _ e n c o d e r " ,   " t 2 u _ m o d e l " ,   " v o c o d e r " ] 
+         m a i n _ i n p u t _ n a m e   =   " i n p u t _ f e a t u r e s " 
+ 
+         _ t i e d _ w e i g h t s _ k e y s   =   [ 
+                 " l m _ h e a d . w e i g h t " , 
+                 " t e x t _ d e c o d e r . e m b e d _ t o k e n s . w e i g h t " , 
+         ] 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . _ _ i n i t _ _   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c o n f i g :   S e a m l e s s M 4 T v 2 C o n f i g ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( c o n f i g ) 
+ 
+                 s e l f . s h a r e d   =   n n . E m b e d d i n g ( c o n f i g . v o c a b _ s i z e ,   c o n f i g . h i d d e n _ s i z e ,   c o n f i g . p a d _ t o k e n _ i d ) 
+                 s e l f . s p e e c h _ e n c o d e r   =   S e a m l e s s M 4 T v 2 S p e e c h E n c o d e r ( c o n f i g ) 
+                 s e l f . t e x t _ d e c o d e r   =   S e a m l e s s M 4 T v 2 D e c o d e r ( c o n f i g ,   s e l f . s h a r e d ) 
+                 s e l f . l m _ h e a d   =   n n . L i n e a r ( c o n f i g . h i d d e n _ s i z e ,   c o n f i g . v o c a b _ s i z e ,   b i a s = F a l s e ) 
+ 
+                 #   I n i t i a l i z e   w e i g h t s   a n d   a p p l y   f i n a l   p r o c e s s i n g 
+                 s e l f . p o s t _ i n i t ( ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . g e t _ e n c o d e r 
+         d e f   g e t _ e n c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . s p e e c h _ e n c o d e r 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . g e t _ d e c o d e r 
+         d e f   g e t _ d e c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . g e t _ i n p u t _ e m b e d d i n g s 
+         d e f   g e t _ i n p u t _ e m b e d d i n g s ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . s e t _ i n p u t _ e m b e d d i n g s 
+         d e f   s e t _ i n p u t _ e m b e d d i n g s ( s e l f ,   v a l u e ) : 
+                 s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . _ t i e _ w e i g h t s 
+         d e f   _ t i e _ w e i g h t s ( s e l f ) : 
+                 i f   s e l f . c o n f i g . t i e _ w o r d _ e m b e d d i n g s : 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s ,   s e l f . s h a r e d ) 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . l m _ h e a d ,   s e l f . s h a r e d ) 
+ 
+         @ a u t o _ d o c s t r i n g ( c u s t o m _ a r g s = S E A M L E S S _ M 4 T _ V 2 _ C O M M O N _ C U S T O M _ A R G S ) 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . f o r w a r d 
+         d e f   f o r w a r d ( 
+                 s e l f , 
+                 i n p u t _ f e a t u r e s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 e n c o d e r _ o u t p u t s :   O p t i o n a l [ t u p l e [ t u p l e [ t o r c h . F l o a t T e n s o r ] ] ]   =   N o n e , 
+                 p a s t _ k e y _ v a l u e s :   O p t i o n a l [ C a c h e ]   =   N o n e , 
+                 i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 l a b e l s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 u s e _ c a c h e :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 o u t p u t _ a t t e n t i o n s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 o u t p u t _ h i d d e n _ s t a t e s :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 r e t u r n _ d i c t :   O p t i o n a l [ b o o l ]   =   N o n e , 
+                 * * k w a r g s , 
+         )   - >   U n i o n [ S e q 2 S e q L M O u t p u t ,   t u p l e [ t o r c h . F l o a t T e n s o r ] ] : 
+                 r " " " 
+                 l a b e l s   ( ` t o r c h . L o n g T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ) ` ,   * o p t i o n a l * ) : 
+                         L a b e l s   f o r   c o m p u t i n g   t h e   m a s k e d   l a n g u a g e   m o d e l i n g   l o s s .   I n d i c e s   s h o u l d   b e   i n   ` [ - 1 0 0 ,   0 ,   . . . , 
+                         c o n f i g . v o c a b _ s i z e ] `   ( s e e   ` i n p u t _ i d s `   d o c s t r i n g )   T o k e n s   w i t h   i n d i c e s   s e t   t o   ` - 1 0 0 `   a r e   i g n o r e d   ( m a s k e d ) ,   t h e 
+                         l o s s   i s   o n l y   c o m p u t e d   f o r   t h e   t o k e n s   w i t h   l a b e l s   i n   ` [ 0 ,   . . . ,   c o n f i g . v o c a b _ s i z e ] ` 
+                 " " " 
+                 i f   l a b e l s   i s   n o t   N o n e : 
+                         i f   u s e _ c a c h e : 
+                                 l o g g e r . w a r n i n g ( " T h e   ` u s e _ c a c h e `   a r g u m e n t   i s   c h a n g e d   t o   ` F a l s e `   s i n c e   ` l a b e l s `   i s   p r o v i d e d . " ) 
+                         u s e _ c a c h e   =   F a l s e 
+                         i f   d e c o d e r _ i n p u t _ i d s   i s   N o n e   a n d   d e c o d e r _ i n p u t s _ e m b e d s   i s   N o n e : 
+                                 d e c o d e r _ i n p u t _ i d s   =   s h i f t _ t o k e n s _ r i g h t ( 
+                                         l a b e l s ,   s e l f . c o n f i g . p a d _ t o k e n _ i d ,   s e l f . c o n f i g . d e c o d e r _ s t a r t _ t o k e n _ i d 
+                                 ) 
+ 
+                 o u t p u t _ a t t e n t i o n s   =   o u t p u t _ a t t e n t i o n s   i f   o u t p u t _ a t t e n t i o n s   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . o u t p u t _ a t t e n t i o n s 
+                 o u t p u t _ h i d d e n _ s t a t e s   =   ( 
+                         o u t p u t _ h i d d e n _ s t a t e s   i f   o u t p u t _ h i d d e n _ s t a t e s   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . o u t p u t _ h i d d e n _ s t a t e s 
+                 ) 
+                 u s e _ c a c h e   =   u s e _ c a c h e   i f   u s e _ c a c h e   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . u s e _ c a c h e 
+                 r e t u r n _ d i c t   =   r e t u r n _ d i c t   i f   r e t u r n _ d i c t   i s   n o t   N o n e   e l s e   s e l f . c o n f i g . u s e _ r e t u r n _ d i c t 
+ 
+                 i f   e n c o d e r _ o u t p u t s   i s   N o n e : 
+                         e n c o d e r _ o u t p u t s   =   s e l f . s p e e c h _ e n c o d e r ( 
+                                 i n p u t _ f e a t u r e s = i n p u t _ f e a t u r e s , 
+                                 a t t e n t i o n _ m a s k = a t t e n t i o n _ m a s k , 
+                                 i n p u t s _ e m b e d s = i n p u t s _ e m b e d s , 
+                                 o u t p u t _ a t t e n t i o n s = o u t p u t _ a t t e n t i o n s , 
+                                 o u t p u t _ h i d d e n _ s t a t e s = o u t p u t _ h i d d e n _ s t a t e s , 
+                                 r e t u r n _ d i c t = r e t u r n _ d i c t , 
+                         ) 
+                 #   I f   t h e   u s e r   p a s s e d   a   t u p l e   f o r   e n c o d e r _ o u t p u t s ,   w e   w r a p   i t   i n   a   B a s e M o d e l O u t p u t   w h e n   r e t u r n _ d i c t = T r u e 
+                 e l i f   r e t u r n _ d i c t   a n d   n o t   i s i n s t a n c e ( e n c o d e r _ o u t p u t s ,   B a s e M o d e l O u t p u t ) : 
+                         e n c o d e r _ o u t p u t s   =   B a s e M o d e l O u t p u t ( 
+                                 l a s t _ h i d d e n _ s t a t e = e n c o d e r _ o u t p u t s [ 0 ] , 
+                                 h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s [ 1 ]   i f   l e n ( e n c o d e r _ o u t p u t s )   >   1   e l s e   N o n e , 
+                                 a t t e n t i o n s = e n c o d e r _ o u t p u t s [ 2 ]   i f   l e n ( e n c o d e r _ o u t p u t s )   >   2   e l s e   N o n e , 
+                         ) 
+ 
+                 e n c o d e r _ a t t e n t i o n _ m a s k   =   a t t e n t i o n _ m a s k 
+                 i f   a t t e n t i o n _ m a s k   i s   n o t   N o n e : 
+                         s u b _ s a m p l e d _ l e n g t h s   =   s e l f . _ c o m p u t e _ s u b _ s a m p l e _ l e n g t h s _ f r o m _ a t t e n t i o n _ m a s k ( a t t e n t i o n _ m a s k ) . t o ( 
+                                 e n c o d e r _ o u t p u t s [ 0 ] . d e v i c e 
+                         ) 
+                         e n c o d e r _ a t t e n t i o n _ m a s k   =   _ c o m p u t e _ n e w _ a t t e n t i o n _ m a s k ( 
+                                 h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s [ 0 ] ,   s e q _ l e n s = s u b _ s a m p l e d _ l e n g t h s 
+                         ) 
+ 
+                 #   d e c o d e r   o u t p u t s   c o n s i s t s   o f   ( d e c _ f e a t u r e s ,   p a s t _ k e y _ v a l u e s ,   d e c _ h i d d e n ,   d e c _ a t t n ) 
+                 d e c o d e r _ o u t p u t s   =   s e l f . t e x t _ d e c o d e r ( 
+                         i n p u t _ i d s = d e c o d e r _ i n p u t _ i d s , 
+                         a t t e n t i o n _ m a s k = d e c o d e r _ a t t e n t i o n _ m a s k , 
+                         e n c o d e r _ h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s [ 0 ] , 
+                         e n c o d e r _ a t t e n t i o n _ m a s k = e n c o d e r _ a t t e n t i o n _ m a s k , 
+                         p a s t _ k e y _ v a l u e s = p a s t _ k e y _ v a l u e s , 
+                         i n p u t s _ e m b e d s = d e c o d e r _ i n p u t s _ e m b e d s , 
+                         u s e _ c a c h e = u s e _ c a c h e , 
+                         o u t p u t _ a t t e n t i o n s = o u t p u t _ a t t e n t i o n s , 
+                         o u t p u t _ h i d d e n _ s t a t e s = o u t p u t _ h i d d e n _ s t a t e s , 
+                         r e t u r n _ d i c t = r e t u r n _ d i c t , 
+                 ) 
+ 
+                 l m _ l o g i t s   =   s e l f . l m _ h e a d ( d e c o d e r _ o u t p u t s [ 0 ] ) 
+ 
+                 m a s k e d _ l m _ l o s s   =   N o n e 
+                 i f   l a b e l s   i s   n o t   N o n e : 
+                         l o s s _ f c t   =   C r o s s E n t r o p y L o s s ( ) 
+                         l a b e l s   =   l a b e l s . t o ( l m _ l o g i t s . d e v i c e ) 
+                         m a s k e d _ l m _ l o s s   =   l o s s _ f c t ( l m _ l o g i t s . v i e w ( - 1 ,   s e l f . c o n f i g . v o c a b _ s i z e ) ,   l a b e l s . v i e w ( - 1 ) ) 
+ 
+                 i f   n o t   r e t u r n _ d i c t : 
+                         o u t p u t s   =   d e c o d e r _ o u t p u t s   +   e n c o d e r _ o u t p u t s 
+                         o u t p u t   =   ( l m _ l o g i t s , )   +   o u t p u t s [ 1 : ] 
+                         r e t u r n   ( ( m a s k e d _ l m _ l o s s , )   +   o u t p u t )   i f   m a s k e d _ l m _ l o s s   i s   n o t   N o n e   e l s e   o u t p u t 
+ 
+                 r e t u r n   S e q 2 S e q L M O u t p u t ( 
+                         l o s s = m a s k e d _ l m _ l o s s , 
+                         l o g i t s = l m _ l o g i t s , 
+                         p a s t _ k e y _ v a l u e s = d e c o d e r _ o u t p u t s . p a s t _ k e y _ v a l u e s , 
+                         d e c o d e r _ h i d d e n _ s t a t e s = d e c o d e r _ o u t p u t s . h i d d e n _ s t a t e s , 
+                         d e c o d e r _ a t t e n t i o n s = d e c o d e r _ o u t p u t s . a t t e n t i o n s , 
+                         c r o s s _ a t t e n t i o n s = d e c o d e r _ o u t p u t s . c r o s s _ a t t e n t i o n s , 
+                         e n c o d e r _ l a s t _ h i d d e n _ s t a t e = e n c o d e r _ o u t p u t s . l a s t _ h i d d e n _ s t a t e , 
+                         e n c o d e r _ h i d d e n _ s t a t e s = e n c o d e r _ o u t p u t s . h i d d e n _ s t a t e s , 
+                         e n c o d e r _ a t t e n t i o n s = e n c o d e r _ o u t p u t s . a t t e n t i o n s , 
+                 ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r S p e e c h T o T e x t . g e n e r a t e 
+         d e f   g e n e r a t e ( 
+                 s e l f , 
+                 i n p u t _ f e a t u r e s = N o n e , 
+                 t g t _ l a n g = N o n e , 
+                 g e n e r a t i o n _ c o n f i g = N o n e , 
+                 l o g i t s _ p r o c e s s o r = N o n e , 
+                 s t o p p i n g _ c r i t e r i a = N o n e , 
+                 p r e f i x _ a l l o w e d _ t o k e n s _ f n = N o n e , 
+                 s y n c e d _ g p u s = F a l s e , 
+                 * * k w a r g s , 
+         ) : 
+                 " " " 
+                 G e n e r a t e s   s e q u e n c e s   o f   t o k e n   i d s . 
+ 
+                 < T i p   w a r n i n g = { t r u e } > 
+ 
+                 M o s t   g e n e r a t i o n - c o n t r o l l i n g   p a r a m e t e r s   a r e   s e t   i n   ` g e n e r a t i o n _ c o n f i g `   w h i c h ,   i f   n o t   p a s s e d ,   w i l l   b e   s e t   t o   t h e 
+                 m o d e l ' s   d e f a u l t   g e n e r a t i o n   c o n f i g u r a t i o n .   Y o u   c a n   o v e r r i d e   a n y   ` g e n e r a t i o n _ c o n f i g `   b y   p a s s i n g   t h e   c o r r e s p o n d i n g 
+                 p a r a m e t e r s   t o   g e n e r a t e ( ) ,   e . g .   ` . g e n e r a t e ( i n p u t s ,   n u m _ b e a m s = 4 ,   d o _ s a m p l e = T r u e ) ` . 
+ 
+                 F o r   a n   o v e r v i e w   o f   g e n e r a t i o n   s t r a t e g i e s   a n d   c o d e   e x a m p l e s ,   c h e c k   o u t   t h e   [ f o l l o w i n g 
+                 g u i d e ] ( . / g e n e r a t i o n _ s t r a t e g i e s ) . 
+ 
+                 < / T i p > 
+ 
+                 P a r a m e t e r s : 
+                         i n p u t _ f e a t u r e s   ( ` t o r c h . F l o a t T e n s o r `   o f   s h a p e   ` ( b a t c h _ s i z e ,   s e q u e n c e _ l e n g t h ,   n u m _ b a n k s ) ` ) : 
+                                 I n p u t   a u d i o   f e a t u r e s .   T h i s   s h o u l d   b e   r e t u r n e d   b y   t h e   [ ` S e a m l e s s M 4 T F e a t u r e E x t r a c t o r ` ]   c l a s s   o r   t h e 
+                                 [ ` S e a m l e s s M 4 T P r o c e s s o r ` ]   c l a s s .   S e e   [ ` S e a m l e s s M 4 T F e a t u r e E x t r a c t o r . _ _ c a l l _ _ ` ]   f o r   d e t a i l s . 
+ 
+                         t g t _ l a n g   ( ` s t r ` ,   * o p t i o n a l * ) : 
+                                 T h e   l a n g u a g e   t o   u s e   a s   t a r g e t   l a n g u a g e   f o r   t r a n s l a t i o n . 
+                         g e n e r a t i o n _ c o n f i g   ( ` ~ g e n e r a t i o n . G e n e r a t i o n C o n f i g ` ,   * o p t i o n a l * ) : 
+                                 T h e   g e n e r a t i o n   c o n f i g u r a t i o n   t o   b e   u s e d   a s   b a s e   p a r a m e t r i z a t i o n   f o r   t h e   g e n e r a t i o n   c a l l .   ` * * k w a r g s ` 
+                                 p a s s e d   t o   g e n e r a t e   m a t c h i n g   t h e   a t t r i b u t e s   o f   ` g e n e r a t i o n _ c o n f i g `   w i l l   o v e r r i d e   t h e m .   I f 
+                                 ` g e n e r a t i o n _ c o n f i g `   i s   n o t   p r o v i d e d ,   t h e   d e f a u l t   w i l l   b e   u s e d ,   w h i c h   h a d   t h e   f o l l o w i n g   l o a d i n g 
+                                 p r i o r i t y :   1 )   f r o m   t h e   ` g e n e r a t i o n _ c o n f i g . j s o n `   m o d e l   f i l e ,   i f   i t   e x i s t s ;   2 )   f r o m   t h e   m o d e l 
+                                 c o n f i g u r a t i o n .   P l e a s e   n o t e   t h a t   u n s p e c i f i e d   p a r a m e t e r s   w i l l   i n h e r i t   [ ` ~ g e n e r a t i o n . G e n e r a t i o n C o n f i g ` ] ' s 
+                                 d e f a u l t   v a l u e s ,   w h o s e   d o c u m e n t a t i o n   s h o u l d   b e   c h e c k e d   t o   p a r a m e t e r i z e   g e n e r a t i o n . 
+                         l o g i t s _ p r o c e s s o r   ( ` L o g i t s P r o c e s s o r L i s t ` ,   * o p t i o n a l * ) : 
+                                 C u s t o m   l o g i t s   p r o c e s s o r s   t h a t   c o m p l e m e n t   t h e   d e f a u l t   l o g i t s   p r o c e s s o r s   b u i l t   f r o m   a r g u m e n t s   a n d 
+                                 g e n e r a t i o n   c o n f i g .   I f   a   l o g i t   p r o c e s s o r   i s   p a s s e d   t h a t   i s   a l r e a d y   c r e a t e d   w i t h   t h e   a r g u m e n t s   o r   a 
+                                 g e n e r a t i o n   c o n f i g   a n   e r r o r   i s   t h r o w n .   T h i s   f e a t u r e   i s   i n t e n d e d   f o r   a d v a n c e d   u s e r s . 
+                         s t o p p i n g _ c r i t e r i a   ( ` S t o p p i n g C r i t e r i a L i s t ` ,   * o p t i o n a l * ) : 
+                                 C u s t o m   s t o p p i n g   c r i t e r i a   t h a t   c o m p l e m e n t   t h e   d e f a u l t   s t o p p i n g   c r i t e r i a   b u i l t   f r o m   a r g u m e n t s   a n d   a 
+                                 g e n e r a t i o n   c o n f i g .   I f   a   s t o p p i n g   c r i t e r i a   i s   p a s s e d   t h a t   i s   a l r e a d y   c r e a t e d   w i t h   t h e   a r g u m e n t s   o r   a 
+                                 g e n e r a t i o n   c o n f i g   a n   e r r o r   i s   t h r o w n .   T h i s   f e a t u r e   i s   i n t e n d e d   f o r   a d v a n c e d   u s e r s . 
+                         p r e f i x _ a l l o w e d _ t o k e n s _ f n   ( ` C a l l a b l e [ [ i n t ,   t o r c h . T e n s o r ] ,   l i s t [ i n t ] ] ` ,   * o p t i o n a l * ) : 
+                                 I f   p r o v i d e d ,   t h i s   f u n c t i o n   c o n s t r a i n t s   t h e   b e a m   s e a r c h   t o   a l l o w e d   t o k e n s   o n l y   a t   e a c h   s t e p .   I f   n o t 
+                                 p r o v i d e d   n o   c o n s t r a i n t   i s   a p p l i e d .   T h i s   f u n c t i o n   t a k e s   2   a r g u m e n t s :   t h e   b a t c h   I D   ` b a t c h _ i d `   a n d 
+                                 ` i n p u t _ i d s ` .   I t   h a s   t o   r e t u r n   a   l i s t   w i t h   t h e   a l l o w e d   t o k e n s   f o r   t h e   n e x t   g e n e r a t i o n   s t e p   c o n d i t i o n e d 
+                                 o n   t h e   b a t c h   I D   ` b a t c h _ i d `   a n d   t h e   p r e v i o u s l y   g e n e r a t e d   t o k e n s   ` i n p u t s _ i d s ` .   T h i s   a r g u m e n t   i s   u s e f u l 
+                                 f o r   c o n s t r a i n e d   g e n e r a t i o n   c o n d i t i o n e d   o n   t h e   p r e f i x ,   a s   d e s c r i b e d   i n   [ A u t o r e g r e s s i v e   E n t i t y 
+                                 R e t r i e v a l ] ( h t t p s : / / h u g g i n g f a c e . c o / p a p e r s / 2 0 1 0 . 0 0 9 0 4 ) . 
+                         s y n c e d _ g p u s   ( ` b o o l ` ,   * o p t i o n a l * ,   d e f a u l t s   t o   ` F a l s e ` ) : 
+                                 W h e t h e r   t o   c o n t i n u e   r u n n i n g   t h e   w h i l e   l o o p   u n t i l   m a x _ l e n g t h   ( n e e d e d   t o   a v o i d   d e a d l o c k i n g   w i t h 
+                                 ` F u l l y S h a r d e d D a t a P a r a l l e l `   a n d   D e e p S p e e d   Z e R O   S t a g e   3 ) . 
+                         k w a r g s   ( ` d i c t [ s t r ,   A n y ] ` ,   * o p t i o n a l * ) : 
+                                 A d   h o c   p a r a m e t r i z a t i o n   o f   ` g e n e r a t e _ c o n f i g `   a n d / o r   a d d i t i o n a l   m o d e l - s p e c i f i c   k w a r g s   t h a t   w i l l   b e 
+                                 f o r w a r d e d   t o   t h e   ` f o r w a r d `   f u n c t i o n   o f   t h e   m o d e l . 
+ 
+                 R e t u r n : 
+                         [ ` ~ u t i l s . M o d e l O u t p u t ` ]   o r   ` t o r c h . L o n g T e n s o r ` :   A   [ ` ~ u t i l s . M o d e l O u t p u t ` ]   ( i f   ` r e t u r n _ d i c t _ i n _ g e n e r a t e = T r u e ` 
+                         o r   w h e n   ` c o n f i g . r e t u r n _ d i c t _ i n _ g e n e r a t e = T r u e ` )   o r   a   ` t o r c h . F l o a t T e n s o r ` .   T h e   p o s s i b l e 
+                         [ ` ~ u t i l s . M o d e l O u t p u t ` ]   t y p e s   a r e : 
+                                 -   [ ` ~ g e n e r a t i o n . G e n e r a t e E n c o d e r D e c o d e r O u t p u t ` ] , 
+                                 -   [ ` ~ g e n e r a t i o n . G e n e r a t e B e a m E n c o d e r D e c o d e r O u t p u t ` ] 
+                 " " " 
+                 t e x t _ d e c o d e r _ i n p u t _ i d s   =   k w a r g s . p o p ( " d e c o d e r _ i n p u t _ i d s " ,   N o n e ) 
+                 #   o v e r w r i t e   t e x t _ d e c o d e r _ i n p u t _ i d s   i f   t g t _ l a n g   i s   p a s s e d .   T h e   l a t t e r   g e t s   p r i o r i t y   o v e r   d e c o d e r _ i n p u t _ i d s . 
+                 i n p u t _ f e a t u r e s   =   i n p u t _ f e a t u r e s   i f   i n p u t _ f e a t u r e s   i s   n o t   N o n e   e l s e   k w a r g s . p o p ( " i n p u t s " ) 
+                 i f   t g t _ l a n g   i s   n o t   N o n e : 
+                         i n p u t s   =   k w a r g s . g e t ( " i n p u t _ e m b e d s " )   i f   i n p u t _ f e a t u r e s   i s   N o n e   e l s e   i n p u t _ f e a t u r e s 
+                         i n p u t s   =   ( 
+                                 i n p u t s 
+                                 i f   i n p u t s   i s   n o t   N o n e 
+                                 e l s e   k w a r g s . g e t ( " e n c o d e r _ o u t p u t s " ,   { " l a s t _ h i d d e n _ s t a t e " :   N o n e } ) [ " l a s t _ h i d d e n _ s t a t e " ] 
+                         ) 
+                         b a t c h _ s i z e   =   l e n ( i n p u t s ) 
+ 
+                         i f   h a s a t t r ( s e l f . g e n e r a t i o n _ c o n f i g ,   " t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d " ) : 
+                                 #   a l s o   a c c e p t   _ _ x x x _ _ 
+                                 t g t _ l a n g   =   t g t _ l a n g . r e p l a c e ( " _ _ " ,   " " ) 
+                                 i f   t g t _ l a n g   n o t   i n   s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d : 
+                                         r a i s e   V a l u e E r r o r ( 
+                                                 f " " " ` t g t _ l a n g = { t g t _ l a n g } `   i s   n o t   s u p p o r t e d   b y   t h i s   m o d e l .   P l e a s e   s p e c i f y   a   ` t g t _ l a n g `   i n 
+                                                 { " ,   " . j o i n ( s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d . k e y s ( ) ) } " " " 
+                                         ) 
+                                 #   t g t _ l a n g   g e t s   p r i o r i t y   o v e r   d e c o d e r   i n p u t   i d s 
+                                 t e x t _ t g t _ l a n g _ i d   =   s e l f . g e n e r a t i o n _ c o n f i g . t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d . g e t ( t g t _ l a n g ) 
+                                 t e x t _ d e c o d e r _ i n p u t _ i d s   =   t o r c h . t e n s o r ( [ [ t e x t _ t g t _ l a n g _ i d ] ]   *   b a t c h _ s i z e ,   d e v i c e = s e l f . d e v i c e ) 
+                         e l s e : 
+                                 r a i s e   V a l u e E r r o r ( 
+                                         " " " T h i s   m o d e l   g e n e r a t i o n   c o n f i g   d o e s n ' t   h a v e   a   ` t e x t _ d e c o d e r _ l a n g _ t o _ c o d e _ i d `   k e y   w h i c h   m a p s 
+                                         t h e   t a r g e t   l a n g u a g e   t o   t h e   r i g h t   t o k e n   i d .   M a k e   s u r e   t o   l o a d   t h e   r i g h t   g e n e r a t i o n   c o n f i g . " " " 
+                                 ) 
+                 e l s e : 
+                         #   o n l y   a   w a r n i n g ,   o t h e r w i s e   e r r o r s   a p p e a r   i n   t h e   t e s t s 
+                         l o g g e r . w a r n i n g ( 
+                                 " " " Y o u   m u s t   e i t h e r   s p e c i f y   a   ` t g t _ l a n g `   o r   p a s s   a   c o r r e c t   ` t e x t _ d e c o d e r _ i n p u t _ i d s `   t o   g e t 
+                                 a   c o r r e c t   g e n e r a t i o n ,   o t h e r w i s e   t h e   g e n e r a t i o n   w i l l   p r o b a b l y   m a k e   n o   s e n s e . " " " 
+                         ) 
+                 r e t u r n   s u p e r ( ) . g e n e r a t e ( 
+                         i n p u t _ f e a t u r e s , 
+                         g e n e r a t i o n _ c o n f i g , 
+                         l o g i t s _ p r o c e s s o r , 
+                         s t o p p i n g _ c r i t e r i a , 
+                         p r e f i x _ a l l o w e d _ t o k e n s _ f n , 
+                         s y n c e d _ g p u s , 
+                         d e c o d e r _ i n p u t _ i d s = t e x t _ d e c o d e r _ i n p u t _ i d s , 
+                         * * k w a r g s , 
+                 ) 
+ 
+ 
+ @ a u t o _ d o c s t r i n g ( 
+         c u s t o m _ i n t r o = " " " 
+         T h e   t e x t - t o - s p e e c h   S e a m l e s s M 4 T v 2   M o d e l   t r a n s f o r m e r   w h i c h   c a n   b e   u s e d   f o r   T 2 S T . 
+         " " " 
+ ) 
+ c l a s s   S e a m l e s s M 4 T v 2 F o r T e x t T o S p e e c h ( S e a m l e s s M 4 T v 2 P r e T r a i n e d M o d e l ,   G e n e r a t i o n M i x i n ) : 
+         _ k e y s _ t o _ i g n o r e _ o n _ l o a d _ m i s s i n g   =   [ " s p e e c h _ e n c o d e r " ] 
+         m a i n _ i n p u t _ n a m e   =   " i n p u t _ i d s " 
+ 
+         _ t i e d _ w e i g h t s _ k e y s   =   [ 
+                 " l m _ h e a d . w e i g h t " , 
+                 " t e x t _ e n c o d e r . e m b e d _ t o k e n s . w e i g h t " , 
+                 " t e x t _ d e c o d e r . e m b e d _ t o k e n s . w e i g h t " , 
+         ] 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . _ _ i n i t _ _   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 
+         d e f   _ _ i n i t _ _ ( s e l f ,   c o n f i g :   S e a m l e s s M 4 T v 2 C o n f i g ) : 
+                 s u p e r ( ) . _ _ i n i t _ _ ( c o n f i g ) 
+ 
+                 s e l f . s h a r e d   =   n n . E m b e d d i n g ( c o n f i g . v o c a b _ s i z e ,   c o n f i g . h i d d e n _ s i z e ,   c o n f i g . p a d _ t o k e n _ i d ) 
+ 
+                 s e l f . t e x t _ e n c o d e r   =   S e a m l e s s M 4 T v 2 E n c o d e r ( c o n f i g ,   s e l f . s h a r e d ) 
+                 s e l f . t e x t _ d e c o d e r   =   S e a m l e s s M 4 T v 2 D e c o d e r ( c o n f i g ,   s e l f . s h a r e d ) 
+                 s e l f . l m _ h e a d   =   n n . L i n e a r ( c o n f i g . h i d d e n _ s i z e ,   c o n f i g . v o c a b _ s i z e ,   b i a s = F a l s e ) 
+ 
+                 #   I n i t i a l i z e   w e i g h t s   a n d   a p p l y   f i n a l   p r o c e s s i n g 
+                 s e l f . p o s t _ i n i t ( ) 
+ 
+                 s e l f . t 2 u _ m o d e l   =   S e a m l e s s M 4 T v 2 T e x t T o U n i t F o r C o n d i t i o n a l G e n e r a t i o n ( c o n f i g ) 
+                 s e l f . v o c o d e r   =   S e a m l e s s M 4 T v 2 C o d e H i f i G a n ( c o n f i g ) 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . g e t _ e n c o d e r 
+         d e f   g e t _ e n c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ e n c o d e r 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . g e t _ d e c o d e r 
+         d e f   g e t _ d e c o d e r ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . g e t _ i n p u t _ e m b e d d i n g s 
+         d e f   g e t _ i n p u t _ e m b e d d i n g s ( s e l f ) : 
+                 r e t u r n   s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . s e t _ i n p u t _ e m b e d d i n g s 
+         d e f   s e t _ i n p u t _ e m b e d d i n g s ( s e l f ,   v a l u e ) : 
+                 s e l f . t e x t _ e n c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+                 s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s   =   v a l u e 
+                 s e l f . s h a r e d   =   v a l u e 
+ 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . _ t i e _ w e i g h t s 
+         d e f   _ t i e _ w e i g h t s ( s e l f ) : 
+                 i f   s e l f . c o n f i g . t i e _ w o r d _ e m b e d d i n g s : 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . t e x t _ e n c o d e r . e m b e d _ t o k e n s ,   s e l f . s h a r e d ) 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . t e x t _ d e c o d e r . e m b e d _ t o k e n s ,   s e l f . s h a r e d ) 
+                         s e l f . _ t i e _ o r _ c l o n e _ w e i g h t s ( s e l f . l m _ h e a d ,   s e l f . s h a r e d ) 
+ 
+         @ a u t o _ d o c s t r i n g ( c u s t o m _ a r g s = S E A M L E S S _ M 4 T _ V 2 _ C O M M O N _ C U S T O M _ A R G S ) 
+         #   C o p i e d   f r o m   t r a n s f o r m e r s . m o d e l s . s e a m l e s s _ m 4 t . m o d e l i n g _ s e a m l e s s _ m 4 t . S e a m l e s s M 4 T F o r T e x t T o S p e e c h . f o r w a r d   w i t h   S e a m l e s s M 4 T - > S e a m l e s s M 4 T v 2 
+         d e f   f o r w a r d ( 
+                 s e l f , 
+                 i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ i n p u t _ i d s :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 d e c o d e r _ a t t e n t i o n _ m a s k :   O p t i o n a l [ t o r c h . L o n g T e n s o r ]   =   N o n e , 
+                 e n c o d e r _ o u t p u t s :   O p t i o n a l [ t u p l e [ t u p l e [ t o r c h . F l o a t T e n s o r ] ] ]   =   N o n e , 
+                 p a s t _ k e y _ v a l u e s :   O p t i o n a l [ C a c h e ]   =   N o n e , 
+                 i n p u t s _ e m b e d s :   O p t i o n a l [ t o r c h . F l o a t T e n s o r ]   =   N o n e , 
+                 d e c o d e r 

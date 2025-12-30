@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import CityMarker from "./citymarker";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import InputBox from "./inputbox";
 import apiClient from "../api";
 
@@ -22,22 +22,31 @@ export default function Map({
   const aspectRatio = originalHeight / originalWidth;
   const [displaybox, setdisplaybox] = useState(false);
   const [currentCity, setcurrentCity] = useState(null);
+  const [query, setquery] = useState("");
+  const [submit, setsubmut] = useState(false);
   const fetchData = async () => {
     try {
+      console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-       prompt: `Tell me about ${currentCity.name}`,
-      }); 
+        prompt: `Tell me about ${currentCity.name}`,
+      });
       console.log(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
       console.log("Current city in error:", currentCity);
     }
-  }
-  useEffect(() => {
-    if (currentCity) {
-      fetchData();
-    }
-  }, [currentCity]);
+  };
+  //   useEffect(() => {
+  //     if (currentCity) {
+  //       fetchData();
+  //     }
+  //   }, [currentCity]);
+
+  //   useEffect(() => {
+  //     if (submit && currentCity) {
+  //         fetchData();
+  //     }
+  //   }, [submit]);
 
   return (
     <div style={{ position: "relative", width: "47vw", height: "67vh" }}>
@@ -58,7 +67,10 @@ export default function Map({
             width: "400px",
           }}
         >
-          <InputBox />
+          <InputBox
+            changefunc={(e) => setquery(e.target.value)}
+            submitfunc={fetchData}
+          /> 
         </div>
       )}
       {cities.map((city, index) => {
@@ -79,9 +91,6 @@ export default function Map({
               onClick={() => {
                 setdisplaybox(!displaybox);
                 setcurrentCity(city);
-                
-                
-
               }}
             />
             <p>{city.name}</p>
@@ -91,6 +100,3 @@ export default function Map({
     </div>
   );
 }
-
-
-

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InputBox() {
+export default function InputBox({ submitfunc, changefunc }) {
   return (
     <div
       className="card-footer d-flex align-items-center gap-2"
@@ -23,7 +23,9 @@ export default function InputBox() {
           padding: "12px 16px",
           outline: "none",
           boxShadow: "none",
+          
         }}
+        onChange={changefunc}
       />
 
       <button
@@ -38,9 +40,11 @@ export default function InputBox() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          
         }}
+        onClick={submitfunc}
       >
-        ➤
+        ➤ 
       </button>
     </div>
   );

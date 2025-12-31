@@ -28,7 +28,7 @@ export default function Map({
     try {
       console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-        prompt: `Tell me about ${currentCity.name}`,
+        prompt: `${query} for the city of ${currentCity.name}`,
       });
       console.log(response.data);
     } catch (error) {

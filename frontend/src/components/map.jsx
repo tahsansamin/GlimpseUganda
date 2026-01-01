@@ -3,6 +3,7 @@ import CityMarker from "./citymarker";
 import { useState, useEffect } from "react";
 import InputBox from "./inputbox";
 import apiClient from "../api";
+import ChatBubble from "./responsebox";
 
 /**
  * Responsive Map component with city markers.
@@ -24,6 +25,7 @@ export default function Map({
   const [currentCity, setcurrentCity] = useState(null);
   const [query, setquery] = useState("");
   const [submit, setsubmut] = useState(false);
+  const [response, setresponse] = useState("");
   const fetchData = async () => {
     try {
       console.log("Fetching data for city:", currentCity.name);
@@ -31,7 +33,9 @@ export default function Map({
         prompt: `${query} for the city of ${currentCity.name}`,
       });
       console.log(response.data);
+      setresponse(response.data);
     } catch (error) {
+      
       console.error("Error fetching data:", error);
       console.log("Current city in error:", currentCity);
     }
@@ -47,7 +51,9 @@ export default function Map({
   //         fetchData();
   //     }
   //   }, [submit]);
+  
 
+ 
   return (
     <div style={{ position: "relative", width: "47vw", height: "67vh" }}>
       <img
@@ -70,7 +76,7 @@ export default function Map({
           <InputBox
             changefunc={(e) => setquery(e.target.value)}
             submitfunc={fetchData}
-          /> 
+          />  
         </div>
       )}
       {cities.map((city, index) => {
@@ -97,6 +103,11 @@ export default function Map({
           </div>
         );
       })}
+      {response && (
+        <ChatBubble text = {response}/> 
+      )}
+ 
     </div>
   );
 }
+ 

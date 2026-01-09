@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import InputBox from "./inputbox";
 import apiClient from "../api";
 import ChatBubble from "./responsebox";
+import Box from "./interactiveresponsebox";
+
 
 /**
  * Responsive Map component with city markers.
@@ -26,32 +28,34 @@ export default function Map({
   const [query, setquery] = useState("");
   const [submit, setsubmut] = useState(false);
   const [response, setresponse] = useState("");
+  const [newMessage, setnewMessage] = useState("");
+  const [messages, setMessages] = useState([]);
   const fetchData = async () => {
     try {
+      const newQuery = {
+        typeofmessage: "user",
+        content: query
+      }
+      setMessages(prevMessages => [...prevMessages, newQuery])
       console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
         prompt: `${query} for the city of ${currentCity.name}`,
       });
       console.log(response.data);
       setresponse(response.data);
+      const newResponse = {
+        typeofmessage : "ai",
+        content: response.data
+
+      }
+      setMessages(prevMessages => [...prevMessages, newResponse])
     } catch (error) {
       
       console.error("Error fetching data:", error);
       console.log("Current city in error:", currentCity);
     }
   };
-  //   useEffect(() => {
-  //     if (currentCity) {
-  //       fetchData();
-  //     }
-  //   }, [currentCity]);
 
-  //   useEffect(() => {
-  //     if (submit && currentCity) {
-  //         fetchData();
-  //     }
-  //   }, [submit]);
-  // testing line
   
 
  
@@ -105,7 +109,7 @@ export default function Map({
         );
       })}
       {response && (
-        <ChatBubble text = {response}/> 
+        <><ChatBubble text={response} /><Box mmessages={messages} /></>
       )}
  
     </div>

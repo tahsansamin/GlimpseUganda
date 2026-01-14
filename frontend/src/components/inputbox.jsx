@@ -3,7 +3,7 @@ export default function ChatInput({submitfunc, changefunc}) {
   return (
     <div className="flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
-        <div className="flex gap-3">
+        <div className="text-black bg-white flex gap-3">
           <input
             type="text"
             placeholder="Type your message..."

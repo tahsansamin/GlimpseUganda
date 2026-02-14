@@ -1,6 +1,7 @@
-import React, { use } from "react";
-import CityMarker from "./citymarker";
+import React from "react";
 import { useState, useEffect } from "react";
+import CityMarkers from "./CityMarkers";
+import AnimatedText from "./animatedtext.jsx";
 import InputBox from "./inputbox";
 import apiClient from "../api";
 
@@ -29,6 +30,7 @@ export default function Map({
   const [submit, setsubmut] = useState(false);
   const [response, setresponse] = useState("");
   const [messages, setMessages] = useState([]);
+  const [animatedText, setAnimatedText] = useState("Welcome to the Pearl of Africa! Click on a city to learn more about it.");
   const fetchData = async () => {
     try {
       const newQuery = {
@@ -38,10 +40,11 @@ export default function Map({
       setMessages((prevMessages) => [...prevMessages, newQuery]);
       console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-        prompt: `${query} for the city of ${currentCity.name}`,
+        prompt: `Limit your response to 3 sentences. ${query} for the city of ${currentCity.name}`,
       });
       console.log(response.data);
       setresponse(response.data);
+      setAnimatedText(response.data);
       const newResponse = {
         typeofmessage: "ai",
         content: response.data,
@@ -63,30 +66,28 @@ export default function Map({
         style={{ width: "100%", height: "100%" }}
       />
 
-      {cities.map((city, index) => {
-        const leftPercent = (city.x / originalWidth) * 100;
-        const topPercent = (city.y / originalHeight) * 100;
-        return (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `${leftPercent}%`,
-              top: `${topPercent}%`,
-              transform: "translate(-50%, -100%)",
+      <div style={{ width: "55vw", textAlign: "center", margin: "0 auto" }}>
+        <AnimatedText
+          text={animatedText}
+          animationType="letter"
+          delay={100}
+          className="mt-4 text-lg font-mono text-center"
+        />
+      </div>
+
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "auto" }}>
+          <CityMarkers
+            cities={cities}
+            originalWidth={originalWidth}
+            originalHeight={originalHeight}
+            onMarkerClick={(city) => {
+              setdisplaybox(!displaybox);
+              setcurrentCity(city);
             }}
-          >
-            <CityMarker
-              size={city.size || 40}
-              onClick={() => {
-                setdisplaybox(!displaybox);
-                setcurrentCity(city);
-              }}
-            />
-            <p>{city.name}</p>
-          </div>
-        );
-      })} 
+          />
+        </div>
+      </div>
       {(messages.length > 0 || displaybox) && (
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
 
@@ -111,11 +112,7 @@ export default function Map({
           </div>
         </div>
       )}
-      <div className="fixed bottom-6 right-6 z-40 flex items-end">
-        <div className="mb-10 mr-2">
-          {response && <ChatBubble text={response} />}
-        </div>
-
+      <div className="fixed bottom-6 right-6 z-40">
         <img
           src="crested_crane-removebg-preview.png"
           alt="Crested Crane"

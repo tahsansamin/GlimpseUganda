@@ -8,6 +8,7 @@ import Map from './components/map.jsx';
 import InputBox from './components/inputbox.jsx';
 
 
+
 function App() {
   const [count, setCount] = useState(0)
   const fetchData = async () => {
@@ -36,6 +37,7 @@ function App() {
     { name: "Jinja", x: 550, y: 500, size: 55, pinColor: "#198754" },
   ]}
       />
+    
       
 
     </div>

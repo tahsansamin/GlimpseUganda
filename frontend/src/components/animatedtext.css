@@ -1,0 +1,44 @@
+.speech-bubble {
+  position: relative;
+  background-color: #2d3436;
+  color: #ffffff;
+  border: 2px solid #1e272e;
+  border-radius: 12px;
+  padding: 16px 20px;
+  max-width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.speech-bubble-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.speech-bubble-content span {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.speech-bubble .cursor {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Speech bubble tail pointing down and to the right (toward the bird) */
+.speech-bubble-tail {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -70,7 +70,7 @@ export default function Map({
         <AnimatedText
           text={animatedText}
           animationType="letter"
-          delay={100}
+          delay={60}
           className="mt-4 text-lg font-mono text-center"
         />
       </div>

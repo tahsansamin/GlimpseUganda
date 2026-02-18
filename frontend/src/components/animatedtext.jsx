@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./animatedtext.css";
 
 export default function AnimatedText({ 
   text, 
@@ -47,10 +48,18 @@ export default function AnimatedText({
     }
   }, [text, animationType, delay]);
 
+  // Only show speech bubble when there is displayed text
+  if (!displayedText) {
+    return null;
+  }
+
   return (
-    <div className={className}>
-      <span>{displayedText}</span>
-      {isAnimating && <span className="animate-pulse">|</span>}
+    <div className={`speech-bubble ${className}`}>
+      <div className="speech-bubble-content">
+        <span>{displayedText}</span>
+        {isAnimating && <span className="animate-pulse cursor"></span>}
+      </div>
+      <div className="speech-bubble-tail"></div>
     </div>
   );
 }

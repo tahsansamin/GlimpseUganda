@@ -1,4 +1,5 @@
 import uvicorn
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -11,7 +12,9 @@ from retriever import RAGretriever
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 load_dotenv()
-API_KEY = "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"
+API_KEY = os.getenv("GROQ_API_KEY")
+if not API_KEY:
+    raise RuntimeError("GROQ_API_KEY environment variable not set. Please set it before running.")
 llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
 class PromptRequest(BaseModel):
     prompt: str
@@ -21,7 +24,7 @@ def rag_simple(query, retriever, llm, top_k = 3):
     context = "\n\n".join([doc['content'] for doc in results]) if results else ""
     if not context:
         return "no relevant context found"
-    prompt = f""" Use the following context to answer the question concisely.
+    prompt = f""" Use the following context to answer the question concisely. Limit your a
     Context: {context},
     question: {query}   
     answer: """ 

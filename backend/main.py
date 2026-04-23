@@ -10,8 +10,9 @@ from dataloader import process_all_pdfs, process_all_word_docs
 from vectorstore import VectorStore
 from retriever import RAGretriever
 from langchain_groq import ChatGroq
-from dotenv import load_dotenv
-load_dotenv()
+from dotenv import load_dotenv,find_dotenv
+dotenvpath = find_dotenv()
+load_dotenv(dotenv_path=dotenvpath)
 API_KEY = os.getenv("GROQ_API_KEY")
 if not API_KEY:
     raise RuntimeError("GROQ_API_KEY environment variable not set. Please set it before running.")

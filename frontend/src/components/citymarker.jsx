@@ -15,6 +15,7 @@ import InputBox from "./inputbox";
 export default function CityMarker({ size = 40,
     x = 0,
     y = 0,
+    name,
     onClick 
  }) {
     const width = size;
@@ -24,9 +25,23 @@ export default function CityMarker({ size = 40,
     };
      
 
+    const labelStyle = {
+        background: "transparent",
+        color: "#ffffff",
+        padding: "0 6px",
+        borderRadius: "0",
+        fontWeight: 600,
+        fontSize: "0.7rem",
+        whiteSpace: "normal",
+        maxWidth: "90px",
+        lineHeight: "1.2",
+        textShadow: "0 1px 0 rgba(0,0,0,0.6)",
+        textAlign: "center",
+    };
+
     return (
-        <div>
-         
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {name && <div style={labelStyle}>{name}</div>}
         <button
             type="button"
             className="btn p-0 border-0 bg-transparent"

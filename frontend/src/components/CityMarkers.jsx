@@ -22,6 +22,7 @@ import React from "react";
  *   onMarkerClick={(c)=>console.log(c.name)}
  * />
  */
+
 export default class CityMarkers extends React.Component {
   static defaultProps = {
     cities: [],
@@ -58,9 +59,6 @@ export default class CityMarkers extends React.Component {
       top,
       transform: "translate(-50%, -100%)",
       cursor: "pointer",
-      display: "flex",
-      alignItems: "center",
-      gap: "0.6rem",
       pointerEvents: "auto",
     };
 
@@ -70,9 +68,12 @@ export default class CityMarkers extends React.Component {
       padding: "0 6px",
       borderRadius: "0",
       fontWeight: 600,
-      whiteSpace: "nowrap",
-      transform: "translateY(-6px)",
+      fontSize: "0.7rem",
+      whiteSpace: "normal",
+      maxWidth: "90px",
+      lineHeight: "1.2",
       textShadow: "0 1px 0 rgba(0,0,0,0.6)",
+      textAlign: "center",
     };
 
     return (
@@ -83,27 +84,28 @@ export default class CityMarkers extends React.Component {
         role="button"
         aria-label={`marker-${city.name}`}
       >
-        <svg
-          width={size}
-          height={pinHeight}
-          viewBox="0 0 24 34"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id={`grad-${index}`} x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stopColor="#ff6b6b" />
-              <stop offset="1" stopColor="#c0392b" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M12 0C7.03 0 3 4.03 3 9c0 6.627 9 17 9 17s9-10.373 9-17c0-4.97-4.03-9-9-9z"
-            fill={`url(#grad-${index})`}
-          />
-          <circle cx="12" cy="9" r="3.2" fill="#fff7df" opacity="0.98" />
-        </svg>
-
-        <div style={labelStyle}>{city.name}</div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={labelStyle}>{city.name}</div>
+          <svg
+            width={size}
+            height={pinHeight}
+            viewBox="0 0 24 34"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id={`grad-${index}`} x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#ff6b6b" />
+                <stop offset="1" stopColor="#c0392b" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M12 0C7.03 0 3 4.03 3 9c0 6.627 9 17 9 17s9-10.373 9-17c0-4.97-4.03-9-9-9z"
+              fill={`url(#grad-${index})`}
+            />
+            <circle cx="12" cy="9" r="3.2" fill="#fff7df" opacity="0.98" />
+          </svg>
+        </div>
       </div>
     );
   }
@@ -117,3 +119,4 @@ export default class CityMarkers extends React.Component {
     );
   }
 }
+

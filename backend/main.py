@@ -12,6 +12,7 @@ from retriever import RAGretriever
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv,find_dotenv
 dotenvpath = find_dotenv()
+print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
 API_KEY = os.getenv("GROQ_API_KEY")
 if not API_KEY:

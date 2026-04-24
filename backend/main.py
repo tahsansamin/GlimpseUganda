@@ -36,6 +36,18 @@ def rag_simple(query, retriever, llm, top_k = 3):
 Kampala = VectorStore(persist_directory="kampala")
 Entebbe = VectorStore(persist_directory="entebbe")
 Jinja = VectorStore(persist_directory="jinja")
+murchison_falls_national_park = VectorStore(persist_directory="murchison_falls_national_park")
+bwindi_forest = VectorStore(persist_directory="bwindi_forest")
+mbarara = VectorStore(persist_directory="mbarara")
+queen_elizabeth_national_park = VectorStore(persist_directory="queen_elizabeth_national_park")
+gulu = VectorStore(persist_directory="gulu")
+kidepo_valley_national_park = VectorStore(persist_directory="kidepo_valley_national_park")
+kibale_national_park = VectorStore(persist_directory="kibale_national_park")
+rwenzori_mountains = VectorStore(persist_directory="rwenzori_mountains")
+lake_bunyonyi = VectorStore(persist_directory="lake_bunyonyi")
+sipi_falls = VectorStore(persist_directory="sipi_falls")
+lake_mburo_national_park = VectorStore(persist_directory="lake_mburo_national_park")
+kabale = VectorStore(persist_directory="kabale")
 embedding_manager = EmbeddingManager()
 rag_retriever_kampala = RAGretriever(vector_store=Kampala,
                                     embedding_manager=embedding_manager)
@@ -43,6 +55,18 @@ rag_retriever_entebbe = RAGretriever(vector_store=Entebbe,
                                     embedding_manager=embedding_manager)
 rag_retriever_jinja = RAGretriever(vector_store=Jinja,
                                     embedding_manager=embedding_manager)
+rag_retriever_murchison_falls_national_park = RAGretriever(vector_store=murchison_falls_national_park, embedding_manager=embedding_manager)
+rag_retriever_bwindi_forest = RAGretriever(vector_store=bwindi_forest, embedding_manager=embedding_manager)
+rag_retriever_mbarara = RAGretriever(vector_store=mbarara, embedding_manager=embedding_manager)
+rag_retriever_queen_elizabeth_national_park = RAGretriever(vector_store=queen_elizabeth_national_park, embedding_manager=embedding_manager)
+rag_retriever_gulu = RAGretriever(vector_store=gulu, embedding_manager=embedding_manager)
+rag_retriever_kidepo_valley_national_park = RAGretriever(vector_store=kidepo_valley_national_park, embedding_manager=embedding_manager)
+rag_retriever_kibale_national_park = RAGretriever(vector_store=kibale_national_park, embedding_manager=embedding_manager)
+rag_retriever_rwenzori_mountains = RAGretriever(vector_store=rwenzori_mountains, embedding_manager=embedding_manager)
+rag_retriever_lake_bunyonyi = RAGretriever(vector_store=lake_bunyonyi, embedding_manager=embedding_manager)
+rag_retriever_sipi_falls = RAGretriever(vector_store=sipi_falls, embedding_manager=embedding_manager)
+rag_retriever_lake_mburo_national_park = RAGretriever(vector_store=lake_mburo_national_park, embedding_manager=embedding_manager)
+rag_retriever_kabale = RAGretriever(vector_store=kabale, embedding_manager=embedding_manager)
 
 #adding word documents for each city
 def process_city_documents(city_obj, folder_path):
@@ -54,6 +78,18 @@ def process_city_documents(city_obj, folder_path):
 process_city_documents(Kampala, "./pdfs/kampala_pdfs")
 process_city_documents(Entebbe, "./pdfs/entebbe_pdfs")
 process_city_documents(Jinja, "./pdfs/jinja_pdfs")
+process_city_documents(murchison_falls_national_park, "./pdfs/murchison_falls_national_park_pdfs")
+process_city_documents(bwindi_forest, "./pdfs/bwindi_forest_pdfs")
+process_city_documents(mbarara, "./pdfs/mbarara_pdfs")
+process_city_documents(queen_elizabeth_national_park, "./pdfs/queen_elizabeth_national_park_pdfs")
+process_city_documents(gulu, "./pdfs/gulu_pdfs")
+process_city_documents(kidepo_valley_national_park, "./pdfs/kidepo_valley_national_park_pdfs")
+process_city_documents(kibale_national_park, "./pdfs/kibale_national_park_pdfs")
+process_city_documents(rwenzori_mountains, "./pdfs/rwenzori_mountains_pdfs")
+process_city_documents(lake_bunyonyi, "./pdfs/lake_bunyonyi_pdfs")
+process_city_documents(sipi_falls, "./pdfs/sipi_falls_pdfs")
+process_city_documents(lake_mburo_national_park, "./pdfs/lake_mburo_national_park_pdfs")
+process_city_documents(kabale, "./pdfs/kabale_pdfs")
 
 app = FastAPI()
 origins = [
@@ -85,6 +121,66 @@ def query_prompt(request: PromptRequest):
 @app.post("/Jinja_query")
 def query_prompt(request: PromptRequest):
     answer = rag_simple(request.prompt, rag_retriever_jinja, llm)
+    return answer
+
+@app.post("/Murchison Falls National Park_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_murchison_falls_national_park, llm)
+    return answer
+
+@app.post("/Bwindi Forest_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_bwindi_forest, llm)
+    return answer
+
+@app.post("/Mbarara_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_mbarara, llm)
+    return answer
+
+@app.post("/Queen Elizabeth National Park_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_queen_elizabeth_national_park, llm)
+    return answer
+
+@app.post("/Gulu_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_gulu, llm)
+    return answer
+
+@app.post("/Kidepo Valley National Park_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_kidepo_valley_national_park, llm)
+    return answer
+
+@app.post("/Kibale National Park_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_kibale_national_park, llm)
+    return answer
+
+@app.post("/Rwenzori Mountains_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_rwenzori_mountains, llm)
+    return answer
+
+@app.post("/Lake Bunyonyi_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_lake_bunyonyi, llm)
+    return answer
+
+@app.post("/Sipi Falls_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_sipi_falls, llm)
+    return answer
+
+@app.post("/Lake Mburo National Park_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_lake_mburo_national_park, llm)
+    return answer
+
+@app.post("/Kabale_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_kabale, llm)
     return answer
 
 if __name__ == "__main__":

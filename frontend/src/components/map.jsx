@@ -103,7 +103,12 @@ export default function Map({
 
                 <button
                   className="bg-black text-white text-sm px-3 py-2 rounded hover:bg-gray-800"
-                  onClick={() => setdisplaybox(false)}
+                  onClick={() => {
+                    setdisplaybox(false);
+                    setMessages([]);
+                    setAnimatedText("Welcome to the Pearl of Africa! Click on a city to learn more about it.");
+                    setquery("");
+                  }}
                 >
                   ✕
                 </button>

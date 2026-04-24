@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Upload, File } from 'lucide-react';
+import { supabase } from '../utils/supabase';
 
 const categories = [
   { id: 'bwindi_forest', name: 'Bwindi Forest' },
@@ -23,6 +24,8 @@ export default function DocumentUpload() {
   const [dragActive, setDragActive] = useState(false);
   const [files, setFiles] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState({ type: '', message: '' });
   const inputRef = useRef(null);
 
   const handleDrag = function(e) {
@@ -59,6 +62,51 @@ export default function DocumentUpload() {
       file.name.endsWith('.pdf')
     );
     setFiles(prev => [...prev, ...validFiles]);
+  };
+
+  const handleUpload = async () => {
+    // Validation
+    if (!selectedCategory) {
+      setUploadStatus({ type: 'error', message: 'Please select a category' });
+      return;
+    }
+
+    if (files.length === 0) {
+      setUploadStatus({ type: 'error', message: 'Please select files to upload' });
+      return;
+    }
+
+    // Check file sizes (10MB limit)
+    const maxSize = 10 * 1024 * 1024;
+    const oversizedFiles = files.filter(file => file.size > maxSize);
+    if (oversizedFiles.length > 0) {
+      setUploadStatus({ type: 'error', message: `Files exceed 10MB limit: ${oversizedFiles.map(f => f.name).join(', ')}` });
+      return;
+    }
+
+    setIsLoading(true);
+    setUploadStatus({ type: '', message: '' });
+
+    try {
+      const {data,error} = await supabase.storage.from('test bucket').upload(
+        'testfolder', 
+        files[0]
+      );
+      // Clear form after successful upload
+      setFiles([]);
+      setSelectedCategory('');
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+
+    } catch (error) {
+      setUploadStatus({ 
+        type: 'error', 
+        message: `Upload failed: ${error.message}` 
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -106,13 +154,33 @@ export default function DocumentUpload() {
             ))}
           </ul>
           <button 
-            disabled={!selectedCategory}
-            className={`mt-6 w-full font-bold py-3 px-4 rounded-lg transition duration-300 shadow-md flex justify-center items-center ${!selectedCategory ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
+            onClick={handleUpload}
+            disabled={!selectedCategory || isLoading}
+            className={`mt-6 w-full font-bold py-3 px-4 rounded-lg transition duration-300 shadow-md flex justify-center items-center ${!selectedCategory || isLoading ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
             title={!selectedCategory ? "Please select a category first" : ""}
           >
-            <Upload className="w-5 h-5 mr-2" />
-            Upload Files
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                Uploading...
+              </>
+            ) : (
+              <>
+                <Upload className="w-5 h-5 mr-2" />
+                Upload Files
+              </>
+            )}
           </button>
+
+          {uploadStatus.message && (
+            <div className={`mt-4 p-4 rounded-lg text-sm font-medium ${
+              uploadStatus.type === 'success' 
+                ? 'bg-green-50 text-green-800 border border-green-200' 
+                : 'bg-red-50 text-red-800 border border-red-200'
+            }`}>
+              {uploadStatus.message}
+            </div>
+          )}
         </div>
       )}
     </div>

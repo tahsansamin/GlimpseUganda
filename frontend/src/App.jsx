@@ -32,21 +32,21 @@ function App() {
   originalWidth={1000} 
   originalHeight={1000} 
   cities={[
-    { name: "Kampala", x: 485, y: 850, size: 50, pinColor: "#dc3545" },
-    { name: "Entebbe", x: 330, y: 900, size: 45, pinColor: "#0d6efd" },
+    { name: "Kampala", x: 540, y: 700, size: 50, pinColor: "#dc3545" },
+    { name: "Entebbe", x: 480, y: 770, size: 45, pinColor: "#0d6efd" },
     { name: "Jinja", x: 550, y: 500, size: 55, pinColor: "#198754" },
     { name: "Murchison Falls National Park", x: 500, y: 350, size: 45 },
-    { name: "Bwindi Forest", x: 200, y: 965, size: 45 },
+    { name: "Bwindi Forest", x: 25, y: 965, size: 45 },
     { name: "Mbarara", x: 250, y: 830, size: 45 },
-    { name: "Queen Elizabeth National Park", x: 330, y: 720, size: 45 },
-    { name: "Gulu", x: 470, y: 280, size: 45 },
+    { name: "Queen Elizabeth National Park", x: 330, y: 700, size: 45 },
+    { name: "Gulu", x: 400, y: 280, size: 45 },
     { name: "Kidepo Valley National Park", x: 650, y: 175, size: 45 },
-    { name: "Kibale National Park", x: 400, y: 650, size: 45 },
-    { name: "Rwenzori Mountains", x: 320, y: 590, size: 45 },
-    { name: "Lake Bunyonyi", x: 230, y: 950, size: 45 },
+    { name: "Kibale National Park", x: 450, y: 650, size: 45 },
+    { name: "Rwenzori Mountains", x: 320, y: 530, size: 45 },
+    { name: "Lake Bunyonyi", x: 200, y: 935, size: 45 },
     { name: "Sipi Falls", x: 680, y: 425, size: 45 },
-    { name: "Lake Mburo National Park", x: 350, y: 840, size: 45 },
-    { name: "Kabale", x: 250, y: 970, size: 45 }
+    { name: "Lake Mburo National Park", x: 385, y: 860, size: 45 },
+    { name: "Kabale", x: 95, y: 990, size: 45 }
   ]}
       />
     

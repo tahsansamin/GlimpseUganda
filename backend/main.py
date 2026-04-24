@@ -44,46 +44,16 @@ rag_retriever_entebbe = RAGretriever(vector_store=Entebbe,
 rag_retriever_jinja = RAGretriever(vector_store=Jinja,
                                     embedding_manager=embedding_manager)
 
-
-
-# all_pdf_documents = process_all_pdfs(".")
-# split_documents = embedding_manager.chunk_documents(all_pdf_documents)
-# texts = [doc.page_content for doc in split_documents]
-
-# embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in split_documents])
-# vectorstore.add_documents(split_documents, embeddings)
-
-# #adding pdf documents for each city
-# kampala_documents = process_all_pdfs("./pdfs/kampala_pdfs")
-# kampala_split_documents = embedding_manager.chunk_documents(kampala_documents)
-# kampala_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in kampala_split_documents])
-# Kampala.add_documents(kampala_split_documents, kampala_embeddings)
-
-# entebbe_documents = process_all_pdfs("./pdfs/entebbe_pdfs")
-# entebbe_split_documents = embedding_manager.chunk_documents(entebbe_documents)
-# entebbe_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in entebbe_split_documents])
-# Entebbe.add_documents(entebbe_split_documents, entebbe_embeddings)
-
-# jinja_documents = process_all_pdfs("./pdfs/jinja_pdfs")
-# jinja_split_documents = embedding_manager.chunk_documents(jinja_documents)
-# jinja_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in jinja_split_documents])
-# Jinja.add_documents(jinja_split_documents, jinja_embeddings)
-
 #adding word documents for each city
-kampala_word_documents = dataloader.process_all_word_docs("./pdfs/kampala_pdfs") 
-kampala_word_split_documents = embedding_manager.chunk_documents(kampala_word_documents)
-kampala_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in kampala_word_split_documents])
-Kampala.add_documents(kampala_word_split_documents, kampala_word_embeddings)
+def process_city_documents(city_obj, folder_path):
+    word_documents = dataloader.process_all_word_docs(folder_path)
+    word_split_documents = embedding_manager.chunk_documents(word_documents)
+    word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in word_split_documents])
+    city_obj.add_documents(word_split_documents, word_embeddings)
 
-entebbe_word_documents = dataloader.process_all_word_docs("./pdfs/entebbe_pdfs")
-entebbe_word_split_documents = embedding_manager.chunk_documents(entebbe_word_documents)
-entebbe_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in entebbe_word_split_documents])
-Entebbe.add_documents(entebbe_word_split_documents, entebbe_word_embeddings)
-
-jinja_word_documents = dataloader.process_all_word_docs("./pdfs/jinja_pdfs")
-jinja_word_split_documents = embedding_manager.chunk_documents(jinja_word_documents)
-jinja_word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in jinja_word_split_documents])
-Jinja.add_documents(jinja_word_split_documents, jinja_word_embeddings) 
+process_city_documents(Kampala, "./pdfs/kampala_pdfs")
+process_city_documents(Entebbe, "./pdfs/entebbe_pdfs")
+process_city_documents(Jinja, "./pdfs/jinja_pdfs")
 
 app = FastAPI()
 origins = [

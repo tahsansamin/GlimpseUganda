@@ -11,6 +11,7 @@ from vectorstore import VectorStore
 from retriever import RAGretriever
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv,find_dotenv
+from supabase import create_client, Client
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -33,6 +34,27 @@ def rag_simple(query, retriever, llm, top_k = 3):
     response = llm.invoke([prompt.format(context = context, query = query)])
     return response.content
 
+#setting up supabase client
+
+supabase: Client = create_client(os.getenv("VITE_SUPABASE_URL"),
+    os.getenv("VITE_SUPABASE_KEY"))
+
+
+
+def download_folder(bucket_name, folder_name, save_dir):
+    files = supabase.storage.from_(bucket_name).list(folder_name)
+    
+    for file in files:
+        file_path = f"{folder_name}/{file['name']}"
+        data = supabase.storage.from_(bucket_name).download(file_path)
+        
+        with open(f"{save_dir}/{file['name']}", 'wb') as f:
+            f.write(data)
+
+        #delete after downloading
+        supabase.storage.from_(bucket_name).remove([file_path])
+
+download_folder('test bucket', 'kampala', './downloads')
 Kampala = VectorStore(persist_directory="kampala")
 Entebbe = VectorStore(persist_directory="entebbe")
 Jinja = VectorStore(persist_directory="jinja")

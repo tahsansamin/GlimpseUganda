@@ -41,20 +41,24 @@ supabase: Client = create_client(os.getenv("VITE_SUPABASE_URL"),
 
 
 
-def download_folder(bucket_name, folder_name, save_dir):
-    files = supabase.storage.from_(bucket_name).list(folder_name)
+def download_folder(bucket_name, folder_name, supabase_folder):
+    os.makedirs(folder_name, exist_ok=True)
+    
+    files = supabase.storage.from_(bucket_name).list(supabase_folder)
     
     for file in files:
-        file_path = f"{folder_name}/{file['name']}"
+        file_path = f"{supabase_folder}/{file['name']}"
         data = supabase.storage.from_(bucket_name).download(file_path)
         
-        with open(f"{save_dir}/{file['name']}", 'wb') as f:
+        with open(f"{folder_name}/{file['name']}", 'wb') as f:
             f.write(data)
 
-        #delete after downloading
         supabase.storage.from_(bucket_name).remove([file_path])
+    supabase.storage.from_(bucket_name).upload(f"{supabase_folder}/.keep", b"")
 
-download_folder('test bucket', 'kampala', './downloads')
+    
+    print(f"Downloaded {len(files)} files from {supabase_folder} and deleted them from supabase storage.")
+download_folder('test bucket', './Downloads', 'jinja')
 Kampala = VectorStore(persist_directory="kampala")
 Entebbe = VectorStore(persist_directory="entebbe")
 Jinja = VectorStore(persist_directory="jinja")

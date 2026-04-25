@@ -89,9 +89,10 @@ export default function DocumentUpload() {
 
     try {
       const {data,error} = await supabase.storage.from('test bucket').upload(
-        'testfolder', 
+        `${selectedCategory}/${files[0].name}`, 
         files[0]
       );
+      console.log("upload response", {data,error});
       // Clear form after successful upload
       setFiles([]);
       setSelectedCategory('');

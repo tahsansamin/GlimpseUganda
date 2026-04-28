@@ -3,18 +3,18 @@ import { Upload, File } from 'lucide-react';
 import { supabase } from '../utils/supabase';
 
 const categories = [
-  { id: 'bwindi_forest', name: 'Bwindi Forest' },
+  { id: 'bwindi_forests', name: 'Bwindi Forest' },
   { id: 'entebbe', name: 'Entebbe' },
   { id: 'gulu', name: 'Gulu' },
   { id: 'jinja', name: 'Jinja' },
   { id: 'kabale', name: 'Kabale' },
   { id: 'kampala', name: 'Kampala' },
   { id: 'kibale_national_park', name: 'Kibale National Park' },
-  { id: 'kidepo_valley_national_park', name: 'Kidepo Valley National Park' },
+  { id: 'kidepo_national_park', name: 'Kidepo National Park' },
   { id: 'lake_bunyonyi', name: 'Lake Bunyonyi' },
-  { id: 'lake_mburo_national_park', name: 'Lake Mburo National Park' },
+  { id: 'mburo_national_park', name: 'Lake Mburo National Park' },
   { id: 'mbarara', name: 'Mbarara' },
-  { id: 'murchison_falls_national_park', name: 'Murchison Falls National Park' },
+  { id: 'murchison_falls', name: 'Murchison Falls National Park' },
   { id: 'queen_elizabeth_national_park', name: 'Queen Elizabeth National Park' },
   { id: 'rwenzori_mountains', name: 'Rwenzori Mountains' },
   { id: 'sipi_falls', name: 'Sipi Falls' }

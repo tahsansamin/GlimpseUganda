@@ -58,7 +58,24 @@ def download_folder(bucket_name, folder_name, supabase_folder):
 
     
     print(f"Downloaded {len(files)} files from {supabase_folder} and deleted them from supabase storage.")
-download_folder('test bucket', './Downloads', 'jinja')
+
+# Download all location PDFs from Supabase
+download_folder('test bucket', './pdfs/kampala_pdfs', 'kampala')
+download_folder('test bucket', './pdfs/entebbe_pdfs', 'entebbe')
+download_folder('test bucket', './pdfs/jinja_pdfs', 'jinja')
+download_folder('test bucket', './pdfs/murchison_falls_national_park_pdfs', 'murchison_falls_national_park')
+download_folder('test bucket', './pdfs/bwindi_forest_pdfs', 'bwindi_forest')
+download_folder('test bucket', './pdfs/mbarara_pdfs', 'mbarara')
+download_folder('test bucket', './pdfs/queen_elizabeth_national_park_pdfs', 'queen_elizabeth_national_park')
+download_folder('test bucket', './pdfs/gulu_pdfs', 'gulu')
+download_folder('test bucket', './pdfs/kidepo_valley_national_park_pdfs', 'kidepo_valley_national_park')
+download_folder('test bucket', './pdfs/kibale_national_park_pdfs', 'kibale_national_park')
+download_folder('test bucket', './pdfs/rwenzori_mountains_pdfs', 'rwenzori_mountains')
+download_folder('test bucket', './pdfs/lake_bunyonyi_pdfs', 'lake_bunyonyi')
+download_folder('test bucket', './pdfs/sipi_falls_pdfs', 'sipi_falls')
+download_folder('test bucket', './pdfs/lake_mburo_national_park_pdfs', 'lake_mburo_national_park')
+download_folder('test bucket', './pdfs/kabale_pdfs', 'kabale')
+
 Kampala = VectorStore(persist_directory="kampala")
 Entebbe = VectorStore(persist_directory="entebbe")
 Jinja = VectorStore(persist_directory="jinja")

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Upload, File } from 'lucide-react';
 import { supabase } from '../utils/supabase';
+import apiClient from '../api';
 
 const categories = [
   { id: 'bwindi_forests', name: 'Bwindi Forest' },
@@ -88,12 +89,48 @@ export default function DocumentUpload() {
     setUploadStatus({ type: '', message: '' });
 
     try {
+      // Read file as bytes
+      const formData = new FormData();
+      formData.append('document', files[0]); // files[0] is the actual File object
+      formData.append('filename', files[0].name);
+      formData.append('category', selectedCategory);
+
+      const verificationResponse = await apiClient.post('/verify_document', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      
+
+      if (!verificationResponse.data.status == 'verified') {
+        setUploadStatus({ 
+          type: 'error', 
+          message: verificationResponse.data.error || 'Document verification failed' 
+        });
+        return;
+      }
+      console.log('Document verified successfully, proceeding to upload...'); //del later
+
+      // If verification passes, upload to Supabase
+      console.log(`my path is ${selectedCategory}/${files[0].name}`); //del later
       const {data,error} = await supabase.storage.from('test bucket').upload(
         `${selectedCategory}/${files[0].name}`, 
         files[0]
       );
-      console.log("upload response", {data,error});
+      
+      if (error) {
+        setUploadStatus({ 
+          type: 'error', 
+          message: `Upload failed: ${error.message}` 
+        });
+        return;
+      }
+
       // Clear form after successful upload
+      setUploadStatus({ 
+        type: 'success', 
+        message: `Successfully uploaded ${files[0].name}` 
+      });
       setFiles([]);
       setSelectedCategory('');
       if (inputRef.current) {
@@ -142,6 +179,17 @@ export default function DocumentUpload() {
         {dragActive && <div id="drag-file-element" onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} className="absolute inset-0 w-full h-full rounded-xl"></div>}
       </form>
 
+      {uploadStatus.message && !files.length && (
+        <div className={`mt-6 p-4 rounded-lg text-sm font-medium ${
+          uploadStatus.type === 'success' 
+            ? 'bg-green-50 text-green-800 border border-green-200 flex items-center' 
+            : 'bg-red-50 text-red-800 border border-red-200 flex items-center'
+        }`}>
+          <span className="mr-2 text-lg">{uploadStatus.type === 'success' ? '✓' : '✕'}</span>
+          {uploadStatus.message}
+        </div>
+      )}
+
       {files.length > 0 && (
         <div className="mt-8">
           <h3 className="text-lg font-semibold mb-4 text-gray-700">Selected Files ({files.length})</h3>
@@ -174,11 +222,12 @@ export default function DocumentUpload() {
           </button>
 
           {uploadStatus.message && (
-            <div className={`mt-4 p-4 rounded-lg text-sm font-medium ${
+            <div className={`mt-4 p-4 rounded-lg text-sm font-medium flex items-center ${
               uploadStatus.type === 'success' 
                 ? 'bg-green-50 text-green-800 border border-green-200' 
                 : 'bg-red-50 text-red-800 border border-red-200'
             }`}>
+              <span className="mr-2 text-lg">{uploadStatus.type === 'success' ? '✓' : '✕'}</span>
               {uploadStatus.message}
             </div>
           )}

@@ -109,10 +109,10 @@ export default function DocumentUpload() {
         });
         return;
       }
-      console.log('Document verified successfully, proceeding to upload...'); //del later
 
       // If verification passes, upload to Supabase
       console.log(`my path is ${selectedCategory}/${files[0].name}`); //del later
+      console.log(`{text: ${verificationResponse.data.summary.is_directly_related}}`); //del later
       const {data,error} = await supabase.storage.from('test bucket').upload(
         `${selectedCategory}/${files[0].name}`, 
         files[0]

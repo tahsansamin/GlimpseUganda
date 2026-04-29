@@ -13,6 +13,7 @@ from langchain_groq import ChatGroq
 from dotenv import load_dotenv,find_dotenv
 from supabase import create_client, Client
 import fitz
+import json 
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -28,6 +29,19 @@ class DocumentVerificationRequest(BaseModel):
     document: bytes  # The actual file content
     filename: str
     category: str  # location/category for the document
+
+class CategoryRelevance(BaseModel):
+    category_focus_percentage: int
+    is_directly_related: bool
+    reasoning: str
+
+def parse_category_relevance(result_data: dict) -> CategoryRelevance:
+    """Parse result_data into CategoryRelevance object"""
+    return CategoryRelevance(
+        category_focus_percentage=result_data.get("category_focus_percentage", 0),
+        is_directly_related=result_data.get("is_directly_related", False),
+        reasoning=result_data.get("reasoning", "")
+    )
 
 def rag_simple(query, retriever, llm, top_k = 3):
     results =retriever.retrieve(query, top_k = top_k)
@@ -256,9 +270,42 @@ async def verify_document(
     text = ""
     for page in doc:
         text += page.get_text()
+        prompt = f"""
+            Analyze the document below for its focus on the specific category: "{category}".
+
+            STRICT CRITERIA:
+            1. "Directly Related" means the text is specifically zoned in on {category}. 
+            2. If the text is general jargon about Ugandan cities, geography, or broad tourism without focusing at least 50% of its content specifically on {category}, it fails.
+            3. If the document covers multiple topics and {category} is just a minor mention, it fails.
+
+            TASK:
+            - Calculate the percentage of the text dedicated specifically to {category}.
+            - Determine if it meets the 50% threshold.
+
+            Return ONLY a JSON object in this format:
+            {{
+            "category_focus_percentage": <integer>,
+            "is_directly_related": <boolean>,
+            "reasoning": "<1-sentence explanation of the focus ratio>"
+            }}
+
+            Document text: 
+            {text}
+        """
+    
+    response = llm.invoke([f"{prompt}"])
+    result_data = parse_category_relevance(json.loads(response.content))
+
+    
+
 
     doc.close()
-    return {"status": "verified", "text_preview": text[:100]} # return a snippet
+    
+    return {
+        "status": "verified", 
+        "summary": result_data,
+        "text_preview": text  
+    }
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

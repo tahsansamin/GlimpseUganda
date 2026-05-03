@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, File } from 'lucide-react';
+import { Upload, File, Trash2 } from 'lucide-react';
 import { supabase } from '../utils/supabase';
 import apiClient from '../api';
 
@@ -65,6 +65,10 @@ export default function DocumentUpload() {
     setFiles(prev => [...prev, ...validFiles]);
   };
 
+  const handleDeleteFile = (indexToDelete) => {
+    setFiles(prev => prev.filter((_, idx) => idx !== indexToDelete));
+  };
+
   const handleUpload = async () => {
     // Validation
     if (!selectedCategory) {
@@ -113,6 +117,13 @@ export default function DocumentUpload() {
       // If verification passes, upload to Supabase
       console.log(`my path is ${selectedCategory}/${files[0].name}`); //del later
       console.log(`{text: ${verificationResponse.data.summary.is_directly_related}}`); //del later
+      if (!verificationResponse.data.summary.is_directly_related) {
+        setUploadStatus({ 
+          type: 'error', 
+          message: 'Document is not directly related to the selected category' 
+        });
+        return;
+      } 
       const {data,error} = await supabase.storage.from('test bucket').upload(
         `${selectedCategory}/${files[0].name}`, 
         files[0]
@@ -199,6 +210,13 @@ export default function DocumentUpload() {
                 <File className="w-6 h-6 text-blue-500 mr-3" />
                 <span className="text-sm font-medium text-gray-700 truncate flex-1">{file.name}</span>
                 <span className="ml-4 text-xs text-gray-500 font-medium">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                <button
+                  onClick={() => handleDeleteFile(idx)}
+                  className="ml-4 p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                  title="Delete file"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
               </li>
             ))}
           </ul>

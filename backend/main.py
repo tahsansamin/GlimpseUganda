@@ -14,10 +14,12 @@ from dotenv import load_dotenv,find_dotenv
 from supabase import create_client, Client
 import fitz
 import json 
+from pinecone import Pinecone
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
 API_KEY = os.getenv("GROQ_API_KEY")
+PINECONE_KEY = os.getenv("PINECONE_KEY")
 if not API_KEY:
     raise RuntimeError("GROQ_API_KEY environment variable not set. Please set it before running.")
 llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
@@ -139,6 +141,8 @@ def process_city_documents(city_obj, folder_path):
     word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in word_split_documents])
     city_obj.add_documents(word_split_documents, word_embeddings)
 
+
+
 process_city_documents(Kampala, "./pdfs/kampala_pdfs")
 process_city_documents(Entebbe, "./pdfs/entebbe_pdfs")
 process_city_documents(Jinja, "./pdfs/jinja_pdfs")
@@ -165,6 +169,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
  
+#testing pinecone
+pc = Pinecone(api_key=PINECONE_KEY)
+index = pc.index("tourismindex")
 
 @app.post("/Kampala_query")
 def query_prompt(request: PromptRequest):
@@ -306,6 +313,9 @@ async def verify_document(
         "summary": result_data,
         "text_preview": text  
     }
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

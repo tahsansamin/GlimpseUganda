@@ -15,6 +15,7 @@ from supabase import create_client, Client
 import fitz
 import json 
 from pinecone import Pinecone
+from langchain_pinecone import PineconeVectorStore
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -23,6 +24,10 @@ PINECONE_KEY = os.getenv("PINECONE_KEY")
 if not API_KEY:
     raise RuntimeError("GROQ_API_KEY environment variable not set. Please set it before running.")
 llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
+
+#setting up pinecone client
+pc = Pinecone(api_key=PINECONE_KEY)
+index = pc.Index("tourismindex")
 
 class PromptRequest(BaseModel):
     prompt: str
@@ -141,6 +146,22 @@ def process_city_documents(city_obj, folder_path):
     word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in word_split_documents])
     city_obj.add_documents(word_split_documents, word_embeddings)
 
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+
+# ... existing code ...
+
+def process_city_documents_2_del(city_obj, folder_path):
+    word_documents = dataloader.process_all_word_docs(folder_path)
+    word_split_documents = embedding_manager.chunk_documents(word_documents)
+    word_embeddings = embedding_manager.generate_embeddings([doc.page_content for doc in word_split_documents])
+    city_obj.add_documents(word_split_documents, word_embeddings)
+    # Fix: Use LangChain's embedding model
+    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
+    vectorstore = PineconeVectorStore(embedding=embedding_model, index=index)
+    vectorstore.add_documents(documents=word_split_documents) 
+    print(f"added {len(word_split_documents)} word documents to pinecone index for {city_obj.collection_name}")
+
+
 
 
 process_city_documents(Kampala, "./pdfs/kampala_pdfs")
@@ -159,6 +180,11 @@ process_city_documents(sipi_falls, "./pdfs/sipi_falls_pdfs")
 process_city_documents(lake_mburo_national_park, "./pdfs/lake_mburo_national_park_pdfs")
 process_city_documents(kabale, "./pdfs/kabale_pdfs")
 
+process_city_documents_2_del(Kampala, "./pdfs/kampala_pdfs")
+
+
+
+
 app = FastAPI()
 
 app.add_middleware(
@@ -169,9 +195,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
  
-#testing pinecone
-pc = Pinecone(api_key=PINECONE_KEY)
-index = pc.index("tourismindex")
+
 
 @app.post("/Kampala_query")
 def query_prompt(request: PromptRequest):

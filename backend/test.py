@@ -12,6 +12,7 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_classic.chains import RetrievalQA
 from vectorstore import VectorStore
 from langchain_groq import ChatGroq
+from pydantic import BaseModel
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -147,16 +148,276 @@ app.add_middleware(
  
 
 
+
 @app.post("/Kampala_query")
-def query_prompt(prompt):
-    
+def query_prompt(prompt: str):
+    # Create a vectorstore scoped to the kampala namespace
+    kampala_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="kampala"
+    )
+    kampala_retriever = kampala_store.as_retriever(search_type="similarity")
+    kampala_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=kampala_retriever,
+        return_source_documents=True
+    )
+    result = kampala_qa({"query": prompt})
+    return result["result"]
 
-    result = qa({"query": prompt})
-
-    
+@app.post("/Entebbe_query")
+def query_prompt(prompt: str):
+    # Create a vectorstore scoped to the entebbe namespace
+    entebbe_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="entebbe"
+    )
+    entebbe_retriever = entebbe_store.as_retriever(search_type="similarity")
+    entebbe_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=entebbe_retriever,
+        return_source_documents=True
+    )
+    result = entebbe_qa({"query": prompt})
     return result["result"]
 
 
+@app.post("/Jinja_query")
+def jinja_query(prompt: str):
+    jinja_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="jinja"
+    )
+    jinja_retriever = jinja_store.as_retriever(search_type="similarity")
+    jinja_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=jinja_retriever,
+        return_source_documents=True
+    )
+    result = jinja_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Murchison Falls National Park_query")
+def murchison_falls_national_park_query(prompt: str):
+    murchison_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="murchison_falls_national_park"
+    )
+    murchison_retriever = murchison_store.as_retriever(search_type="similarity")
+    murchison_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=murchison_retriever,
+        return_source_documents=True
+    )
+    result = murchison_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Bwindi Forest_query")
+def bwindi_forest_query(prompt: str):
+    bwindi_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="bwindi_forest"
+    )
+    bwindi_retriever = bwindi_store.as_retriever(search_type="similarity")
+    bwindi_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=bwindi_retriever,
+        return_source_documents=True
+    )
+    result = bwindi_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Mbarara_query")
+def mbarara_query(prompt: str):
+    mbarara_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="mbarara"
+    )
+    mbarara_retriever = mbarara_store.as_retriever(search_type="similarity")
+    mbarara_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=mbarara_retriever,
+        return_source_documents=True
+    )
+    result = mbarara_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Queen Elizabeth National Park_query")
+def queen_elizabeth_national_park_query(prompt: str):
+    queen_elizabeth_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="queen_elizabeth_national_park"
+    )
+    queen_elizabeth_retriever = queen_elizabeth_store.as_retriever(search_type="similarity")
+    queen_elizabeth_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=queen_elizabeth_retriever,
+        return_source_documents=True
+    )
+    result = queen_elizabeth_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Gulu_query")
+def gulu_query(prompt: str):
+    gulu_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="gulu"
+    )
+    gulu_retriever = gulu_store.as_retriever(search_type="similarity")
+    gulu_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=gulu_retriever,
+        return_source_documents=True
+    )
+    result = gulu_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Kidepo Valley National Park_query")
+def kidepo_valley_national_park_query(prompt: str):
+    kidepo_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="kidepo_valley_national_park"
+    )
+    kidepo_retriever = kidepo_store.as_retriever(search_type="similarity")
+    kidepo_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=kidepo_retriever,
+        return_source_documents=True
+    )
+    result = kidepo_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Kibale National Park_query")
+def kibale_national_park_query(prompt: str):
+    kibale_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="kibale_national_park"
+    )
+    kibale_retriever = kibale_store.as_retriever(search_type="similarity")
+    kibale_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=kibale_retriever,
+        return_source_documents=True
+    )
+    result = kibale_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Rwenzori Mountains_query")
+def rwenzori_mountains_query(prompt: str):
+    rwenzori_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="rwenzori_mountains"
+    )
+    rwenzori_retriever = rwenzori_store.as_retriever(search_type="similarity")
+    rwenzori_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=rwenzori_retriever,
+        return_source_documents=True
+    )
+    result = rwenzori_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Lake Bunyonyi_query")
+def lake_bunyonyi_query(prompt: str):
+    lake_bunyonyi_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="lake_bunyonyi"
+    )
+    lake_bunyonyi_retriever = lake_bunyonyi_store.as_retriever(search_type="similarity")
+    lake_bunyonyi_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=lake_bunyonyi_retriever,
+        return_source_documents=True
+    )
+    result = lake_bunyonyi_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Sipi Falls_query")
+def sipi_falls_query(prompt: str):
+    sipi_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="sipi_falls"
+    )
+    sipi_retriever = sipi_store.as_retriever(search_type="similarity")
+    sipi_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=sipi_retriever,
+        return_source_documents=True
+    )
+    result = sipi_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Lake Mburo National Park_query")
+def lake_mburo_national_park_query(prompt: str):
+    lake_mburo_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="lake_mburo_national_park"
+    )
+    lake_mburo_retriever = lake_mburo_store.as_retriever(search_type="similarity")
+    lake_mburo_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=lake_mburo_retriever,
+        return_source_documents=True
+    )
+    result = lake_mburo_qa({"query": prompt})
+    return result["result"]
+
+
+@app.post("/Kabale_query")
+def kabale_query(prompt: str):
+    kabale_store = PineconeVectorStore(
+        index=index,
+        embedding=embedding_model,
+        namespace="kabale"
+    )
+    kabale_retriever = kabale_store.as_retriever(search_type="similarity")
+    kabale_qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=kabale_retriever,
+        return_source_documents=True
+    )
+    result = kabale_qa({"query": prompt})
+    return result["result"]
 
 
 if __name__ == "__main__":

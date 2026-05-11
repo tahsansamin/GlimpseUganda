@@ -197,10 +197,10 @@ app.add_middleware(
  
 
 
-@app.post("/Kampala_query")
-def query_prompt(request: PromptRequest):
-    answer = rag_simple(request.prompt, rag_retriever_kampala, llm)
-    return answer
+# @app.post("/Kampala_query")
+# def query_prompt(request: PromptRequest):
+#     answer = rag_simple(request.prompt, rag_retriever_kampala, llm)
+#     return answer
 
 @app.post("/Entebbe_query")
 def query_prompt(request: PromptRequest):

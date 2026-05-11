@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
+import uvicorn
 import dataloader
 from embedding import EmbeddingManager
 # pyrefly: ignore [missing-import]
@@ -11,6 +12,8 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_classic.chains import RetrievalQA
 from vectorstore import VectorStore
 from langchain_groq import ChatGroq
+from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.middleware.cors import CORSMiddleware
 
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
@@ -29,6 +32,10 @@ index = pc.Index("tourismindex")
 embedding_manager = EmbeddingManager()
 BACKEND_ROOT = Path(__file__).resolve().parent
 embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
+vectorstore = PineconeVectorStore(index=index, embedding=embedding_model)
+retriever = vectorstore.as_retriever(search_type="similarity")
+llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
+qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
 
 CITY_NAMES = [
     "kampala",
@@ -116,23 +123,11 @@ def ingest_all_city_documents_to_pinecone():
         print(f"  Added {len(split_docs)} chunks for {city} to Pinecone namespace '{city}'\n")
 
 # To ingest every city PDF and Word document folder into Pinecone, call:
-ingest_all_city_documents_to_pinecone()
+# ingest_all_city_documents_to_pinecone()
 
 
-def testing_retrieval():
-    vectorstore = PineconeVectorStore(index=index, embedding=embedding_model)
-    retriever = vectorstore.as_retriever(search_type="similarity")
-    llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
 
-    # Set up RetrievalQA chain
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
-
-    # Query the model
-    prompt = "tell me about kampala"
-    result = qa({"query": prompt})
-
-    print(result["result"])
-
+    
 
 def setup_namespaces():
     return setup_pinecone_namespaces()
@@ -153,11 +148,17 @@ app.add_middleware(
 
 
 @app.post("/Kampala_query")
-def query_prompt(request: PromptRequest):
-    answer = rag_simple(request.prompt, rag_retriever_kampala, llm)
-    return answer
+def query_prompt(prompt):
+    
+
+    result = qa({"query": prompt})
+
+    
+    return result["result"]
 
 
 
 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 

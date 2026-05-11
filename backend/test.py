@@ -3,7 +3,9 @@ from pathlib import Path
 from dotenv import load_dotenv, find_dotenv
 import dataloader
 from embedding import EmbeddingManager
+# pyrefly: ignore [missing-import]
 from langchain_community.embeddings import SentenceTransformerEmbeddings
+# pyrefly: ignore [missing-import]
 from pinecone import Pinecone
 from langchain_pinecone import PineconeVectorStore
 from langchain_classic.chains import RetrievalQA
@@ -26,6 +28,7 @@ pc = Pinecone(api_key=PINECONE_KEY)
 index = pc.Index("tourismindex")
 embedding_manager = EmbeddingManager()
 BACKEND_ROOT = Path(__file__).resolve().parent
+embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
 
 CITY_NAMES = [
     "kampala",
@@ -68,7 +71,6 @@ def setup_pinecone_namespaces(city_names=None):
     if city_names is None:
         city_names = CITY_NAMES
 
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
     stores = {}
 
     for city in city_names:
@@ -82,7 +84,6 @@ def setup_pinecone_namespaces(city_names=None):
 
 
 def ingest_all_city_documents_to_pinecone():
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
 
     for city, folder_path in CITY_PDF_FOLDERS:
         actual_path = BACKEND_ROOT / folder_path
@@ -119,7 +120,6 @@ ingest_all_city_documents_to_pinecone()
 
 
 def testing_retrieval():
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
     vectorstore = PineconeVectorStore(index=index, embedding=embedding_model)
     retriever = vectorstore.as_retriever(search_type="similarity")
     llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
@@ -139,6 +139,24 @@ def setup_namespaces():
 
 
 # setup_namespaces()
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+ 
+
+
+@app.post("/Kampala_query")
+def query_prompt(request: PromptRequest):
+    answer = rag_simple(request.prompt, rag_retriever_kampala, llm)
+    return answer
+
 
 
 

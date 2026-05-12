@@ -391,8 +391,10 @@ async def process_document(request: Request):
         supabase.table("documents").update({"status": "ready"}).eq("id", record["id"]).execute()
 
         print(f"Added {len(split_docs)} chunks for {city}")
-        return {"success": True, "chunks": len(split_docs)}
+        print(f"Finished processing {file_path}")
 
+        return {"success": True, "chunks": len(split_docs)}
+    
     except Exception as e:
         print(f"Failed to process {file_path}: {e}")
         supabase.table("documents").update({"status": "failed"}).eq("id", record["id"]).execute()
@@ -400,6 +402,7 @@ async def process_document(request: Request):
 
     finally:
         os.unlink(tmp_path)
+    
 
 
 

@@ -128,6 +128,21 @@ export default function DocumentUpload() {
         `${selectedCategory}/${files[0].name}`, 
         files[0]
       );
+      const { data1, error1 } = await supabase
+        .from('pinecone_docs')
+        .insert([
+          {
+            city: selectedCategory,
+            file_name: files[0].name,
+            storage_path: `${selectedCategory}/${files[0].name}`, // Template literal instead of f""
+            mime_type: 'application/pdf',
+            status: 'processing'
+          }
+        ]);
+
+      if (error1) {
+        console.error('Error inserting row:', error);
+      }
       
       if (error) {
         setUploadStatus({ 

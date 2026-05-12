@@ -18,6 +18,26 @@ def process_all_pdfs(pdf_directory):
         except Exception as e:
             print(f"error is {e}")
     return all_documents
+def process_pdf(pdf_path):
+    """
+    Processes a single PDF file and attaches metadata.
+    """
+    documents = []
+    path_obj = Path(pdf_path)
+    try:
+        loader = PyPDFLoader(str(path_obj))
+        pages = loader.load()
+        for page in pages:
+            # Consistent metadata tagging
+            page.metadata['sourcefile'] = path_obj.name
+            page.metadata['file_type'] = 'pdf'
+        documents.extend(pages)
+        print(f"Successfully loaded {len(pages)} pages from {path_obj.name}")
+    except Exception as e:
+        print(f"[ERROR] Failed to load PDF {pdf_path}: {e}")
+    return documents
+
+
 def process_all_word_docs(data_directory):
     documents = []
     data_path = Path(data_directory)
@@ -33,4 +53,25 @@ def process_all_word_docs(data_directory):
         except Exception as e:
             print(f"[ERROR] Failed to load Word {docx_file}: {e}")
     return documents
+
+def process_word_doc(docx_path):
+    """
+    Processes a single Word (.docx) document and attaches metadata.
+    """
+    documents = []
+    path_obj = Path(docx_path)
+    try:
+        loader = Docx2txtLoader(str(path_obj))
+        loaded = loader.load()
+        for doc in loaded:
+            # Adding metadata consistency with your PDF function
+            doc.metadata['sourcefile'] = path_obj.name
+            doc.metadata['file_type'] = 'docx'
+        documents.extend(loaded)
+        print(f"Successfully loaded {path_obj.name}")
+    except Exception as e:
+        print(f"[ERROR] Failed to load Word doc {docx_path}: {e}")
+    return documents
+
+
 

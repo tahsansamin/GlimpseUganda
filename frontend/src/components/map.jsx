@@ -40,7 +40,7 @@ export default function Map({
       setMessages((prevMessages) => [...prevMessages, newQuery]);
       console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-        prompt: `Limit your response to 3 sentences. ${query} for the city of ${currentCity.name}`,
+        prompt: `Limit your response to 3 sentences. ${query} for the city of ${currentCity.name} and make your response very succint!`,
       });
       console.log(response.data);
       setresponse(response.data);

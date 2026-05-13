@@ -20,10 +20,15 @@ from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 import fitz
 import json 
+from supabase import create_client, Client
 from pydantic import BaseModel
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
+
+#creating supabase client
+supabase: Client = create_client(os.getenv("VITE_SUPABASE_URL"),
+    os.getenv("VITE_SUPABASE_KEY"))
 
 API_KEY = os.getenv("GROQ_API_KEY")
 if not API_KEY:
@@ -388,7 +393,7 @@ async def process_document(request: Request):
         store.add_documents(documents=split_docs)
 
         # 7. Mark as ready in DB
-        supabase.table("documents").update({"status": "ready"}).eq("id", record["id"]).execute()
+        supabase.table("pinecone_docs").update({"status": "ready"}).eq("id", record["id"]).execute()
 
         print(f"Added {len(split_docs)} chunks for {city}")
         print(f"Finished processing {file_path}")

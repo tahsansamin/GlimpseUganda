@@ -4,6 +4,7 @@ import CityMarkers from "./CityMarkers";
 import AnimatedText from "./animatedtext.jsx";
 import InputBox from "./inputbox";
 import apiClient from "../api";
+import { Loader2 } from "lucide-react";
 
 /**
  * Map + city markers; layout uses theme frame and panel styles from index.css.
@@ -18,12 +19,14 @@ export default function Map({
   const [currentCity, setcurrentCity] = useState(null);
   const [query, setquery] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [animatedText, setAnimatedText] = useState(
     "Welcome to the Pearl of Africa! Click on a city to learn more about it."
   );
 
   const fetchData = async () => {
     try {
+      setIsLoading(true);
       const newQuery = {
         typeofmessage: "user",
         content: query,
@@ -46,16 +49,18 @@ export default function Map({
       setMessages((prevMessages) => [...prevMessages, newResponse]);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
-      <div className="theme-map-frame relative w-full max-w-[min(92vw,720px)] aspect-[1000/1000]">
+      <div className="relative w-full max-w-[min(92vw,720px)] aspect-[1000/1000]">
         <img
           src={mapSrc}
           alt="Uganda map"
-          className="h-full w-full object-contain bg-[var(--color-sand)]"
+          className="h-full w-full object-contain"
         />
 
         <div className="pointer-events-none absolute inset-0">
@@ -74,12 +79,19 @@ export default function Map({
       </div>
 
       <div className="w-full max-w-3xl px-2 text-center">
-        <AnimatedText
-          text={animatedText}
-          animationType="letter"
-          delay={60}
-          className="mt-1 text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
-        />
+        {isLoading ? (
+          <div className="flex items-center justify-center gap-2 mt-1 text-[var(--color-forest-deep)] font-semibold text-base sm:text-lg">
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span>Thinking...</span>
+          </div>
+        ) : (
+          <AnimatedText
+            text={animatedText}
+            animationType="letter"
+            delay={60}
+            className="mt-1 text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
+          />
+        )}
       </div>
 
       {(messages.length > 0 || displaybox) && (

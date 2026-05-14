@@ -88,13 +88,6 @@ a:hover {
   color: var(--color-maroon);
 }
 
-.theme-map-frame {
-  border: var(--border-map);
-  border-radius: 14px;
-  box-shadow: var(--shadow-lift);
-  overflow: hidden;
-  background: var(--color-sand);
-}
 
 .theme-panel {
   background: rgba(255, 255, 255, 0.96);

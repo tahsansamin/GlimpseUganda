@@ -2,6 +2,7 @@ from http.client import HTTPException
 import os
 from pathlib import Path
 import tempfile
+import cohere
 from dotenv import load_dotenv, find_dotenv
 import supabase
 import uvicorn
@@ -15,6 +16,7 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_classic.chains import RetrievalQA
 from vectorstore import VectorStore
 from langchain_groq import ChatGroq
+from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel
 from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -38,13 +40,26 @@ PINECONE_KEY = os.getenv("PINECONE_KEY")
 if not PINECONE_KEY:
     raise RuntimeError("PINECONE_KEY environment variable not set. Please set it before running.")
 
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+if not COHERE_API_KEY:
+    raise RuntimeError("COHERE_API_KEY environment variable not set. Please set it before running.")
+
+RETRIEVAL_K = 8
+RERANK_TOP_N = 4
+COHERE_RERANK_MODEL = "rerank-english-v3.0"
+
+cohere_client = cohere.Client(api_key=COHERE_API_KEY)
+
 pc = Pinecone(api_key=PINECONE_KEY)
 index = pc.Index("tourismindex")
 embedding_manager = EmbeddingManager()
 BACKEND_ROOT = Path(__file__).resolve().parent
 embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
 vectorstore = PineconeVectorStore(index=index, embedding=embedding_model)
-retriever = vectorstore.as_retriever(search_type="similarity")
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": RETRIEVAL_K},
+)
 llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
 qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
 
@@ -182,17 +197,46 @@ NAMESPACE_MAP = {
     "Kabale": "kabale",
 }
 
+
+def cohere_rerank_documents(query: str, documents: list) -> list:
+    if not documents:
+        return []
+    texts = [d.page_content for d in documents]
+    resp = cohere_client.rerank(
+        model=COHERE_RERANK_MODEL,
+        query=query,
+        documents=texts,
+        top_n=min(RERANK_TOP_N, len(texts)),
+    )
+    return [documents[r.index] for r in resp.results]
+
+
 def run_query(namespace: str, prompt: str) -> str:
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
-    retriever = store.as_retriever(search_type="similarity")
-    qa = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=retriever,
-        return_source_documents=True
+    base_retriever = store.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": RETRIEVAL_K},
     )
-    result = qa({"query": prompt})
-    return result["result"]
+    docs = base_retriever.invoke(prompt)
+    reranked = cohere_rerank_documents(prompt, docs)
+    if not reranked:
+        return "I could not find relevant information for your question."
+
+    context_str = "\n\n---\n\n".join(d.page_content for d in reranked)
+    answer = llm.invoke(
+        [
+            SystemMessage(
+                content=(
+                    "You are a knowledgeable Uganda tourism assistant. "
+                    "Answer the user's question using only the context below. "
+                    "If the context does not contain enough information, say so clearly.\n\n"
+                    f"Context:\n{context_str}"
+                )
+            ),
+            HumanMessage(content=prompt),
+        ]
+    )
+    return answer.content
 
 
 @app.post("/Kampala_query")

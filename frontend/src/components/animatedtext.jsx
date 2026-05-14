@@ -11,7 +11,8 @@ export default function AnimatedText({
   const [isAnimating, setIsAnimating] = useState(true);
 
   useEffect(() => {
-    if (!text) return;
+    const safeText = typeof text === "string" ? text : String(text ?? "");
+    if (!safeText) return;
 
     setDisplayedText("");
     setIsAnimating(true);
@@ -20,8 +21,8 @@ export default function AnimatedText({
       // Animate letter by letter
       let currentIndex = 0;
       const interval = setInterval(() => {
-        if (currentIndex <= text.length) {
-          setDisplayedText(text.substring(0, currentIndex));
+        if (currentIndex <= safeText.length) {
+          setDisplayedText(safeText.substring(0, currentIndex));
           currentIndex++;
         } else {
           setIsAnimating(false);
@@ -32,7 +33,7 @@ export default function AnimatedText({
       return () => clearInterval(interval);
     } else if (animationType === "word") {
       // Animate word by word
-      const words = text.split(" ");
+      const words = safeText.split(" ");
       let currentWordIndex = 0;
       const interval = setInterval(() => {
         if (currentWordIndex <= words.length) {

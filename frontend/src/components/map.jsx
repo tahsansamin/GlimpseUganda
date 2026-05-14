@@ -1,21 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CityMarkers from "./CityMarkers";
 import AnimatedText from "./animatedtext.jsx";
 import InputBox from "./inputbox";
 import apiClient from "../api";
 
-import Box from "./interactiveresponsebox";
-import ChatBubble from "./chatbubble";
-
 /**
- * Responsive Map component with city markers.
- *
- * Props:
- * - mapSrc: URL/path to the map image
- * - cities: array of objects [{ name, x, y, size, pinColor, innerDotColor }]
- *
- * Each city's x and y should be relative to the original image size (0..imageWidth, 0..imageHeight)
+ * Map + city markers; layout uses theme frame and panel styles from index.css.
  */
 export default function Map({
   mapSrc,
@@ -23,14 +14,14 @@ export default function Map({
   originalHeight,
   cities = [],
 }) {
-  const aspectRatio = originalHeight / originalWidth;
   const [displaybox, setdisplaybox] = useState(false);
   const [currentCity, setcurrentCity] = useState(null);
   const [query, setquery] = useState("");
-  const [submit, setsubmut] = useState(false);
-  const [response, setresponse] = useState("");
   const [messages, setMessages] = useState([]);
-  const [animatedText, setAnimatedText] = useState("Welcome to the Pearl of Africa! Click on a city to learn more about it.");
+  const [animatedText, setAnimatedText] = useState(
+    "Welcome to the Pearl of Africa! Click on a city to learn more about it."
+  );
+
   const fetchData = async () => {
     try {
       const newQuery = {
@@ -38,75 +29,77 @@ export default function Map({
         content: query,
       };
       setMessages((prevMessages) => [...prevMessages, newQuery]);
-      console.log("Fetching data for city:", currentCity.name);
       const response = await apiClient.post(`/${currentCity.name}_query`, {
         prompt: `Limit your response to 3 sentences. ${query} for the city of ${currentCity.name} and make your response very succint!`,
       });
-      console.log(response.data);
-      setresponse(response.data);
-      setAnimatedText(response.data);
+      const body = response.data;
+      const answerText =
+        typeof body === "string" ? body : body?.answer ?? "";
+      if (body?.rerank != null) {
+        console.log("[rerank]", body.rerank);
+      }
+      setAnimatedText(answerText);
       const newResponse = {
         typeofmessage: "ai",
-        content: response.data,
+        content: answerText,
       };
       setMessages((prevMessages) => [...prevMessages, newResponse]);
-      console.log(messages);
     } catch (error) {
       console.error("Error fetching data:", error);
-      console.log("Current city in error:", currentCity);
     }
   };
 
   return (
-    <div style={{ position: "relative", width: "47vw", height: "67vh" }}>
-      <img
-        src={mapSrc}
-        className="rounded mx-auto d-block"
-        alt="..."
-        style={{ width: "100%", height: "100%" }}
-      />
+    <div className="flex w-full flex-col items-center gap-6">
+      <div className="theme-map-frame relative w-full max-w-[min(92vw,720px)] aspect-[1000/1000]">
+        <img
+          src={mapSrc}
+          alt="Uganda map"
+          className="h-full w-full object-contain bg-[var(--color-sand)]"
+        />
 
-      <div style={{ width: "55vw", textAlign: "center", margin: "0 auto" }}>
+        <div className="pointer-events-none absolute inset-0">
+          <div className="pointer-events-auto absolute inset-0">
+            <CityMarkers
+              cities={cities}
+              originalWidth={originalWidth}
+              originalHeight={originalHeight}
+              onMarkerClick={(city) => {
+                setdisplaybox(!displaybox);
+                setcurrentCity(city);
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full max-w-3xl px-2 text-center">
         <AnimatedText
           text={animatedText}
           animationType="letter"
           delay={60}
-          className="mt-4 text-lg font-mono text-center"
+          className="mt-1 text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
         />
       </div>
 
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "auto" }}>
-          <CityMarkers
-            cities={cities}
-            originalWidth={originalWidth}
-            originalHeight={originalHeight}
-            onMarkerClick={(city) => {
-              setdisplaybox(!displaybox);
-              setcurrentCity(city);
-            }}
-          />
-        </div>
-      </div>
       {(messages.length > 0 || displaybox) && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-
-
-          <div className="bg-white rounded-xl flex flex-col overflow-hidden pointer-events-auto">
-            {/* Input area (always visible at bottom) */}
+        <div className="fixed left-1/2 top-24 z-50 w-[min(94vw,28rem)] -translate-x-1/2 sm:top-28">
+          <div className="theme-panel flex flex-col overflow-hidden">
             {displaybox && (
-              <div className="border-t p-4 flex items-center gap-2">
+              <div className="flex items-center gap-2 border-t border-[rgba(61,82,56,0.12)] p-4">
                 <InputBox
                   changefunc={(e) => setquery(e.target.value)}
                   submitfunc={fetchData}
                 />
-
                 <button
-                  className="bg-black text-white text-sm px-3 py-2 rounded hover:bg-gray-800"
+                  type="button"
+                  className="theme-btn-secondary shrink-0 px-3 py-2 text-sm"
                   onClick={() => {
                     setdisplaybox(false);
                     setMessages([]);
-                    setAnimatedText("Welcome to the Pearl of Africa! Click on a city to learn more about it.");
+                    setAnimatedText(
+                      "Welcome to the Pearl of Africa! Click on a city to learn more about it."
+                    );
                     setquery("");
                   }}
                 >
@@ -117,11 +110,12 @@ export default function Map({
           </div>
         </div>
       )}
-      <div className="fixed bottom-6 right-6 z-40">
+
+      <div className="fixed bottom-6 right-6 z-40 opacity-95 drop-shadow-md">
         <img
           src="crested_crane-removebg-preview.png"
-          alt="Crested Crane"
-          className="w-24 h-auto"
+          alt="Crested crane"
+          className="h-auto w-24"
         />
       </div>
     </div>

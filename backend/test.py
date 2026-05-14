@@ -208,7 +208,22 @@ def cohere_rerank_documents(query: str, documents: list) -> list:
         documents=texts,
         top_n=min(RERANK_TOP_N, len(texts)),
     )
-    return [documents[r.index] for r in resp.results]
+    out = [documents[r.index] for r in resp.results]
+    index_order = [r.index for r in resp.results]
+    print(
+        f"[rerank] Cohere {COHERE_RERANK_MODEL}: "
+        f"{len(documents)} vector hits -> top_n={len(resp.results)} for LLM; "
+        f"pinecone_index_order={list(range(len(documents)))} "
+        f"rerank_winner_index_order={index_order}"
+    )
+    for i, r in enumerate(resp.results, start=1):
+        score = getattr(r, "relevance_score", None)
+        if score is None:
+            score = getattr(r, "score", None)
+        score_str = f"{float(score):.4f}" if isinstance(score, (int, float)) else str(score)
+        preview = documents[r.index].page_content[:100].replace("\n", " ")
+        print(f"[rerank]   #{i} pinecone_idx={r.index} score={score_str} preview={preview!r}...")
+    return out
 
 
 def run_query(namespace: str, prompt: str) -> str:
@@ -218,6 +233,10 @@ def run_query(namespace: str, prompt: str) -> str:
         search_kwargs={"k": RETRIEVAL_K},
     )
     docs = base_retriever.invoke(prompt)
+    print(
+        f"[rerank] query start namespace={namespace!r} "
+        f"pinecone_k={RETRIEVAL_K} retrieved_docs={len(docs)}"
+    )
     reranked = cohere_rerank_documents(prompt, docs)
     if not reranked:
         return "I could not find relevant information for your question."

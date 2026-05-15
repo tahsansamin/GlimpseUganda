@@ -115,6 +115,11 @@ def setup_pinecone_namespaces(city_names=None):
 
     return stores
 
+def setup_namespaces():
+    return setup_pinecone_namespaces()
+# setup_namespaces()
+
+
 
 def ingest_all_city_documents_to_pinecone():
 
@@ -155,8 +160,7 @@ def ingest_all_city_documents_to_pinecone():
 
     
 
-def setup_namespaces():
-    return setup_pinecone_namespaces()
+
 
 
 # setup_namespaces()

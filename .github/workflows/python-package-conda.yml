@@ -1,0 +1,41 @@
+name: Python Tests
+
+# Trigger the workflow on every push to any branch
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Check out your code from GitHub
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    # 2. Set up Python 3.10 (matching your local virtual env)
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    # 3. Cache dependencies to make future runs much faster
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    # 4. Install requirements
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f backend/requirements.txt ]; then pip install -r backend/requirements.txt; fi
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    # 5. Run the tests using the exact command that worked locally
+    - name: Run tests with Pytest
+      run: |
+        cd backend
+        python3 -m pytest

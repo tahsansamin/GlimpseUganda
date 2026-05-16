@@ -34,3 +34,7 @@ def test_all_city_routes_call_correct_namespace(client, endpoint, namespace):
         res = client.post(endpoint, json={"prompt": "What can I do here?"})
     assert res.status_code == 200
     mock_rq.assert_called_once_with(namespace, "What can I do here?")
+
+#test commit 
+
+

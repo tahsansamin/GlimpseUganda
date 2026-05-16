@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import CityMarkers from "./CityMarkers";
+import ChatWindow from "./ChatWindow";
 import AnimatedText from "./animatedtext.jsx";
-import InputBox from "./inputbox";
 import apiClient from "../api";
-import { Loader2 } from "lucide-react";
 
 /**
  * Map + city markers; layout uses theme frame and panel styles from index.css.
@@ -15,38 +14,45 @@ export default function Map({
   originalHeight,
   cities = [],
 }) {
-  const [displaybox, setdisplaybox] = useState(false);
-  const [currentCity, setcurrentCity] = useState(null);
-  const [query, setquery] = useState("");
+  const [showChat, setShowChat] = useState(false);
+  const [currentCity, setCurrentCity] = useState(null);
+  const [query, setQuery] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [animatedText, setAnimatedText] = useState(
-    "Welcome to the Pearl of Africa! Click on a city to learn more about it."
-  );
 
-  const fetchData = async () => {
+  const handleSend = async (customQuery) => {
+    const textToSubmit = customQuery || query;
+    if (!textToSubmit.trim()) return;
+
     try {
       setIsLoading(true);
-      const newQuery = {
+      
+      // Prepare history for the backend
+      const history = messages.map(msg => ({
+        role: msg.typeofmessage === "user" ? "user" : "assistant",
+        content: msg.content
+      }));
+
+      const newUserMsg = {
         typeofmessage: "user",
-        content: query,
+        content: textToSubmit,
       };
-      setMessages((prevMessages) => [...prevMessages, newQuery]);
+      setMessages((prev) => [...prev, newUserMsg]);
+      setQuery("");
+
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-        prompt: `Limit your response to 3 sentences. ${query} for the city of ${currentCity.name} and make your response very succint!`,
+        prompt: `Limit your response to 3 sentences. ${textToSubmit} for the city of ${currentCity.name} and make your response very succint!`,
+        history: history
       });
+      
       const body = response.data;
-      const answerText =
-        typeof body === "string" ? body : body?.answer ?? "";
-      if (body?.rerank != null) {
-        console.log("[rerank]", body.rerank);
-      }
-      setAnimatedText(answerText);
-      const newResponse = {
+      const answerText = typeof body === "string" ? body : body?.answer ?? "";
+      
+      const newAiMsg = {
         typeofmessage: "ai",
         content: answerText,
       };
-      setMessages((prevMessages) => [...prevMessages, newResponse]);
+      setMessages((prev) => [...prev, newAiMsg]);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -54,14 +60,60 @@ export default function Map({
     }
   };
 
+  const handleMarkerClick = (city) => {
+    setCurrentCity(city);
+    setShowChat(true);
+  };
+
+  const handleCloseChat = () => {
+    setShowChat(false);
+    setMessages([]);
+    setQuery("");
+  };
+
   return (
-    <div className="flex w-full flex-col items-center gap-6">
-      <div className="relative w-full max-w-[min(92vw,720px)] aspect-[1000/1000]">
+    <div className="flex w-full flex-col items-center gap-0 relative -top-4 sm:-top-8">
+      <div className="relative w-full max-w-[min(94vw,670px)] aspect-[1000/1000]">
         <img
           src={mapSrc}
           alt="Uganda map"
           className="h-full w-full object-contain"
         />
+
+        {/* Faint neighboring countries labels */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.35] select-none font-serif italic">
+          <div className="absolute top-[3%] right-[45%] text-[10px] sm:text-[14px] font-bold tracking-[0.6em] uppercase text-[var(--color-text)]">
+            South Sudan
+          </div>
+          <div className="absolute top-[55%] left-[92%] text-[10px] sm:text-[14px] font-bold tracking-[0.6em] uppercase text-[var(--color-text)] whitespace-nowrap">
+            Kenya
+          </div>
+          <div className="absolute bottom-[10%] left-[65%] -translate-x-1/2 text-[10px] sm:text-[14px] font-bold tracking-[0.6em] uppercase text-[var(--color-text)]">
+            Tanzania
+          </div>
+          <div className="absolute top-[35%] left-[4%] text-[10px] sm:text-[14px] font-bold tracking-[0.4em] uppercase text-[var(--color-text)] leading-tight max-w-[80px]">
+            Dem. Rep. of the Congo
+          </div>
+          <div className="absolute bottom-[10%] left-[10%] text-[8px] sm:text-[12px] font-bold tracking-[0.3em] uppercase text-[var(--color-text)]">
+            Rwanda
+          </div>
+          
+          {/* Faint trace lines representing neighbor borders */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.4]" viewBox="0 0 1000 1000" fill="none" stroke="var(--color-text)">
+            {/* North borders */}
+            <path d="M250,120 L250,0 M750,120 L750,0" strokeWidth="2" strokeDasharray="4,4" />
+            {/* East borders */}
+            <path d="M880,450 L1000,450 M880,850 L1000,850" strokeWidth="2" strokeDasharray="4,4" />
+            {/* South borders */}
+            <path d="M400,920 L400,1000 M150,920 L150,1000" strokeWidth="2" strokeDasharray="4,4" />
+            {/* West borders */}
+            <path d="M80,300 L0,300 M80,700 L0,700" strokeWidth="2" strokeDasharray="4,4" />
+            
+            {/* Equator line */}
+            <line x1="0" y1="730" x2="1000" y2="730" strokeWidth="1" strokeDasharray="8,12" />
+            <text x="15" y="722" fontSize="10" fontWeight="bold" fill="currentColor">EQUATOR</text>
+          </svg>
+        </div>
 
         <div className="pointer-events-none absolute inset-0">
           <div className="pointer-events-auto absolute inset-0">
@@ -69,61 +121,35 @@ export default function Map({
               cities={cities}
               originalWidth={originalWidth}
               originalHeight={originalHeight}
-              onMarkerClick={(city) => {
-                setdisplaybox(!displaybox);
-                setcurrentCity(city);
-              }}
+              onMarkerClick={handleMarkerClick}
             />
           </div>
         </div>
       </div>
 
-      <div className="w-full max-w-3xl px-2 text-center">
-        {isLoading ? (
-          <div className="flex items-center justify-center gap-2 mt-1 text-[var(--color-forest-deep)] font-semibold text-base sm:text-lg">
-            <Loader2 className="w-5 h-5 animate-spin" />
-            <span>Thinking...</span>
-          </div>
-        ) : (
-          <AnimatedText
-            text={animatedText}
-            animationType="letter"
-            delay={60}
-            className="mt-1 text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
-          />
-        )}
+      <div className={`w-full max-w-3xl px-2 text-center transition-opacity duration-300 ${showChat ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+        <AnimatedText
+          text="Welcome to the Pearl of Africa! Click on a city to learn more about it."
+          animationType="letter"
+          delay={60}
+          className="text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
+        />
       </div>
 
-      {(messages.length > 0 || displaybox) && (
-        <div className="fixed left-1/2 top-24 z-50 w-[min(94vw,28rem)] -translate-x-1/2 sm:top-28">
-          <div className="theme-panel flex flex-col overflow-hidden">
-            {displaybox && (
-              <div className="flex items-center gap-2 border-t border-[rgba(61,82,56,0.12)] p-4">
-                <InputBox
-                  changefunc={(e) => setquery(e.target.value)}
-                  submitfunc={fetchData}
-                />
-                <button
-                  type="button"
-                  className="theme-btn-secondary shrink-0 px-3 py-2 text-sm"
-                  onClick={() => {
-                    setdisplaybox(false);
-                    setMessages([]);
-                    setAnimatedText(
-                      "Welcome to the Pearl of Africa! Click on a city to learn more about it."
-                    );
-                    setquery("");
-                  }}
-                >
-                  ✕
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
+      {showChat && (
+        <ChatWindow
+          city={currentCity}
+          messages={messages}
+          isLoading={isLoading}
+          query={query}
+          onQueryChange={setQuery}
+          onSend={() => handleSend()}
+          onClose={handleCloseChat}
+          onSuggestionClick={(suggestion) => handleSend(suggestion)}
+        />
       )}
 
-      <div className="fixed bottom-6 right-6 z-40 opacity-95 drop-shadow-md">
+      <div className="fixed bottom-6 right-6 z-40 opacity-95 drop-shadow-md pointer-events-none">
         <img
           src="crested_crane-removebg-preview.png"
           alt="Crested crane"

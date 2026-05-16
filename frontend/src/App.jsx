@@ -33,7 +33,7 @@ function App() {
           Map
         </Link>
         <Link to="/upload" className="theme-nav-link px-4 py-2 no-underline">
-          Upload documents
+          Contribute!
         </Link>
       </nav>
 

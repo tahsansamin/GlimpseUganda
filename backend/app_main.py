@@ -182,6 +182,7 @@ app.add_middleware(
 
 class QueryRequest(BaseModel):
     prompt: str
+    history: list = []
 
 NAMESPACE_MAP = {
     "Kampala": "kampala",
@@ -230,7 +231,9 @@ def cohere_rerank_documents(query: str, documents: list) -> list:
     return out
 
 
-def run_query(namespace: str, prompt: str) -> str:
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
+
+def run_query(namespace: str, prompt: str, history: list = []) -> str:
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
     base_retriever = store.as_retriever(
         search_type="similarity",
@@ -246,81 +249,92 @@ def run_query(namespace: str, prompt: str) -> str:
         return "I could not find relevant information for your question."
 
     context_str = "\n\n---\n\n".join(d.page_content for d in reranked)
-    answer = llm.invoke(
-        [
-            SystemMessage(
-                content=(
-                    "You are a knowledgeable Uganda tourism assistant. "
-                    "Answer the user's question using only the context below. "
-                    "If the context does not contain enough information, say so clearly.\n\n"
-                    f"Context:\n{context_str}"
-                )
-            ),
-            HumanMessage(content=prompt),
-        ]
-    )
+    
+    # Construct the message sequence
+    messages = [
+        SystemMessage(
+            content=(
+                "You are a knowledgeable Uganda tourism assistant. "
+                "Answer the user's question using only the context below. "
+                "If the context does not contain enough information, say so clearly.\n\n"
+                f"Context:\n{context_str}"
+            )
+        )
+    ]
+    
+    # Add history (last 6 messages / 3 turns)
+    for msg in history[-6:]:
+        if msg.get("role") == "user":
+            messages.append(HumanMessage(content=msg.get("content", "")))
+        else:
+            messages.append(AIMessage(content=msg.get("content", "")))
+            
+    # Add current prompt
+    messages.append(HumanMessage(content=prompt))
+    
+    answer = llm.invoke(messages)
     return answer.content
 
 
 @app.post("/Kampala_query")
 def kampala_query(request: QueryRequest):
-    return run_query("kampala", request.prompt)
+    return run_query("kampala", request.prompt, request.history)
 
 @app.post("/Entebbe_query")
 def entebbe_query(request: QueryRequest):
-    return run_query("entebbe", request.prompt)
+    return run_query("entebbe", request.prompt, request.history)
 
 @app.post("/Jinja_query")
 def jinja_query(request: QueryRequest):
-    return run_query("jinja", request.prompt)
+    return run_query("jinja", request.prompt, request.history)
 
 @app.post("/Murchison Falls National Park_query")
 def murchison_falls_query(request: QueryRequest):
-    return run_query("murchison_falls_national_park", request.prompt)
+    return run_query("murchison_falls_national_park", request.prompt, request.history)
 
 @app.post("/Bwindi Forest_query")
 def bwindi_forest_query(request: QueryRequest):
-    return run_query("bwindi_forest", request.prompt)
+    return run_query("bwindi_forest", request.prompt, request.history)
 
 @app.post("/Mbarara_query")
 def mbarara_query(request: QueryRequest):
-    return run_query("mbarara", request.prompt)
+    return run_query("mbarara", request.prompt, request.history)
 
 @app.post("/Queen Elizabeth National Park_query")
 def queen_elizabeth_query(request: QueryRequest):
-    return run_query("queen_elizabeth_national_park", request.prompt)
+    return run_query("queen_elizabeth_national_park", request.prompt, request.history)
 
 @app.post("/Gulu_query")
 def gulu_query(request: QueryRequest):
-    return run_query("gulu", request.prompt)
+    return run_query("gulu", request.prompt, request.history)
 
 @app.post("/Kidepo Valley National Park_query")
 def kidepo_query(request: QueryRequest):
-    return run_query("kidepo_valley_national_park", request.prompt)
+    return run_query("kidepo_valley_national_park", request.prompt, request.history)
 
 @app.post("/Kibale National Park_query")
 def kibale_query(request: QueryRequest):
-    return run_query("kibale_national_park", request.prompt)
+    return run_query("kibale_national_park", request.prompt, request.history)
 
 @app.post("/Rwenzori Mountains_query")
 def rwenzori_query(request: QueryRequest):
-    return run_query("rwenzori_mountains", request.prompt)
+    return run_query("rwenzori_mountains", request.prompt, request.history)
 
 @app.post("/Lake Bunyonyi_query")
 def lake_bunyonyi_query(request: QueryRequest):
-    return run_query("lake_bunyonyi", request.prompt)
+    return run_query("lake_bunyonyi", request.prompt, request.history)
 
 @app.post("/Sipi Falls_query")
 def sipi_falls_query(request: QueryRequest):
-    return run_query("sipi_falls", request.prompt)
+    return run_query("sipi_falls", request.prompt, request.history)
 
 @app.post("/Lake Mburo National Park_query")
 def lake_mburo_query(request: QueryRequest):
-    return run_query("lake_mburo_national_park", request.prompt)
+    return run_query("lake_mburo_national_park", request.prompt, request.history)
 
 @app.post("/Kabale_query")
 def kabale_query(request: QueryRequest):
-    return run_query("kabale", request.prompt)
+    return run_query("kabale", request.prompt, request.history)
 
 
 

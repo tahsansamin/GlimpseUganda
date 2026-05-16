@@ -245,18 +245,22 @@ def run_query(namespace: str, prompt: str, history: list = []) -> str:
         f"pinecone_k={RETRIEVAL_K} retrieved_docs={len(docs)}"
     )
     reranked = cohere_rerank_documents(prompt, docs)
-    if not reranked:
-        return "I could not find relevant information for your question."
+    
+    # Prettify namespace for the prompt (e.g., "murchison_falls" -> "Murchison Falls")
+    city_display_name = namespace.replace('_', ' ').title()
 
-    context_str = "\n\n---\n\n".join(d.page_content for d in reranked)
+    context_str = "\n\n---\n\n".join(d.page_content for d in reranked) if reranked else "No specific documents found in the database for this query."
     
     # Construct the message sequence
     messages = [
         SystemMessage(
             content=(
-                "You are a knowledgeable Uganda tourism assistant. "
-                "Answer the user's question using only the context below. "
-                "If the context does not contain enough information, say so clearly.\n\n"
+                f"You are a knowledgeable Uganda tourism assistant specializing in {city_display_name}. "
+                "Use the provided context to answer the user's question. "
+                "If the context does not contain the answer, use your own knowledge to provide a helpful and accurate response, "
+                f"as long as it is relevant to {city_display_name} or Uganda tourism. "
+                "If the question is completely unrelated to tourism or the location, politely decline to answer. "
+                "Prioritize information from the context if it is available.\n\n"
                 f"Context:\n{context_str}"
             )
         )

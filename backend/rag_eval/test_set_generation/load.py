@@ -1,26 +1,28 @@
 from langchain_community.document_loaders import DirectoryLoader
 import os
 from pinecone import Pinecone
+from langchain.schema import Document
 
 
-#setting up pinecone connections
+def get_pinecone_index(index_name: str = "tourismindex"):
+    #setting up pinecone connections
+    PINECONE_KEY = os.getenv("PINECONE_KEY")
+    if not PINECONE_KEY:
+        raise RuntimeError("PINECONE_KEY environment variable not set. Please set it before running.")
 
-PINECONE_KEY = os.getenv("PINECONE_KEY")
-if not PINECONE_KEY:
-    raise RuntimeError("PINECONE_KEY environment variable not set. Please set it before running.")
-
- 
-pc = Pinecone(api_key=PINECONE_KEY)
-index = pc.Index("tourismindex")
+    pc = Pinecone(api_key=PINECONE_KEY)
+    return pc.Index(index_name)
 
 
 #function to load data from pinecone namespace kampala
-def download_data():
+
+def load_vector_db(namespace: str, index_name: str = "tourismindex"):
+    index = get_pinecone_index(index_name)
     results = index.query(
-        vector=[0.0] * EMBEDDING_DIM,
+        vector=[0.0] * 1536,
         top_k=10000,
         include_metadata=True,
-        namespace = "kampala"
+        namespace = namespace
     )
     documents = []
     for match in results["matches"]:

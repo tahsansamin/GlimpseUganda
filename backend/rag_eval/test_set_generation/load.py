@@ -1,7 +1,11 @@
 from langchain_community.document_loaders import DirectoryLoader
 import os
 from pinecone import Pinecone
-from langchain.schema import Document
+from langchain_core.documents import Document
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 
 def get_pinecone_index(index_name: str = "tourismindex"):
@@ -19,8 +23,8 @@ def get_pinecone_index(index_name: str = "tourismindex"):
 def load_vector_db(namespace: str, index_name: str = "tourismindex"):
     index = get_pinecone_index(index_name)
     results = index.query(
-        vector=[0.0] * 1536,
-        top_k=10000,
+        vector=[0.0] * 384,  # Dummy vector for retrieval; adjust as needed
+        top_k=30,
         include_metadata=True,
         namespace = namespace
     )

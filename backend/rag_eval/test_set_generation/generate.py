@@ -9,6 +9,8 @@ from langchain_community.embeddings import SentenceTransformerEmbeddings
 from ragas.testset import TestsetGenerator
 from dotenv import load_dotenv, find_dotenv
 import os
+from ragas.embeddings import LangchainEmbeddingsWrapper
+from langchain_community.embeddings import HuggingFaceEmbeddings
 load_dotenv()
 
 
@@ -26,12 +28,13 @@ def generate_test_set(docs, testset_size=10):
     """
     generator_llm = LangchainLLMWrapper(
         ChatGroq(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             temperature=0
         ))
+    hf_embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 
-    embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
+    embedding_model = LangchainEmbeddingsWrapper(hf_embeddings)
 
     generator = TestsetGenerator(llm=generator_llm, embedding_model=embedding_model)
     dataset = generator.generate_with_langchain_docs(docs, testset_size=testset_size)

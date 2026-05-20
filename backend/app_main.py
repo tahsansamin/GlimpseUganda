@@ -279,6 +279,56 @@ def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -
     answer = llm.invoke(messages)
     return answer.content
 
+def run_query_test(namespace: str, city_name: str, prompt: str, history: list = []) -> str:
+    store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
+    base_retriever = store.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": RETRIEVAL_K},
+    )
+    docs = base_retriever.invoke(prompt)
+    print(
+        f"[rerank] query start namespace={namespace!r} "
+        f"pinecone_k={RETRIEVAL_K} retrieved_docs={len(docs)}"
+    )
+    reranked = cohere_rerank_documents(prompt, docs)
+    
+    # Prettify namespace for logs (still useful)
+    # city_display_name = namespace.replace('_', ' ').title() 
+
+    context_str = "\n\n---\n\n".join(d.page_content for d in reranked) if reranked else "No specific documents found in the database for this query."
+    
+    # Construct the message sequence
+    messages = [
+        SystemMessage(
+            content=(
+                f"You are a knowledgeable Uganda tourism assistant specializing in {city_name}. "
+                "Use the provided context to answer the user's question. "
+                "If the context does not contain the answer, use your own knowledge to provide a helpful and accurate response, "
+                f"as long as it is relevant to {city_name} or Uganda tourism. "
+                "If the question is completely unrelated to tourism or the location, politely decline to answer. "
+                "Prioritize information from the context if it is available.\n\n"
+                f"Context:\n{context_str}"
+            )
+        )
+    ]
+    
+    # Add history (last 6 messages / 3 turns)
+    for msg in history[-6:]:
+        if msg.get("role") == "user":
+            messages.append(HumanMessage(content=msg.get("content", "")))
+        else:
+            messages.append(AIMessage(content=msg.get("content", "")))
+            
+    # Add current prompt
+    messages.append(HumanMessage(content=prompt))
+    
+    answer = llm.invoke(messages)
+    answer_object = {
+        "answer": answer.content,
+        "source_chunks": reranked,
+        }
+    return answer_object
+
 
 @app.post("/Kampala_query")
 def kampala_query(request: QueryRequest):
@@ -339,6 +389,11 @@ def lake_mburo_query(request: QueryRequest):
 @app.post("/Kabale_query")
 def kabale_query(request: QueryRequest):
     return run_query("kabale", "Kabale", request.prompt, request.history)
+
+@app.post("/evaluation_query")
+def evaluation_query(request: QueryRequest):
+    return run_query_test("kampala", "Kampala", request.prompt, request.history)
+
 
 
 

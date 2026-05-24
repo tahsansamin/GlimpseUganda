@@ -51,7 +51,9 @@ COHERE_RERANK_MODEL = "rerank-english-v3.0"
 cohere_client = cohere.Client(api_key=COHERE_API_KEY)
 
 pc = Pinecone(api_key=PINECONE_KEY)
+
 index = pc.Index("tourismindex")
+
 embedding_manager = EmbeddingManager()
 BACKEND_ROOT = Path(__file__).resolve().parent
 embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-V2")
@@ -60,7 +62,7 @@ retriever = vectorstore.as_retriever(
     search_type="similarity",
     search_kwargs={"k": RETRIEVAL_K},
 )
-llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.1-8b-instant", temperature=0.1, max_tokens= 1024)
+llm = ChatGroq(groq_api_key = API_KEY, model_name = "llama-3.3-70b-versatile", temperature=0, max_tokens= 1024)
 qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
 
 CITY_NAMES = [
@@ -552,5 +554,7 @@ async def process_document(request: Request):
 
 
 
+
 if __name__ == "__main__":
+    
     uvicorn.run(app, host="0.0.0.0", port=8000)

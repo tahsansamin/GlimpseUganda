@@ -39,14 +39,31 @@ for query,reference in zip(user_queries,expected_responses):
         }
     )
    
+import time
+for query,reference in zip(user_queries,expected_responses):
+    print(f'Processing query: {query}')
+    time.sleep(5)  # Pause to avoid rate limits
 
+    response = requests.post("http://localhost:8000/evaluation_query", json={"prompt": query, "history": []})
+    response_json = response.json()
+
+    relevant_docs = [doc["page_content"] for doc in response_json["source_chunks"]]
+    response = response_json["answer"]
+    dataset.append(
+        {
+            "user_input":query,
+            "retrieved_contexts":relevant_docs,
+            "response":response,
+            "reference":reference
+        }
+    )
 
 evaluation_dataset = EvaluationDataset.from_list(dataset)
 
 
-evaluator_llm = LangchainLLMWrapper(ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
-    google_api_key=os.getenv("GEMINI_API_KEY"),
+evaluator_llm = LangchainLLMWrapper(ChatGroq(
+    model="llama3-8b-8192",
+    api_key=os.getenv("GROQ_EVAL_KEY"),
     temperature=0
 ))
 

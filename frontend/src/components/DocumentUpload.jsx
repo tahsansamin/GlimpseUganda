@@ -13,9 +13,9 @@ const categories = [
   { id: 'kibale_national_park', name: 'Kibale National Park' },
   { id: 'kidepo_national_park', name: 'Kidepo National Park' },
   { id: 'lake_bunyonyi', name: 'Lake Bunyonyi' },
-  { id: 'mburo_national_park', name: 'Lake Mburo National Park' },
+  { id: 'lake_mburo_national_park', name: 'Lake Mburo National Park' },
   { id: 'mbarara', name: 'Mbarara' },
-  { id: 'murchison_falls', name: 'Murchison Falls National Park' },
+  { id: 'murchison_falls_national_park', name: 'Murchison Falls National Park' },
   { id: 'queen_elizabeth_national_park', name: 'Queen Elizabeth National Park' },
   { id: 'rwenzori_mountains', name: 'Rwenzori Mountains' },
   { id: 'sipi_falls', name: 'Sipi Falls' }

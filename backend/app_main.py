@@ -456,34 +456,44 @@ async def verify_document(
     text = ""
     for page in doc:
         text += page.get_text()
-        prompt = f"""
-            Analyze the document below for its focus on the specific category: "{category}".
+        
+    prompt = f"""
+        Analyze the document below for its focus on the specific category: "{category}".
 
-            STRICT CRITERIA:
-            1. "Directly Related" means the text is specifically zoned in on {category}. 
-            2. If the text is general jargon about Ugandan cities, geography, or broad tourism without focusing at least 50% of its content specifically on {category}, it fails.
-            3. If the document covers multiple topics and {category} is just a minor mention, it fails.
+        STRICT CRITERIA:
+        1. "Directly Related" means the text is specifically zoned in on {category}. 
+        2. If the text is general jargon about Ugandan cities, geography, or broad tourism without focusing at least 50% of its content specifically on {category}, it fails.
+        3. If the document covers multiple topics and {category} is just a minor mention, it fails.
 
-            TASK:
-            - Calculate the percentage of the text dedicated specifically to {category}.
-            - Determine if it meets the 50% threshold.
+        TASK:
+        - Calculate the percentage of the text dedicated specifically to {category}.
+        - Determine if it meets the 50% threshold.
 
-            Return ONLY a JSON object in this format:
-            {{
-            "category_focus_percentage": <integer>,
-            "is_directly_related": <boolean>,
-            "reasoning": "<1-sentence explanation of the focus ratio>"
-            }}
+        Return ONLY a JSON object in this format:
+        {{
+        "category_focus_percentage": <integer>,
+        "is_directly_related": <boolean>,
+        "reasoning": "<1-sentence explanation of the focus ratio>"
+        }}
 
-            Document text: 
-            {text}
-        """
+        Document text: 
+        {text}
+    """
     
-    response = llm.invoke([f"{prompt}"])
-    result_data = parse_category_relevance(json.loads(response.content))
-
+    from langchain_core.messages import HumanMessage
+    response = llm.invoke([HumanMessage(content=prompt)])
     
-
+    # Robust JSON extraction (removing markdown fences if present)
+    content = response.content.strip()
+    if content.startswith("```json"):
+        content = content[7:]
+    elif content.startswith("```"):
+        content = content[3:]
+    if content.endswith("```"):
+        content = content[:-3]
+    content = content.strip()
+    
+    result_data = parse_category_relevance(json.loads(content))
 
     doc.close()
     

@@ -129,7 +129,7 @@ export default function Map({
 
       <div className={`w-full max-w-3xl px-2 text-center transition-opacity duration-300 ${showChat ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
         <AnimatedText
-          text="Welcome to the Pearl of Africa! Click on a city to learn more about it."
+          text="Welcome to the Pearl of Africa! Click on a place to learn more about it."
           animationType="letter"
           delay={60}
           className="text-base font-semibold text-[var(--color-forest-deep)] sm:text-lg"
@@ -151,7 +151,7 @@ export default function Map({
 
       <div className="fixed bottom-6 right-6 z-40 opacity-95 drop-shadow-md pointer-events-none">
         <img
-          src="crested_crane-removebg-preview.png"
+          src="/crested_crane-removebg-preview.png"
           alt="Crested crane"
           className="h-auto w-24"
         />

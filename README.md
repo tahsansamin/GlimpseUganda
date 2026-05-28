@@ -1,7 +1,8 @@
 # Glimpse Uganda 🇺🇬
 
 Glimpse Uganda is a interactive AI-powered tourism assistant platform. It combines a React-based interactive vector map frontend with a state-of-the-art RAG (Retrieval-Augmented Generation) backend. Visitors can explore locations across Uganda and ask questions about them. I built this app after observing the difference between information online versus the ground reality for many tourist destinations and experiences in Uganda. As a tourist, your first stop for information is the internet, but when the information is not aligned with the ground reality, it creates a fragmented tourism experience. Through this app I hope to bridge this gap and make tourism in Uganda more accessible. What makes this chatbot unique is that instead of relying on information online it would be based on reliable, up to date documents provided by the park rangers, tour operators, the National Board of Tourism, Uganda Wildlife Authority (UWA) and other verified stakeholders, ensuring accurate up to date information.
----
+
+Project demo: https://www.youtube.com/watch?v=Vim4TV7RweQ
 
 
 ## 🌟 Key Features

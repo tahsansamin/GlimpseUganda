@@ -374,7 +374,7 @@ def gulu_query(request: QueryRequest):
 
 @app.post("/Kidepo Valley National Park_query")
 def kidepo_query(request: QueryRequest):
-    return run_query("kidepo_valley_national_park", "Kidepo Valley National Park", request.prompt, request.history)
+    return run_query("kidepo_national_park", "Kidepo Valley National Park", request.prompt, request.history)
 
 @app.post("/Kibale National Park_query")
 def kibale_query(request: QueryRequest):

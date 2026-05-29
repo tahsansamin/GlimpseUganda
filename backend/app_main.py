@@ -239,7 +239,7 @@ from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -> str:
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
-    results = store.similarity_search_with_score(prompt, k=20)
+    results = store.similarity_search_with_score(prompt, k=8)
     results.sort(key=lambda x: x[0].metadata.get("uploaded_at_ts", 0), reverse=True)
     docs = [doc for doc, score in results[:RETRIEVAL_K]]
     print(

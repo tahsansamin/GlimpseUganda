@@ -124,7 +124,7 @@ export default function DocumentUpload() {
         });
         return;
       } 
-      const {data,error} = await supabase.storage.from('test bucket').upload(
+      const {data,error} =  await supabase.storage.from('test bucket').upload(
         `${selectedCategory}/${files[0].name}`, 
         files[0]
       );
@@ -166,7 +166,7 @@ export default function DocumentUpload() {
     } catch (error) {
       setUploadStatus({ 
         type: 'error', 
-        message: `Upload failed: ${error.message}` 
+        message: `Upload failed: ${error}` 
       });
     } finally {
       setIsLoading(false);

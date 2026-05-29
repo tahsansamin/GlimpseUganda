@@ -1,3 +1,4 @@
+from datetime import datetime
 from http.client import HTTPException
 import os
 from pathlib import Path
@@ -24,6 +25,7 @@ import fitz
 import json 
 from supabase import create_client, Client
 from pydantic import BaseModel
+from datetime import datetime
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -237,11 +239,9 @@ from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -> str:
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
-    base_retriever = store.as_retriever(
-        search_type="similarity",
-        search_kwargs={"k": RETRIEVAL_K},
-    )
-    docs = base_retriever.invoke(prompt)
+    results = store.similarity_search_with_score(prompt, k=20)
+    results.sort(key=lambda x: x[0].metadata.get("uploaded_at_ts", 0), reverse=True)
+    docs = [doc for doc, score in results[:RETRIEVAL_K]]
     print(
         f"[rerank] query start namespace={namespace!r} "
         f"pinecone_k={RETRIEVAL_K} retrieved_docs={len(docs)}"
@@ -545,6 +545,9 @@ async def process_document(request: Request):
 
         # 6. Chunk + upload to Pinecone
         split_docs = embedding_manager.chunk_documents(docs)
+        # add time metadata to each document for potential future use
+        for doc in split_docs:
+            doc.metadata["uploaded_at_ts"] = int(datetime.utcnow().timestamp())
         store = PineconeVectorStore(
             index=index,
             embedding=embedding_model,

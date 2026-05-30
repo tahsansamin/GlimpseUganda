@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://glimpseuganda-production.up.railway.app'
+  baseURL: import.meta.env.VITE_BACKENDURL
 });
 
 export default apiClient;
 
 
-// https://glimpseuganda-production.up.railway.app

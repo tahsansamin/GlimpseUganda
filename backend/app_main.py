@@ -19,13 +19,15 @@ from vectorstore import VectorStore
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel
-from fastapi import FastAPI, Request, UploadFile, File, Form
+from fastapi import FastAPI, Request, UploadFile, File, Form, status, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import fitz
 import json 
 from supabase import create_client, Client
 from pydantic import BaseModel
 from datetime import datetime
+import time
+from functools import wraps
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -123,7 +125,32 @@ def setup_namespaces():
     return setup_pinecone_namespaces()
 # setup_namespaces()
 
+def rate_limited(max_calls: int, time_frame: int):
+    """
+    :param max_calls: Maximum number of calls allowed in the specified time frame.
+    :param time_frame: The time frame (in seconds) for which the limit applies.
+    :return: Decorator function.
+    """
+    def decorator(func):
+        calls = []
 
+        @wraps(func)
+        async def wrapper(request: Request, *args, **kwargs):
+            now = time.time()
+            calls_in_time_frame = [call for call in calls if call > now - time_frame]
+            
+            if len(calls_in_time_frame) >= max_calls:
+                raise HTTPException(
+                    status_code=status.HTTP_429_TOO_MANY_REQUESTS, 
+                    detail="Rate limit exceeded."
+                )
+                
+            calls.append(now)
+            return await func(request, *args, **kwargs)
+
+        return wrapper
+
+    return decorator
 
 def ingest_all_city_documents_to_pinecone():
 
@@ -340,67 +367,85 @@ def run_query_test(namespace: str, city_name: str, prompt: str, history: list = 
     return answer_object
 
 
+
+
 @app.post("/Kampala_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def kampala_query(request: QueryRequest):
     return run_query("kampala", "Kampala", request.prompt, request.history)
 
 @app.post("/Entebbe_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def entebbe_query(request: QueryRequest):
     return run_query("entebbe", "Entebbe", request.prompt, request.history)
 
 @app.post("/Jinja_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def jinja_query(request: QueryRequest):
     return run_query("jinja", "Jinja", request.prompt, request.history)
 
 @app.post("/Murchison Falls National Park_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def murchison_falls_query(request: QueryRequest):
     return run_query("murchison_falls_national_park", "Murchison Falls National Park", request.prompt, request.history)
 
 @app.post("/Bwindi Forest_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def bwindi_forest_query(request: QueryRequest):
     return run_query("bwindi_forest", "Bwindi Forest", request.prompt, request.history)
 
 @app.post("/Mbarara_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def mbarara_query(request: QueryRequest):
     return run_query("mbarara", "Mbarara", request.prompt, request.history)
 
 @app.post("/Queen Elizabeth National Park_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def queen_elizabeth_query(request: QueryRequest):
     return run_query("queen_elizabeth_national_park", "Queen Elizabeth National Park", request.prompt, request.history)
 
 @app.post("/Gulu_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def gulu_query(request: QueryRequest):
     return run_query("gulu", "Gulu", request.prompt, request.history)
 
 @app.post("/Kidepo Valley National Park_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def kidepo_query(request: QueryRequest):
     return run_query("kidepo_national_park", "Kidepo Valley National Park", request.prompt, request.history)
 
 @app.post("/Kibale National Park_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def kibale_query(request: QueryRequest):
     return run_query("kibale_national_park", "Kibale National Park", request.prompt, request.history)
 
 @app.post("/Rwenzori Mountains_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def rwenzori_query(request: QueryRequest):
     return run_query("rwenzori_mountains", "Rwenzori Mountains", request.prompt, request.history)
 
 @app.post("/Lake Bunyonyi_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def lake_bunyonyi_query(request: QueryRequest):
     return run_query("lake_bunyonyi", "Lake Bunyonyi", request.prompt, request.history)
 
 @app.post("/Sipi Falls_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def sipi_falls_query(request: QueryRequest):
     return run_query("sipi_falls", "Sipi Falls", request.prompt, request.history)
 
 @app.post("/Lake Mburo National Park_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def lake_mburo_query(request: QueryRequest):
     return run_query("lake_mburo_national_park", "Lake Mburo National Park", request.prompt, request.history)
 
 @app.post("/Kabale_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def kabale_query(request: QueryRequest):
     return run_query("kabale", "Kabale", request.prompt, request.history)
 
 @app.post("/evaluation_query")
+@rate_limited(max_calls = 10, time_frame = 60)
 def evaluation_query(request: QueryRequest):
     return run_query_test("kampala", "Kampala", request.prompt, request.history)
 

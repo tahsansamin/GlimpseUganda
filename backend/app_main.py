@@ -371,82 +371,82 @@ def run_query_test(namespace: str, city_name: str, prompt: str, history: list = 
 
 @app.post("/Kampala_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def kampala_query(request: QueryRequest):
+def kampala_query(internal_request: Request,request: QueryRequest):
     return run_query("kampala", "Kampala", request.prompt, request.history)
 
 @app.post("/Entebbe_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def entebbe_query(request: QueryRequest):
+def entebbe_query(internal_request: Request,request: QueryRequest):
     return run_query("entebbe", "Entebbe", request.prompt, request.history)
 
 @app.post("/Jinja_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def jinja_query(request: QueryRequest):
+def jinja_query(internal_request: Request,request: QueryRequest):
     return run_query("jinja", "Jinja", request.prompt, request.history)
 
 @app.post("/Murchison Falls National Park_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def murchison_falls_query(request: QueryRequest):
+def murchison_falls_query(internal_request: Request,request: QueryRequest):
     return run_query("murchison_falls_national_park", "Murchison Falls National Park", request.prompt, request.history)
 
 @app.post("/Bwindi Forest_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def bwindi_forest_query(request: QueryRequest):
+def bwindi_forest_query(internal_request: Request,request: QueryRequest):
     return run_query("bwindi_forest", "Bwindi Forest", request.prompt, request.history)
 
 @app.post("/Mbarara_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def mbarara_query(request: QueryRequest):
+def mbarara_query(internal_request: Request,request: QueryRequest):
     return run_query("mbarara", "Mbarara", request.prompt, request.history)
 
 @app.post("/Queen Elizabeth National Park_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def queen_elizabeth_query(request: QueryRequest):
+def queen_elizabeth_query(internal_request: Request,request: QueryRequest):
     return run_query("queen_elizabeth_national_park", "Queen Elizabeth National Park", request.prompt, request.history)
 
 @app.post("/Gulu_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def gulu_query(request: QueryRequest):
+def gulu_query(internal_request: Request,request: QueryRequest):
     return run_query("gulu", "Gulu", request.prompt, request.history)
 
 @app.post("/Kidepo Valley National Park_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def kidepo_query(request: QueryRequest):
+def kidepo_query(internal_request: Request,request: QueryRequest):
     return run_query("kidepo_national_park", "Kidepo Valley National Park", request.prompt, request.history)
 
 @app.post("/Kibale National Park_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def kibale_query(request: QueryRequest):
+def kibale_query(internal_request: Request,request: QueryRequest):
     return run_query("kibale_national_park", "Kibale National Park", request.prompt, request.history)
 
 @app.post("/Rwenzori Mountains_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def rwenzori_query(request: QueryRequest):
+def rwenzori_query(internal_request: Request,request: QueryRequest):
     return run_query("rwenzori_mountains", "Rwenzori Mountains", request.prompt, request.history)
 
 @app.post("/Lake Bunyonyi_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def lake_bunyonyi_query(request: QueryRequest):
+def lake_bunyonyi_query(internal_request: Request,request: QueryRequest):
     return run_query("lake_bunyonyi", "Lake Bunyonyi", request.prompt, request.history)
 
 @app.post("/Sipi Falls_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def sipi_falls_query(request: QueryRequest):
+def sipi_falls_query(internal_request: Request,request: QueryRequest):
     return run_query("sipi_falls", "Sipi Falls", request.prompt, request.history)
 
 @app.post("/Lake Mburo National Park_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def lake_mburo_query(request: QueryRequest):
+def lake_mburo_query(internal_request: Request,request: QueryRequest):
     return run_query("lake_mburo_national_park", "Lake Mburo National Park", request.prompt, request.history)
 
 @app.post("/Kabale_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def kabale_query(request: QueryRequest):
+def kabale_query(internal_request: Request,request: QueryRequest):
     return run_query("kabale", "Kabale", request.prompt, request.history)
 
 @app.post("/evaluation_query")
 @rate_limited(max_calls = 10, time_frame = 60)
-def evaluation_query(request: QueryRequest):
+def evaluation_query(internal_request: Request,request: QueryRequest):
     return run_query_test("kampala", "Kampala", request.prompt, request.history)
 
 

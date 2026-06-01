@@ -135,7 +135,7 @@ def rate_limited(max_calls: int, time_frame: int):
         calls = []
 
         @wraps(func)
-        async def wrapper(request: Request, *args, **kwargs):
+        async def wrapper(*args, **kwargs):
             now = time.time()
             calls_in_time_frame = [call for call in calls if call > now - time_frame]
             

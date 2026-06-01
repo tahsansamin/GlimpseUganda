@@ -125,33 +125,33 @@ def setup_namespaces():
     return setup_pinecone_namespaces()
 # setup_namespaces()
 
-def rate_limited(max_calls: int, time_frame: int):
-    """
-    :param max_calls: Maximum number of calls allowed in the specified time frame.
-    :param time_frame: The time frame (in seconds) for which the limit applies.
-    :return: Decorator function.
-    """
-    def decorator(func):
-        calls = []
+# def rate_limited(max_calls: int, time_frame: int):
+#     """
+#     :param max_calls: Maximum number of calls allowed in the specified time frame.
+#     :param time_frame: The time frame (in seconds) for which the limit applies.
+#     :return: Decorator function.
+#     """
+#     def decorator(func):
+#         calls = []
 
-        @wraps(func)
-        async def wrapper(request: Request, *args, **kwargs):
+#         @wraps(func)
+#         async def wrapper(request: Request, *args, **kwargs):
 
-            now = time.time()
-            calls_in_time_frame = [call for call in calls if call > now - time_frame]
+#             now = time.time()
+#             calls_in_time_frame = [call for call in calls if call > now - time_frame]
             
-            if len(calls_in_time_frame) >= max_calls:
-                raise HTTPException(
-                    status_code=status.HTTP_429_TOO_MANY_REQUESTS, 
-                    detail="Rate limit exceeded."
-                )
+#             if len(calls_in_time_frame) >= max_calls:
+#                 raise HTTPException(
+#                     status_code=status.HTTP_429_TOO_MANY_REQUESTS, 
+#                     detail="Rate limit exceeded."
+#                 )
                 
-            calls.append(now)
-            return await func(request, *args, **kwargs)
+#             calls.append(now)
+#             return await func(request, *args, **kwargs)
 
-        return wrapper
+#         return wrapper
 
-    return decorator
+#     return decorator
 
 def ingest_all_city_documents_to_pinecone():
 
@@ -371,12 +371,12 @@ def run_query_test(namespace: str, city_name: str, prompt: str, history: list = 
 
 
 @app.post("/Kampala_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def kampala_query(request: Request,internal_request: QueryRequest):
     return run_query("kampala", "Kampala", internal_request.prompt, internal_request.history)
 
 @app.post("/Entebbe_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def entebbe_query(request: Request,internal_request: QueryRequest):
     return run_query("entebbe", "Entebbe", internal_request.prompt, internal_request.history)
 
@@ -386,7 +386,7 @@ def jinja_query(request: Request,internal_request: QueryRequest):
     return run_query("jinja", "Jinja", internal_request.prompt, internal_request.history)
 
 @app.post("/Murchison Falls National Park_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def murchison_falls_query(request: Request,internal_request: QueryRequest):
     return run_query("murchison_falls_national_park", "Murchison Falls National Park", internal_request.prompt, internal_request.history)
 
@@ -396,57 +396,57 @@ def bwindi_forest_query(request: Request,internal_request: QueryRequest):
     return run_query("bwindi_forest", "Bwindi Forest", internal_request.prompt, internal_request.history)
 
 @app.post("/Mbarara_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def mbarara_query(request: Request,internal_request: QueryRequest):
     return run_query("mbarara", "Mbarara", internal_request.prompt, internal_request.history)
 
 @app.post("/Queen Elizabeth National Park_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def queen_elizabeth_query(request: Request,internal_request: QueryRequest):
     return run_query("queen_elizabeth_national_park", "Queen Elizabeth National Park", internal_request.prompt, internal_request.history)
 
 @app.post("/Gulu_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def gulu_query(request: Request,internal_request: QueryRequest):
     return run_query("gulu", "Gulu", internal_request.prompt, internal_request.history)
 
 @app.post("/Kidepo Valley National Park_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def kidepo_query(request: Request,internal_request: QueryRequest):
     return run_query("kidepo_national_park", "Kidepo Valley National Park", internal_request.prompt, internal_request.history)
 
 @app.post("/Kibale National Park_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def kibale_query(request: Request,internal_request: QueryRequest):
     return run_query("kibale_national_park", "Kibale National Park", internal_request.prompt, internal_request.history)
 
 @app.post("/Rwenzori Mountains_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def rwenzori_query(request: Request,internal_request: QueryRequest):
     return run_query("rwenzori_mountains", "Rwenzori Mountains", internal_request.prompt, internal_request.history)
 
 @app.post("/Lake Bunyonyi_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def lake_bunyonyi_query(request: Request,internal_request: QueryRequest):
     return run_query("lake_bunyonyi", "Lake Bunyonyi", internal_request.prompt, internal_request.history)
 
 @app.post("/Sipi Falls_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def sipi_falls_query(request: Request,internal_request: QueryRequest):
     return run_query("sipi_falls", "Sipi Falls", internal_request.prompt, internal_request.history)
 
 @app.post("/Lake Mburo National Park_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def lake_mburo_query(request: Request,internal_request: QueryRequest):
     return run_query("lake_mburo_national_park", "Lake Mburo National Park", internal_request.prompt, internal_request.history)
 
 @app.post("/Kabale_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def kabale_query(request: Request,internal_request: QueryRequest):
     return run_query("kabale", "Kabale", internal_request.prompt, internal_request.history)
 
 @app.post("/evaluation_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def evaluation_query(request: Request,internal_request: QueryRequest):
     return run_query_test("kampala", "Kampala", internal_request.prompt, internal_request.history)
 

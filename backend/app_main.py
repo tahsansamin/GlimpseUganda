@@ -381,7 +381,7 @@ def entebbe_query(request: Request,internal_request: QueryRequest):
     return run_query("entebbe", "Entebbe", internal_request.prompt, internal_request.history)
 
 @app.post("/Jinja_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def jinja_query(request: Request,internal_request: QueryRequest):
     return run_query("jinja", "Jinja", internal_request.prompt, internal_request.history)
 
@@ -391,7 +391,7 @@ def murchison_falls_query(request: Request,internal_request: QueryRequest):
     return run_query("murchison_falls_national_park", "Murchison Falls National Park", internal_request.prompt, internal_request.history)
 
 @app.post("/Bwindi Forest_query")
-@rate_limited(max_calls = 10, time_frame = 60)
+#@rate_limited(max_calls = 10, time_frame = 60)
 def bwindi_forest_query(request: Request,internal_request: QueryRequest):
     return run_query("bwindi_forest", "Bwindi Forest", internal_request.prompt, internal_request.history)
 

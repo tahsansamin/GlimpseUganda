@@ -135,6 +135,10 @@ def rate_limited(max_calls: int, time_frame: int):
         calls = []
 
         @wraps(func)
+        def decorator(func):
+        calls = []
+
+        @wraps(func)
         async def wrapper(*args, **kwargs):
             now = time.time()
             calls_in_time_frame = [call for call in calls if call > now - time_frame]
@@ -146,7 +150,9 @@ def rate_limited(max_calls: int, time_frame: int):
                 )
                 
             calls.append(now)
-            return await func(request, *args, **kwargs)
+            return await func(*args, **kwargs)
+
+        return wrapper
 
         return wrapper
 
@@ -200,7 +206,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://glimpse-uganda.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -287,7 +287,8 @@ def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -
             content=(
                 f"You are a knowledgeable Uganda tourism assistant specializing in {city_name}. "
                 "Answer the user's question using the provided context whenever possible. "
-                "Prioritize retrieved context over prior knowledge.\n\n"
+                "Prioritize retrieved context over prior knowledge. "
+                "Because the chunks are ordered by upload time, give extra weight to newer context and prioritize recent or newly added information when it is relevant.\n\n"
 
                 "If the context contains relevant information, base your answer primarily on it. "
                 "If the context is incomplete, you may supplement with general knowledge about Uganda tourism, but do not mention that the context is incomplete or that you are using general knowledge. Just provide the best answer you can based on the combined information.\n\n"
@@ -343,6 +344,7 @@ def run_query_test(namespace: str, city_name: str, prompt: str, history: list = 
                 "Use the provided context to answer the user's question. "
                 "If the context does not contain the answer, use your own knowledge to provide a helpful and accurate response, "
                 f"as long as it is relevant to {city_name} or Uganda tourism. "
+                "Because the chunks are ordered by upload time, give extra weight to newer context and prioritize recent or newly added information when it is relevant. "
                 "If the question is completely unrelated to tourism or the location, politely decline to answer. "
                 "Prioritize information from the context if it is available.\n\n"
                 f"Context:\n{context_str}"

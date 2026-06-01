@@ -291,10 +291,10 @@ def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -
 
                 "If the context contains relevant information, base your answer primarily on it. "
                 "If the context is incomplete, you may supplement with general knowledge about Uganda tourism, "
-                "but do not invent specific facts such as prices, schedules, contact details, distances, or business information.\n\n"
+                # "but do not invent specific facts such as prices, schedules, contact details, distances, or business information.\n\n"
 
-                "If the answer cannot be determined reliably from the context or general knowledge, "
-                "say that you are unsure instead of guessing.\n\n"
+                # "If the answer cannot be determined reliably from the context or general knowledge, "
+                # "say that you are unsure instead of guessing.\n\n"
 
                 "Only answer questions related to Uganda, travel, tourism, culture, transport, accommodation, food, attractions, or local experiences. "
                 "Politely decline unrelated questions.\n\n"

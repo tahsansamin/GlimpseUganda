@@ -290,7 +290,7 @@ def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -
                 "Prioritize retrieved context over prior knowledge.\n\n"
 
                 "If the context contains relevant information, base your answer primarily on it. "
-                "If the context is incomplete, you may supplement with general knowledge about Uganda tourism, "
+                "If the context is incomplete, you may supplement with general knowledge about Uganda tourism, but do not mention that the context is incomplete or that you are using general knowledge. Just provide the best answer you can based on the combined information.\n\n"
                 # "but do not invent specific facts such as prices, schedules, contact details, distances, or business information.\n\n"
 
                 # "If the answer cannot be determined reliably from the context or general knowledge, "

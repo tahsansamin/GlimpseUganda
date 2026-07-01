@@ -1,4 +1,5 @@
 from datetime import datetime
+import hashlib
 from http.client import HTTPException
 import os
 from pathlib import Path
@@ -28,6 +29,8 @@ from pydantic import BaseModel
 from datetime import datetime
 import time
 from functools import wraps
+from create_cache import redis_call
+
 dotenvpath = find_dotenv()
 print(f"Loading environment variables from: {dotenvpath}")
 load_dotenv(dotenv_path=dotenvpath)
@@ -266,6 +269,9 @@ def cohere_rerank_documents(query: str, documents: list) -> list:
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -> str:
+    cached_response = redis_call(prompt, namespace)
+    if cached_response:
+        return cached_response   
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
     results = store.similarity_search_with_score(prompt, k=8)
     results.sort(key=lambda x: x[0].metadata.get("uploaded_at_ts", 0), reverse=True)
@@ -368,6 +374,7 @@ def run_query_test(namespace: str, city_name: str, prompt: str, history: list = 
         "source_chunks": reranked,
         }
     return answer_object
+
 
 
 

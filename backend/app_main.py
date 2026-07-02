@@ -16,7 +16,7 @@ from langchain_community.embeddings import SentenceTransformerEmbeddings
 from pinecone import Pinecone
 from langchain_pinecone import PineconeVectorStore
 from langchain_classic.chains import RetrievalQA
-from vectorstore import VectorStore
+
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel
@@ -271,6 +271,7 @@ from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -> str:
     cached_response = redis_call(prompt, namespace)
     if cached_response:
+        print("Printing cached response")
         return cached_response   
     store = PineconeVectorStore(index=index, embedding=embedding_model, namespace=namespace)
     results = store.similarity_search_with_score(prompt, k=8)
@@ -304,6 +305,7 @@ def run_query(namespace: str, city_name: str, prompt: str, history: list = []) -
                 # "say that you are unsure instead of guessing.\n\n"
 
                 "Only answer questions related to Uganda, travel, tourism, culture, transport, accommodation, food, attractions, or local experiences. "
+                "Limit your response to 2-3 sentences and keep it brief and concise. "
                 "Politely decline unrelated questions.\n\n"
 
                 f"Context:\n{context_str}"

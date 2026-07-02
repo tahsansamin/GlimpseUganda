@@ -16,12 +16,13 @@ def time_llm_response():
 
 def time_redis_response():
     start_time = time.time()
-    value = redis_call("What's the best time to visit?", "kampala")
+    value = run_query("kampala","Kampala", "What's the best time to visit?",[])
     end_time = time.time()
     elapsed_time = end_time - start_time
     return elapsed_time, value
 
-time_taken, value = time_redis_response()
-time_taken_llm, value_llm = time_llm_response()
-print(f"Time taken for Redis response: {time_taken:.6f} seconds")
-print(f"Time taken for LLM response: {time_taken_llm:.6f} seconds")
+# time_taken, value = time_redis_response()
+# time_taken_llm, value_llm = time_llm_response()
+# print(f"Time taken for Redis response: {time_taken:.6f} seconds")
+# print(f"Time taken for LLM response: {time_taken_llm:.6f} seconds")
+

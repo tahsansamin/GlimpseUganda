@@ -41,7 +41,7 @@ export default function Map({
       setQuery("");
 
       const response = await apiClient.post(`/${currentCity.name}_query`, {
-        prompt: `Limit your response to 3 sentences. ${textToSubmit} for ${currentCity.name} and make your response very succint!`,
+        prompt: `${textToSubmit}`,
         history: history
       });
       

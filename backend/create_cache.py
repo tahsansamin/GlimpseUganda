@@ -272,7 +272,7 @@ tourism_knowledge = {
 #     return elapsed_time, value
 # time_taken, value = time_redis_response()
 def redis_call(prompt:str,namespace:str):
-    redis_client = redis.from_url(os.getenv("REDIS_URL"))
+    
     cache_key = create_cache(prompt, namespace)
     value = redis_client.get(cache_key)
     if value is not None:

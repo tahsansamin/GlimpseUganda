@@ -5,7 +5,7 @@ import redis
 
 import os
 from dotenv import load_dotenv,find_dotenv
-from redis_cache import RedisCache
+
 
 
 

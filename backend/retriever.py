@@ -1,4 +1,4 @@
-
+#old retriever before moving to pinecone vectordb
 import embedding
 from embedding import EmbeddingManager
 import vectorstore

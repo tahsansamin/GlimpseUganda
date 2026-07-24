@@ -1,3 +1,4 @@
+#old version of vectorstore before moving to Pinecone
 import chromadb
 from typing import List, Dict, Any, Tuple
 import uuid

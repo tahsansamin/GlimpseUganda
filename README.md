@@ -23,33 +23,7 @@ Try out the app: https://glimpse-uganda.vercel.app/
 * **Supabase Integration**: Documents uploaded to the Supabase storage bucket trigger real-time background processing webhooks (`/transfer_to_pinecone`) that chunk, embed, and index new PDFs/DOCs into Pinecone.
 * **AI-Powered Category Verification**: A strict document gatekeeper (`/verify_document`) analyzes uploaded files using PyMuPDF and Groq to calculate if at least **50% of the content** directly focuses on the selected category or location. If a document is generic or off-topic, it is flagged and blocked from indexing.
 
----
 
-## 📁 Project Structure
-
-```
-├── backend/
-│   ├── app_main.py                 # FastAPI backend server with RAG and verification endpoints
-│   ├── dataloader.py               # PDF and Word document parser (using PyMuPDF/fitz)
-│   ├── embedding.py                # EmbeddingManager handles chunking and local SentenceTransformers
-│   ├── vectorstore.py              # Custom Pinecone/LangChain wrapper setup
-│   ├── pdfs/                       # Local directory containing source documents per location
-│   └── tests_api_calls/            # PyTest suite for verifying API endpoints and namespaces
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── map.jsx             # Render map, overlay location markers, coordinate chats
-│   │   │   ├── CityMarkers.jsx     # Teardrop marker overlay rendering and clicks
-│   │   │   ├── ChatWindow.jsx      # Slide-out glassmorphism conversation UI
-│   │   │   └── DocumentUpload.jsx  # File uploader and verification visualizer
-│   │   ├── App.jsx                 # Layout and main view orchestrator
-│   │   ├── api.js                  # Axios client configured with base URL
-│   │   └── index.css               # Main design system with custom HSL forest-green palette
-│   └── package.json
-```
-
----
 
 ## ⚙️ Configuration & Environment Variables
 

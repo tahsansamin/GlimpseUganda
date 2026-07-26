@@ -2,7 +2,7 @@
 
 Glimpse Uganda is a interactive AI-powered tourism assistant platform. It combines a React-based interactive vector map frontend with a state-of-the-art RAG (Retrieval-Augmented Generation) backend. Visitors can explore locations across Uganda and ask questions about them. I built this app after observing the difference between information online versus the ground reality for many tourist destinations and experiences in Uganda. As a tourist, your first stop for information is the internet, but when the information is not aligned with the ground reality, it creates a fragmented tourism experience. Through this app I hope to bridge this gap and make tourism in Uganda more accessible. What makes this chatbot unique is that instead of relying on information online it would be based on reliable, up to date documents provided by the park rangers, tour operators, the National Board of Tourism, Uganda Wildlife Authority (UWA) and other verified stakeholders, ensuring accurate up to date information.
 
-Project demo: https://youtu.be/WOX65yovd8A
+Project demo: https://www.youtube.com/watch?v=WOX65yovd8A
 Try out the app: https://glimpse-uganda.vercel.app/
 
 
@@ -23,33 +23,7 @@ Try out the app: https://glimpse-uganda.vercel.app/
 * **Supabase Integration**: Documents uploaded to the Supabase storage bucket trigger real-time background processing webhooks (`/transfer_to_pinecone`) that chunk, embed, and index new PDFs/DOCs into Pinecone.
 * **AI-Powered Category Verification**: A strict document gatekeeper (`/verify_document`) analyzes uploaded files using PyMuPDF and Groq to calculate if at least **50% of the content** directly focuses on the selected category or location. If a document is generic or off-topic, it is flagged and blocked from indexing.
 
----
 
-## 📁 Project Structure
-
-```
-├── backend/
-│   ├── app_main.py                 # FastAPI backend server with RAG and verification endpoints
-│   ├── dataloader.py               # PDF and Word document parser (using PyMuPDF/fitz)
-│   ├── embedding.py                # EmbeddingManager handles chunking and local SentenceTransformers
-│   ├── vectorstore.py              # Custom Pinecone/LangChain wrapper setup
-│   ├── pdfs/                       # Local directory containing source documents per location
-│   └── tests_api_calls/            # PyTest suite for verifying API endpoints and namespaces
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── map.jsx             # Render map, overlay location markers, coordinate chats
-│   │   │   ├── CityMarkers.jsx     # Teardrop marker overlay rendering and clicks
-│   │   │   ├── ChatWindow.jsx      # Slide-out glassmorphism conversation UI
-│   │   │   └── DocumentUpload.jsx  # File uploader and verification visualizer
-│   │   ├── App.jsx                 # Layout and main view orchestrator
-│   │   ├── api.js                  # Axios client configured with base URL
-│   │   └── index.css               # Main design system with custom HSL forest-green palette
-│   └── package.json
-```
-
----
 
 ## ⚙️ Configuration & Environment Variables
 

@@ -44,6 +44,12 @@ tourism_knowledge = {
         "Weather forecast?": {
             "answer": "Kampala enjoys a warm, tropical climate with temperatures usually hovering comfortably between 18°C and 28°C. While it features pleasant, sunny days year-round, brief afternoon downpours are common during the rainy seasons."
         },
+        "What are some good restaurants?": {
+            "answer": "There are plenty of places to eat such as Cafe Javas, The Lawns, and Mediterraneo. For local cuisine, try 1000 Hills Restaurant or Kati Kati."
+        },
+        "What are some good hotels?": {
+            "answer": "Some popular hotels include Sheraton Kampala Hotel, Serena Hotel, and Kampala Serena Hotel. For budget options, consider staying at The Traveler's Inn or Hotel No. 5."
+        }
     },
 
     "entebbe": {
@@ -59,6 +65,12 @@ tourism_knowledge = {
         "Weather forecast?": {
             "answer": "Entebbe stays pleasantly warm with strong breezes coming off Lake Victoria that keep temperatures around 20°C to 27°C. Humidity is generally higher here due to the lake, bringing frequent morning showers."
         },
+        "What are some good restaurants?": {
+            "answer": "There are several great dining options in Entebbe, including local favorites like The Entebbe Restaurant and international chains such as The Kibuli Restaurant."
+        },
+        "What are some good hotels?": {
+            "answer": "Some popular hotels in Entebbe include the Entebbe Serena Hotel, The Traveler's Inn, and Hotel No. 5."
+        }
     },
 
     "jinja": {
@@ -254,14 +266,22 @@ tourism_knowledge = {
     },
 }
 #used to create cache
-# for name_space in tourism_knowledge.keys():
-#     place_dict = tourism_knowledge[name_space]
-#     for key,value in place_dict.items():
-#         prompt = key
-#         answer_object = value["answer"]
-#         print(answer_object)
-#         cache_key = create_cache(prompt, name_space)
-#         redis_client.set(cache_key, json.dumps(answer_object))
+for name_space in tourism_knowledge.keys():
+    place_dict = tourism_knowledge[name_space]
+    for key,value in place_dict.items():
+        prompt = key
+        answer_object = value["answer"]
+        print(answer_object)
+        cache_key = create_cache(prompt, name_space)
+        redis_client.set(cache_key, json.dumps(answer_object))
+
+
+tourism_knowledge2 = {
+    "kampala": {
+            
+        }
+}
+
 
 
 # def time_redis_response():

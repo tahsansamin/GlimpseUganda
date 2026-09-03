@@ -265,7 +265,7 @@ tourism_knowledge = {
         },
     },
 }
-#used to create cache
+# used to create cache
 for name_space in tourism_knowledge.keys():
     place_dict = tourism_knowledge[name_space]
     for key,value in place_dict.items():
@@ -274,14 +274,6 @@ for name_space in tourism_knowledge.keys():
         print(answer_object)
         cache_key = create_cache(prompt, name_space)
         redis_client.set(cache_key, json.dumps(answer_object))
-
-
-tourism_knowledge2 = {
-    "kampala": {
-            
-        }
-}
-
 
 
 # def time_redis_response():
